@@ -1,0 +1,55 @@
+---
+import type { MarkdownHeading } from 'astro';
+import Base from './Base.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Toc from '../components/Toc.astro';
+import { loadDocs, groupDocs, type DocInfo } from '../lib/docs';
+import { theme, site } from '../config';
+
+const { info, headings } = Astro.props as { info: DocInfo; headings: MarkdownHeading[] };
+const infos = await loadDocs();
+const groups = groupDocs(infos);
+
+const idx = infos.findIndex((d) => d.slugParam === info.slugParam);
+const prev = idx > 0 ? infos[idx - 1] : null;
+const next = idx < infos.length - 1 ? infos[idx + 1] : null;
+
+const { title, description, updated } = info.entry.data;
+const fmt = updated ? new Intl.DateTimeFormat('en', { dateStyle: 'medium' }).format(updated) : null;
+---
+<Base title={`${title} · ${theme().brand} ${site.guideLabel}`} description={description}>
+  <div class="shell">
+    <Sidebar groups={groups} current={info.url} />
+    <article class="article">
+      <div class="crumb">{info.sectionLabel}</div>
+      <h1>{title}</h1>
+      {description && <p class="lead">{description}</p>}
+      {fmt && <div class="meta">Last updated · {fmt}</div>}
+      <div class="prose"><slot /></div>
+      {(prev || next) && (
+        <nav class="pager">
+          {prev ? <a href={prev.url}><div class="k">← Previous</div><div class="v">{prev.entry.data.title}</div></a> : <span></span>}
+          {next ? <a href={next.url} class="nx"><div class="k">Next →</div><div class="v">{next.entry.data.title}</div></a> : <span></span>}
+        </nav>
+      )}
+    </article>
+    <Toc headings={headings} />
+  </div>
+
+  <script>
+    const links = Array.from(document.querySelectorAll('.toc a[data-toc]'));
+    if (links.length) {
+      const map = new Map(links.map((a) => [a.getAttribute('data-toc'), a]));
+      const heads = links.map((a) => document.getElementById(a.getAttribute('data-toc'))).filter(Boolean);
+      const io = new IntersectionObserver((es) => {
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            links.forEach((l) => l.classList.remove('on'));
+            map.get(e.target.id)?.classList.add('on');
+          }
+        });
+      }, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+      heads.forEach((h) => io.observe(h));
+    }
+  </script>
+</Base>

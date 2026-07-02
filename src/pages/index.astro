@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadDocs, groupDocs } from '../lib/docs';
+import { site } from '../config';
+
+const infos = await loadDocs();
+const groups = groupDocs(infos);
+const first = infos[0];
+---
+<Base>
+  <section class="lhero wrap">
+    <div class="spec">DOCUMENTATION</div>
+    <h1>How can we <span class="it">help</span>?</h1>
+    <p>{site.tagline}</p>
+    {first && <a class="cta" href={first.url}>Start reading <span>→</span></a>}
+  </section>
+
+  <section class="wrap lgrid">
+    {groups.map((g) => (
+      <div class="lcard">
+        <div class="lc-h">{g.label}</div>
+        <ul>
+          {g.items.map((i) => (
+            <li><a href={i.url}><span class="lt">{i.entry.data.title}</span>{i.entry.data.description && <span class="ld">{i.entry.data.description}</span>}</a></li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+</Base>
+
+<style>
+  .lhero { padding:72px 20px 40px; max-width:760px; }
+  .lhero .spec { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; color:var(--muted); }
+  .lhero h1 { font-size:clamp(34px,6vw,56px); font-weight:800; letter-spacing:-.045em; line-height:1.02; margin:14px 0 0; }
+  .lhero h1 .it { font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; color:var(--accent-ink); }
+  .lhero p { font-size:18px; line-height:1.6; color:var(--ink-2); margin:18px 0 0; max-width:52ch; }
+  .lhero .cta { display:inline-flex; align-items:center; gap:8px; margin-top:26px; font-weight:600; font-size:15px; background:var(--ink); color:var(--paper); padding:12px 20px; border-radius:11px; transition:.15s; }
+  .lhero .cta:hover { transform:translateY(-1px); }
+  .lgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px; padding-bottom:90px; }
+  .lcard { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:22px 24px; }
+  .lc-h { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:12px; display:flex; align-items:center; gap:9px; }
+  .lc-h::before { content:""; width:16px; height:2px; border-radius:2px; background:var(--accent); }
+  .lcard ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; }
+  .lcard li + li { border-top:1px solid var(--line); }
+  .lcard a { display:flex; flex-direction:column; gap:2px; padding:11px 0; transition:.12s; }
+  .lcard a:hover .lt { color:var(--accent-ink); }
+  .lcard .lt { font-weight:600; font-size:15px; letter-spacing:-.01em; }
+  .lcard .ld { font-size:13px; color:var(--muted); line-height:1.45; }
+</style>

@@ -1,0 +1,14 @@
+---
+import type { DocGroup } from '../lib/docs';
+const { groups, current } = Astro.props as { groups: DocGroup[]; current: string };
+---
+<nav class="sidebar" aria-label="Docs">
+  {groups.map((g) => (
+    <div class="grp">
+      <div class="grp-t">{g.label}</div>
+      {g.items.map((i) => (
+        <a href={i.url} class={i.url === current ? 'on' : ''} aria-current={i.url === current ? 'page' : undefined}>{i.entry.data.title}</a>
+      ))}
+    </div>
+  ))}
+</nav>

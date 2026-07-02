@@ -1,0 +1,54 @@
+---
+title: How it works
+description: What the app does behind the scenes, and the settings you can tune.
+updated: 2026-07-01
+---
+import Video from '../../../components/Video.astro';
+import Callout from '../../../components/Callout.astro';
+
+The app continuously reorders each enabled collection so your best-performing products meet shoppers first — and out-of-stock items step aside.
+
+## A 60-second overview
+
+<Video src="https://www.youtube.com/watch?v=aqz-KE-bpKQ" title="How the app reorders your collection" />
+
+## The ranking signals
+
+Every product gets a score from a few signals, refreshed continuously:
+
+- **Sales velocity** — units sold recently, weighted toward the last few days.
+- **Conversion rate** — how often views turn into orders.
+- **Stock health** — sold-out and low-stock items are pushed down automatically.
+
+<Callout type="tip" title="Sensible defaults">
+The default weighting works well for most stores. You only need to change it if you have a specific merchandising goal.
+</Callout>
+
+## Tuning the weights
+
+You can bias the ranking from the app's **Settings** screen:
+
+```json
+{
+  "weights": { "sales": 0.6, "conversion": 0.3, "freshness": 0.1 },
+  "demoteSoldOut": true,
+  "pinned": ["new-arrivals-hero"]
+}
+```
+
+- Raise `sales` to reward proven sellers.
+- Raise `freshness` to give new products more visibility.
+- Add product handles to `pinned` to lock them to the top.
+
+## Pinning and excluding
+
+Sometimes you want manual control. Two options:
+
+1. **Pin** a product to keep it at the top regardless of score.
+2. **Exclude** a collection entirely — the app won't touch it.
+
+![The app dashboard showing bestsellers moved to the front](/assets/dashboard.png)
+
+<Callout type="note">
+Replace the screenshot above by dropping an image at <code>public/assets/dashboard.png</code>. Any image path under <code>public/</code> works in Markdown.
+</Callout>
