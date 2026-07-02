@@ -4,16 +4,19 @@
 @tailwind utilities;
 
 /* =====================================================================
-   QDN Guide — shared brand tokens + documentation prose.
+   QDN Guide — "Polaris Pro" brand tokens (shared with the QSortby site)
+   + documentation prose. White ground · Shopify-green accent · Inter ·
+   light borders · minimal shadow.
    ===================================================================== */
 @layer base {
   :root {
-    --paper:#ece9e2; --paper-2:#e4e0d7; --surface:#faf8f3;
-    --ink:#1b1c14; --ink-2:#54554a; --muted:#6c695e; --faint:#a9a599;
-    --line:#e0dccf; --line-2:#cdc7b8;
-    --accent:#e2622a; --accent-ink:#ab4715; --accent-soft:#f7e4d8;
+    --paper:#ffffff; --paper-2:#f6f7f8; --surface:#ffffff;
+    --ink:#101317; --ink-2:#41464d; --muted:#697079; --faint:#9aa0a8;
+    --line:#e6e7ea; --line-2:#d3d6da;
+    --accent:#00a36b; --accent-ink:#067a55; --accent-soft:#e9f6f0;
     --mono:'JetBrains Mono',ui-monospace,monospace;
-    --ease:cubic-bezier(.2,.7,.2,1);
+    --shadow-float:0 1px 1px rgba(16,24,40,.04),0 8px 24px -12px rgba(16,24,40,.18),0 40px 80px -36px rgba(16,24,40,.22);
+    --ease:cubic-bezier(.22,.61,.21,1);
     --sidebar:264px; --toc:216px; --header:60px;
   }
   html { scroll-behavior:smooth; scroll-padding-top:calc(var(--header) + 20px); }
@@ -28,14 +31,18 @@
   .wrap { @apply mx-auto max-w-wrap px-5; }
 
   /* ---- header ---- */
-  header.site { @apply sticky top-0 z-50 bg-paper/85 backdrop-blur border-b border-line; height:var(--header); }
+  header.site { @apply sticky top-0 z-50 border-b border-line; height:var(--header);
+    background:rgba(255,255,255,.8); backdrop-filter:saturate(140%) blur(10px); }
   header.site .bar { @apply flex items-center gap-4 h-full; }
   .brand { @apply flex items-center gap-2.5 font-bold text-[15px] text-ink tracking-tight2; }
   .brand .mk { @apply w-7 h-7 shrink-0; }
   .brand .tag { @apply font-mono text-label uppercase text-muted border border-line-2 rounded-md px-1.5 py-1 ml-1; }
   .hlinks { @apply hidden md:flex items-center gap-6 ml-auto text-sm font-medium text-ink-2; }
   .hlinks a:hover { @apply text-ink; }
-  .hbtn { @apply inline-flex items-center gap-2 font-semibold text-sm px-4 py-2 rounded-lg bg-ink text-paper; }
+  /* premium pill button — matches the site's .btn-accent */
+  .hbtn { @apply inline-flex items-center gap-2 font-semibold text-sm px-[1.1rem] py-2 rounded-full bg-ink text-white transition-all duration-200;
+    box-shadow:0 1px 2px rgba(16,24,40,.18),0 8px 20px -10px rgba(16,24,40,.4); }
+  .hbtn:hover { @apply -translate-y-px; box-shadow:0 2px 4px rgba(16,24,40,.2),0 14px 28px -12px rgba(16,24,40,.5); }
 
   /* ---- docs shell ---- */
   .shell { @apply mx-auto max-w-wrap px-5; display:grid; gap:40px;
@@ -48,7 +55,7 @@
   .sidebar .grp { @apply mb-6; }
   .sidebar .grp-t { @apply font-mono text-label uppercase text-muted mb-2.5; }
   .sidebar a { @apply block text-sm text-ink-2 rounded-lg px-3 py-1.5 -ml-3 transition; }
-  .sidebar a:hover { @apply text-ink bg-surface; }
+  .sidebar a:hover { @apply text-ink bg-paper-2; }
   .sidebar a.on { @apply text-accent-ink bg-accent-soft font-medium; }
 
   /* ---- toc ---- */
@@ -68,7 +75,7 @@
 
   /* ---- prev / next ---- */
   .pager { @apply grid grid-cols-1 sm:grid-cols-2 gap-4 mt-14 pt-8 border-t border-line; }
-  .pager a { @apply block rounded-xl border border-line bg-surface p-4 transition hover:border-ink; }
+  .pager a { @apply block rounded-xl2 border border-line bg-surface p-4 transition-all duration-150 hover:border-line-2 hover:shadow-sm; }
   .pager .k { @apply font-mono text-label uppercase text-muted; }
   .pager .v { @apply font-semibold mt-1 text-ink; }
   .pager .nx { @apply text-right; }
@@ -78,10 +85,10 @@
   .callout .ic { @apply w-5 h-5 shrink-0 mt-0.5; }
   .callout .bd { @apply min-w-0; }
   .callout .ct { @apply font-semibold mb-1; }
-  .callout.note { @apply border-line-2 bg-surface; }
-  .callout.tip { border-color:#bfe3cd; background:#e7f4ec; }
-  .callout.warning { border-color:#eccf9e; background:#f8efdc; }
-  .callout.danger { border-color:#e9c2b4; background:#f8e6de; }
+  .callout.note { border-color:var(--line); background:var(--paper-2); }
+  .callout.tip { border-color:#cbe8da; background:var(--accent-soft); }
+  .callout.warning { border-color:#f0d9a3; background:#fdf6e6; }
+  .callout.danger { border-color:#f0c7c2; background:#fbeceb; }
 
   /* ---- video ---- */
   .video { @apply my-7 rounded-xl overflow-hidden border border-line-2 bg-ink; aspect-ratio:16/9; }
@@ -113,7 +120,7 @@
 .prose hr { border:0; border-top:1px solid var(--line); margin:2.4em 0; }
 .prose img, .prose video { max-width:100%; height:auto; border-radius:12px; border:1px solid var(--line); display:block; margin:1.6em 0; }
 .prose code { font-family:var(--mono); font-size:.86em; background:var(--paper-2); border:1px solid var(--line); border-radius:5px; padding:.12em .4em; }
-.prose pre { background:#17180f; border:1px solid #2a2b20; border-radius:12px; padding:16px 18px; overflow-x:auto; font-size:13.5px; line-height:1.6; margin:1.4em 0; }
+.prose pre { background:#101317; border:1px solid #23262b; border-radius:12px; padding:16px 18px; overflow-x:auto; font-size:13.5px; line-height:1.6; margin:1.4em 0; color:#e6e7ea; }
 .prose pre code { background:none; border:0; padding:0; font-size:inherit; color:inherit; }
 .prose kbd { font-family:var(--mono); font-size:.8em; background:var(--surface); border:1px solid var(--line-2); border-bottom-width:2px; border-radius:5px; padding:.1em .45em; color:var(--ink); }
 .prose table { width:100%; border-collapse:collapse; font-size:14.5px; margin:1.4em 0; display:block; overflow-x:auto; }

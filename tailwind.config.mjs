@@ -1,23 +1,28 @@
-/** QDN Guide — design tokens (shared with the QDN brand system). */
+/**
+ * QDN Guide — "Polaris Pro" design tokens, shared with the QSortby site.
+ * White ground, cool grays, Shopify-green accent (via CSS vars), Inter,
+ * light borders, minimal shadow. Token names kept (`paper`, `surface`…)
+ * so existing utility classes reskin from just the values below.
+ */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}'],
   theme: {
     extend: {
       colors: {
-        paper: '#ece9e2',
-        'paper-2': '#e4e0d7',
-        surface: '#faf8f3',
-        ink: '#1b1c14',
-        'ink-2': '#54554a',
-        muted: '#6c695e',
-        faint: '#a9a599',
-        line: '#e0dccf',
-        'line-2': '#cdc7b8',
+        paper: '#ffffff',
+        'paper-2': '#f6f7f8',
+        surface: '#ffffff',
+        ink: '#101317',
+        'ink-2': '#41464d',
+        muted: '#697079',
+        faint: '#9aa0a8',
+        line: '#e6e7ea',
+        'line-2': '#d3d6da',
         // Driven by CSS vars so the whole guide reskins from src/config.ts
         accent: { DEFAULT: 'var(--accent)', soft: 'var(--accent-soft)', ink: 'var(--accent-ink)' },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         serif: ['"Instrument Serif"', 'Georgia', 'serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
@@ -27,6 +32,12 @@ export default {
       },
       letterSpacing: { tight2: '-0.02em' },
       maxWidth: { wrap: '1240px', prose: '46rem' },
+      borderRadius: { lg2: '0.625rem', xl2: '0.875rem' },
+      boxShadow: {
+        xs: '0 1px 2px rgba(16,24,40,.05)',
+        sm: '0 1px 2px rgba(16,24,40,.06), 0 1px 1px rgba(16,24,40,.04)',
+        float: '0 1px 1px rgba(16,24,40,.04), 0 8px 24px -12px rgba(16,24,40,.18), 0 40px 80px -36px rgba(16,24,40,.22)',
+      },
     },
   },
   plugins: [],

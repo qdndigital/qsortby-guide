@@ -28,7 +28,8 @@ export type Preset = {
 /** The QDN family — reuse the exact brand marks + colours. */
 export const PRESETS: Record<string, Preset> = {
   qdn:     { brand: 'QDN',     accent: '#e2622a', accentInk: '#ab4715', accentSoft: '#f7e4d8', glyph: 'square' },
-  qsortby: { brand: 'QSortby', accent: '#0e9d63', accentInk: '#0b6e46', accentSoft: '#d8efe2', glyph: 'stack' },
+  // QSortby — matches the marketing site's "Polaris Pro" Shopify-green accent.
+  qsortby: { brand: 'QSortby', accent: '#00a36b', accentInk: '#067a55', accentSoft: '#e9f6f0', glyph: 'stack' },
   qnotify: { brand: 'QNotify', accent: '#2f6fed', accentInk: '#1e4fbf', accentSoft: '#dde6fb', glyph: 'signal' },
   qmember: { brand: 'QMember', accent: '#7c5cff', accentInk: '#5b3fd6', accentSoft: '#e7e1ff', glyph: 'rosette' },
 };
@@ -40,7 +41,7 @@ export const site = {
   preset: 'qsortby' as keyof typeof PRESETS, // ← the app this guide is for
   guideLabel: 'Guide',                       // tag next to the wordmark
   tagline: 'Guides, walkthroughs and answers — get set up and get the most out of it.',
-  homeUrl: 'https://qdn.vn',                 // "back to site" link
+  homeUrl: 'https://qsortby.com',            // "back to site" link
   // Optional overrides (uncomment to customise a preset):
   // brand: 'My App',
   // accent: '#123456', accentInk: '#0a1a2e', accentSoft: '#dbe7f5',
@@ -60,7 +61,7 @@ export function theme(): Preset {
 }
 
 /** Full logo SVG (frame + glyph) for a given pixel size. */
-export function logo(size = 28, frame = '#1b1c14'): string {
+export function logo(size = 28, frame = '#101317'): string {
   const t = theme();
   return `<svg viewBox="0 0 32 32" width="${size}" height="${size}" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="27" height="27" rx="7" stroke="${frame}" stroke-width="2"/>${GLYPHS[t.glyph](t.accent)}</svg>`;
 }
