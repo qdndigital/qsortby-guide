@@ -56,7 +56,7 @@ const fmt = updated ? new Intl.DateTimeFormat('en', { dateStyle: 'medium' }).for
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
     <img id="lbImg" alt="" />
     <button class="lb-close" id="lbClose" type="button" aria-label="Close">✕</button>
-    <div class="lb-hint">scroll to zoom · drag to pan · esc to close</div>
+    <div class="lb-hint">click image to return · scroll to zoom · drag to pan</div>
   </div>
 
   <script>
@@ -115,7 +115,7 @@ const fmt = updated ? new Intl.DateTimeFormat('en', { dateStyle: 'medium' }).for
       const lb = document.getElementById('lightbox');
       const img = document.getElementById('lbImg');
       if (!lb || !img) return;
-      let scale = 1, tx = 0, ty = 0, from = null, drag = false, sx = 0, sy = 0;
+      let scale = 1, tx = 0, ty = 0, from = null, drag = false, moved = false, sx = 0, sy = 0;
       const apply = () => { img.style.transform = `translate(${tx}px,${ty}px) scale(${scale})`; };
       const open = (el) => {
         from = el.getBoundingClientRect();
@@ -154,9 +154,10 @@ const fmt = updated ? new Intl.DateTimeFormat('en', { dateStyle: 'medium' }).for
         if (scale === 1) { tx = 0; ty = 0; }
         img.style.transition = 'transform .12s ease'; apply();
       }, { passive: false });
-      img.addEventListener('mousedown', (e) => { if (scale <= 1) return; e.preventDefault(); drag = true; sx = e.clientX - tx; sy = e.clientY - ty; img.classList.add('grabbing'); img.style.transition = 'none'; });
-      window.addEventListener('mousemove', (e) => { if (!drag) return; tx = e.clientX - sx; ty = e.clientY - sy; apply(); });
+      img.addEventListener('mousedown', (e) => { moved = false; if (scale <= 1) return; e.preventDefault(); drag = true; sx = e.clientX - tx; sy = e.clientY - ty; img.classList.add('grabbing'); img.style.transition = 'none'; });
+      window.addEventListener('mousemove', (e) => { if (!drag) return; moved = true; tx = e.clientX - sx; ty = e.clientY - sy; apply(); });
       window.addEventListener('mouseup', () => { drag = false; img.classList.remove('grabbing'); });
+      img.addEventListener('click', () => { if (!moved) close(); });   // click the image again to return
     })();
   </script>
 
