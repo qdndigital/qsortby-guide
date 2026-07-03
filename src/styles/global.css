@@ -132,3 +132,73 @@
 
 /* accessibility */
 a:focus-visible, button:focus-visible, .sidebar a:focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:6px; }
+
+/* ============================================================================
+   Doc reading UX — focus mode (tuck menus for big images) + image lightbox
+   ============================================================================ */
+.article { position: relative; }
+
+/* Focus toggle pill (top-right of the article) */
+.focus-btn { position: absolute; top: 36px; right: 0; z-index: 6;
+  display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600;
+  color: var(--muted, #7c818b); background: #fff; border: 1px solid var(--line, #e8e7e4);
+  border-radius: 999px; padding: 6px 13px; cursor: pointer;
+  transition: color .18s cubic-bezier(.22,.61,.21,1), border-color .18s, background .18s; }
+.focus-btn:hover { color: var(--accent-ink); border-color: var(--accent); background: var(--accent-soft); }
+.focus-btn svg { width: 14px; height: 14px; }
+
+/* Focus mode — article spans full width; menus become edge-docked overlays */
+.shell.focus { grid-template-columns: minmax(0, 1fr); }
+.shell.focus .sidebar, .shell.focus .toc {
+  position: fixed; top: calc(var(--header, 60px) + 12px); z-index: 60; margin: 0;
+  max-height: calc(100vh - var(--header, 60px) - 24px); overflow-y: auto; padding: 20px 22px;
+  background: rgba(255,255,255,.86); -webkit-backdrop-filter: blur(16px) saturate(160%); backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid var(--line, #e8e7e4); border-radius: 16px;
+  box-shadow: 0 24px 60px -28px rgba(16,24,40,.4), 0 2px 8px -4px rgba(16,24,40,.1);
+  opacity: 0; pointer-events: none;
+  transition: transform .34s cubic-bezier(.22,.61,.21,1), opacity .26s ease; }
+.shell.focus .sidebar { left: 14px;  width: var(--sidebar, 264px); transform: translateX(calc(-100% - 28px)); }
+.shell.focus .toc     { right: 14px; width: 236px;                transform: translateX(calc(100% + 28px)); }
+.shell.focus.nav-peek .sidebar,
+.shell.focus.toc-peek .toc { transform: translateX(0); opacity: 1; pointer-events: auto; }
+
+/* Always-visible edge handles + wide hover hot-zones (only in focus mode) */
+.edge { position: fixed; top: 50%; transform: translateY(-50%); z-index: 55;
+  width: 22px; height: 78px; display: none; place-items: center; cursor: pointer;
+  color: var(--muted, #7c818b); background: #fff; border: 1px solid var(--line, #e8e7e4);
+  box-shadow: 0 12px 30px -14px rgba(16,24,40,.35);
+  transition: width .22s cubic-bezier(.22,.61,.21,1), color .22s, background .22s; }
+.shell.focus ~ .edge { display: grid; }
+.edge svg { width: 15px; height: 15px; transition: transform .32s cubic-bezier(.22,.61,.21,1); }
+.edge.l { left: 0;  border-radius: 0 13px 13px 0; border-left: 0; }
+.edge.r { right: 0; border-radius: 13px 0 0 13px; border-right: 0; }
+.edge:hover { width: 28px; color: var(--accent-ink); background: var(--accent-soft); }
+.shell.nav-peek ~ .edge.l svg, .shell.toc-peek ~ .edge.r svg { transform: rotate(180deg); }
+.edge-zone { position: fixed; top: var(--header, 60px); bottom: 0; width: 46px; z-index: 54; display: none; }
+.shell.focus ~ .edge-zone { display: block; }
+.edge-zone.l { left: 0; } .edge-zone.r { right: 0; }
+
+.prose img { cursor: zoom-in; }
+
+@media (max-width: 860px){ .edge, .edge-zone, .focus-btn { display: none !important; } .shell.focus { grid-template-columns: minmax(0,1fr); } }
+
+/* ---- Image lightbox ---- */
+.lightbox { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center;
+  background: rgba(14,18,26,0); -webkit-backdrop-filter: blur(0); backdrop-filter: blur(0);
+  opacity: 0; pointer-events: none; transition: background .36s ease, backdrop-filter .36s ease, opacity .2s ease; }
+.lightbox.open { background: rgba(14,18,26,.74); -webkit-backdrop-filter: blur(7px); backdrop-filter: blur(7px); opacity: 1; pointer-events: auto; }
+.lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 14px; will-change: transform;
+  box-shadow: 0 40px 110px -34px rgba(0,0,0,.75); cursor: grab; user-select: none; -webkit-user-drag: none; }
+.lightbox img.grabbing { cursor: grabbing; }
+.lb-close { position: fixed; top: 22px; right: 24px; z-index: 210; width: 42px; height: 42px;
+  display: grid; place-items: center; border-radius: 50%; cursor: pointer; color: #fff; font-size: 17px;
+  background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.22);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  opacity: 0; transform: scale(.8); transition: opacity .3s ease, transform .3s cubic-bezier(.22,.61,.21,1), background .2s; }
+.lightbox.open .lb-close { opacity: 1; transform: scale(1); }
+.lb-close:hover { background: rgba(255,255,255,.26); }
+.lb-hint { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 210;
+  font-family: ui-monospace, "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: .04em; color: rgba(255,255,255,.72);
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 6px 14px;
+  opacity: 0; transition: opacity .3s ease .12s; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); pointer-events: none; }
+.lightbox.open .lb-hint { opacity: 1; }
