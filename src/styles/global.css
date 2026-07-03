@@ -202,3 +202,40 @@ a:focus-visible, button:focus-visible, .sidebar a:focus-visible { outline:2px so
   background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 6px 14px;
   opacity: 0; transition: opacity .3s ease .12s; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); pointer-events: none; }
 .lightbox.open .lb-hint { opacity: 1; }
+
+/* Focus mode: center the content at a readable width; center the page header for scanning */
+.shell.focus .article { max-width: 960px; margin-inline: auto; }
+.shell.focus .article > .crumb,
+.shell.focus .article > h1,
+.shell.focus .article > .lead,
+.shell.focus .article > .meta { text-align: center; }
+.shell.focus .article > .lead { margin-left: auto; margin-right: auto; max-width: 62ch; }
+.shell.focus .prose img { max-width: 100%; margin-inline: auto; }
+
+/* Edge-handle labels (hover tooltip) — say what each edge reveals */
+.edge { overflow: visible; }
+.edge .lbl { position: absolute; top: 50%; white-space: nowrap;
+  font-family: ui-monospace, "JetBrains Mono", monospace; font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+  color: #fff; background: var(--accent, #00a36b); padding: 5px 10px; border-radius: 8px;
+  box-shadow: 0 10px 22px -8px rgba(0,163,107,.6);
+  opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .22s cubic-bezier(.22,.61,.21,1); }
+.edge.l .lbl { left: calc(100% + 10px); transform: translate(-6px, -50%); }
+.edge.r .lbl { right: calc(100% + 10px); transform: translate(6px, -50%); }
+.edge:hover .lbl, .edge.hint .lbl { opacity: 1; transform: translate(0, -50%); }
+
+/* Gentle attention pulse until first interaction */
+@keyframes edgePulse { 0%,100% { box-shadow: 0 12px 30px -14px rgba(16,24,40,.35); }
+  50% { box-shadow: 0 12px 30px -14px rgba(16,24,40,.35), 0 0 0 7px var(--accent-soft, #eef5f1); } }
+.edge.hint { animation: edgePulse 1.9s ease-in-out 3; }
+
+/* First-visit hint toast */
+.focus-hint { position: fixed; bottom: 24px; left: 50%; z-index: 120;
+  display: flex; align-items: center; gap: 12px; max-width: 480px;
+  background: var(--ink, #17191e); color: #fff; font-size: 13.5px; line-height: 1.45;
+  padding: 13px 16px; border-radius: 13px; box-shadow: 0 24px 60px -22px rgba(16,24,40,.55);
+  opacity: 0; pointer-events: none; transform: translate(-50%, 10px);
+  transition: opacity .35s ease, transform .35s cubic-bezier(.22,.61,.21,1); }
+.focus-hint.show { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.focus-hint b { color: var(--accent-bright, #2bd996); font-weight: 700; }
+.focus-hint button { flex: none; font-size: 12px; font-weight: 700; color: var(--ink, #17191e); background: #fff; border: 0; border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+@media (max-width: 860px){ .focus-hint { display: none; } }

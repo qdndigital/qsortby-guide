@@ -43,8 +43,14 @@ const fmt = updated ? new Intl.DateTimeFormat('en', { dateStyle: 'medium' }).for
   <!-- focus-mode edge affordances (siblings of .shell) -->
   <div class="edge-zone l" id="zoneL" aria-hidden="true"></div>
   <div class="edge-zone r" id="zoneR" aria-hidden="true"></div>
-  <button class="edge l" id="edgeL" type="button" aria-label="Show navigation"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5l-5 5 5 5"/></svg></button>
-  <button class="edge r" id="edgeR" type="button" aria-label="Show contents"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5l5 5-5 5"/></svg></button>
+  <button class="edge l" id="edgeL" type="button" aria-label="Show navigation menu"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5l-5 5 5 5"/></svg><span class="lbl">Menu</span></button>
+  <button class="edge r" id="edgeR" type="button" aria-label="Show on-this-page contents"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5l5 5-5 5"/></svg><span class="lbl">On this page</span></button>
+
+  <!-- first-visit hint -->
+  <div class="focus-hint" id="focusHint">
+    <span>Menus are tucked away for bigger images — <b>hover the edges</b> to peek them, or <b>Focus</b> to pin. Click any image to zoom.</span>
+    <button id="focusHintOk" type="button">Got it</button>
+  </div>
 
   <!-- image lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
@@ -85,6 +91,23 @@ const fmt = updated ? new Intl.DateTimeFormat('en', { dateStyle: 'medium' }).for
       bind(['zoneL', 'edgeL', shell.querySelector('.sidebar')], 'nav-peek');
       bind(['zoneR', 'edgeR', shell.querySelector('.toc')], 'toc-peek');
       ['edgeL', 'edgeR'].forEach((id) => document.getElementById(id)?.addEventListener('click', () => setFocus(false, true)));
+
+      // first-visit visual cue: pulse the handles + a one-time hint toast
+      const hint = document.getElementById('focusHint');
+      let seen; try { seen = localStorage.getItem('ugs_doc_hint'); } catch {}
+      if (!seen && shell.classList.contains('focus') && hint) {
+        const edges = Array.from(document.querySelectorAll('.edge'));
+        edges.forEach((e) => e.classList.add('hint'));
+        const showT = setTimeout(() => hint.classList.add('show'), 650);
+        const dismiss = () => {
+          clearTimeout(showT); hint.classList.remove('show');
+          edges.forEach((e) => e.classList.remove('hint'));
+          try { localStorage.setItem('ugs_doc_hint', '1'); } catch {}
+        };
+        document.getElementById('focusHintOk')?.addEventListener('click', dismiss);
+        setTimeout(dismiss, 9000);
+        ['zoneL', 'zoneR', 'edgeL', 'edgeR'].forEach((id) => document.getElementById(id)?.addEventListener('mouseenter', dismiss, { once: true }));
+      }
     })();
 
     // ---- Image lightbox: click to zoom from source, scroll to zoom, drag to pan ----
