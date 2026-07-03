@@ -53,10 +53,15 @@
   /* ---- sidebar ---- */
   .sidebar { @apply sticky self-start py-9 pr-2; top:var(--header); max-height:calc(100vh - var(--header)); overflow-y:auto; }
   .sidebar .grp { @apply mb-6; }
-  .sidebar .grp-t { @apply font-mono text-label uppercase text-muted mb-2.5; }
-  .sidebar a { @apply block text-sm text-ink-2 rounded-lg px-3 py-1.5 -ml-3 transition; }
+  .sidebar .grp-t { @apply font-mono text-label uppercase text-muted mb-2.5; display:flex; align-items:center; gap:8px; }
+  .sidebar .grp-ic { display:inline-flex; color:var(--accent-ink); opacity:.9; }
+  .sidebar a { @apply text-sm text-ink-2 rounded-lg px-2.5 py-1.5 -ml-2.5 transition; display:flex; align-items:center; gap:9px; }
+  .sidebar a .ic { flex:none; display:inline-flex; color:var(--muted); transition:color .15s; }
+  .sidebar a .tx { min-width:0; }
   .sidebar a:hover { @apply text-ink bg-paper-2; }
+  .sidebar a:hover .ic { color:var(--ink-2); }
   .sidebar a.on { @apply text-accent-ink bg-accent-soft font-medium; }
+  .sidebar a.on .ic { color:var(--accent); }
 
   /* ---- toc ---- */
   .toc { @apply sticky self-start py-9 text-sm; top:var(--header); }
