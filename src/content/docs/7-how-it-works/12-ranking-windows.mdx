@@ -1,0 +1,25 @@
+---
+title: "Framing the stats — rolling, period & snapshot windows"
+description: "Every ranking signal is measured over a time window."
+section: "How QSortby ranks"
+updated: 2026-07-09
+---
+Before ranking can score a product, it has to decide **which slice of time to measure** — the *window*. Every signal (best-selling, trending, CTR…) is computed over this window, and the mode you pick changes which orders and events count. There are three modes, set on a collection's Setup tab under **Use sales from**.
+
+## 1. Rolling — a window that slides with the clock
+
+![Rolling — a window that slides with the clock](/assets/ranking-windows/concept-ranking-windows-step-01.png)
+
+**Rolling** always ends at *now* and reaches back N hours or days. Because “now” moves, the whole window slides forward continuously — an order from 8 days ago that counted yesterday quietly drops out today. It's the freshest possible view, ideal for fast-moving catalogs where you want the ranking to reflect the last few days at all times.
+
+## 2. Period — the last completed calendar unit
+
+![Period — the last completed calendar unit](/assets/ranking-windows/concept-ranking-windows-step-02.png)
+
+**Period** measures a *completed* calendar unit — e.g. **last week** (Mon–Sun) or **last month**. The current, still-open week doesn't count yet, so the window holds perfectly steady all week, then **jumps** forward the moment the week turns. It's stable and comparable period-to-period — good for weekly or monthly reporting cadences.
+
+## 3. Snapshot — a frozen date range
+
+![Snapshot — a frozen date range](/assets/ranking-windows/concept-ranking-windows-step-03.png)
+
+**Snapshot** pins the window to an exact date range and freezes it. The same orders count forever — nothing rolls in or out — until you edit the range. Reach for it when the *period itself* is the point: a launch week, a holiday sale, or a seasonal capsule you want ranked by how it performed *then*, not now.
