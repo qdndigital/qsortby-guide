@@ -1,39 +1,31 @@
 ---
-title: "Create a collection"
-description: "Name a new collection, choose how products join it, and pick the sort rule that keeps it ordered."
-section: "Collections & sorting"
-updated: 2026-07-03
+title: "Create your first collection"
+description: "Turn any collection into a smart, auto-sorted one — pick a ranking rule and QSortby builds a Shopify collection it keeps in sync every 5 minutes."
+section: "Collections"
+updated: 2026-07-09
 ---
-import Callout from '../../../components/Callout.astro';
+A collection in QSortby is a Shopify collection that sorts itself by a rule you choose — best sellers, trending, top rated, and more. This guide creates one on the **Create collection** page. The app recomputes the order every 5 minutes so it always reflects live behaviour.
 
-Creating a collection in qSortBy takes three decisions: what to call it, how products join it, and how it sorts. This guide walks through each one so your new collection is live and re-ranking from day one.
+## 1. Open Collections and start a new one
 
-## 1. Name the collection
+![Open Collections and start a new one](/assets/create-collection/collections-create-step-01.png)
 
-![Name the collection](/assets/create-collection/qsortby-collections-create-step-01.png)
+Open **Collections** from the left menu, then click **Create collection** (top right). It opens the setup page. The tiles above the list count your collections by state — **Live**, **Needs setup**, **Paused**.
 
-Open **Collections** from the left menu, then select **Create collection**. Give the collection a clear, shopper-facing name in the top field — this is the title customers see on your storefront. qSortBy creates a real Shopify collection in your store under this name.
+## 2. Details — name it and pick a ranking rule
 
-## 2. Choose how products are added
+![Details — name it and pick a ranking rule](/assets/create-collection/collections-create-step-02.png)
 
-![Choose how products are added](/assets/create-collection/qsortby-collections-create-step-02.png)
+Under **Details**, give the collection a shopper-facing **Collection title** (e.g. “Best sellers — last 7 days”). Then choose a **Ranking criteria** — the rule that decides which products go in and how they're ordered (Best selling, Trending, Top rated, and more). Set the **Mode / Unit / Value** window it measures over. Each rule is explained in the *How QSortby ranks* guides.
 
-Under **How are products added?**, pick the membership type. **Manual** lets you hand-pick each product. **Automatic** builds the collection from conditions like tag, product type, or price, so new matching products join on their own. You can always switch later.
+## 3. Products — how they get in
 
-## 3. Pick the sort signal
+![Products — how they get in](/assets/create-collection/collections-create-step-03.png)
 
-![Pick the sort signal](/assets/create-collection/qsortby-collections-create-step-03.png)
+Under **Products**, pick **Algorithmic** (the app picks products by your criteria every 5 minutes) or **Manual** (you add products by hand; the app only reorders them). **Max products** caps how many the app promotes (1–250; ignored in Manual mode). An optional **Category filter** limits ranking to one category.
 
-Under **Sort products by**, choose the signal qSortBy uses to rank the collection. **Best sellers** orders by units sold; other options rank by CTR, revenue, how new a product is, inventory, or trending momentum. This is the heart of the sort rule.
+## 4. Create it
 
-## 4. Confirm and create
+![Create it](/assets/create-collection/collections-create-step-04.png)
 
-![Confirm and create](/assets/create-collection/qsortby-collections-create-step-04.png)
-
-The **In plain words** panel restates your choices in a single sentence so you can sanity-check the rule before saving. When it reads the way you want, select **Create collection** to save it and start sorting.
-
-<Callout type="tip" title="Tip">
-You can revisit the sort rule any time from the collection's Setup tab.
-</Callout>
-
-That's a collection created: named, populated by manual or automatic membership, and wired to a sort signal. qSortBy now keeps it ordered for you.
+Click **Create collection**. QSortby makes the Shopify collection and starts keeping it in sync — recomputing and resyncing every 5 minutes. It appears in your list as **Needs setup** until the first sync finishes, then flips to **Live**.
