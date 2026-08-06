@@ -1,0 +1,31 @@
+---
+title: "How segment matching picks each shopper's order"
+description: "Step by step: how a personalization rule routes each shopper — checked top to bottom, first matching group wins, and that group's ranking is what they see."
+section: "How QSortby ranks"
+updated: 2026-07-09
+---
+Ranking signals decide the *order of products*; **segment matching** decides *which order each shopper gets*. A personalization rule is an ordered list of shopper groups — each with an **audience** (who qualifies) and a **ranking** (what they see). Every visitor is checked top to bottom, and the **first group they match wins**. Here's how one shopper is routed.
+
+## 1. A rule is an ordered list of groups
+
+![A rule is an ordered list of groups](/assets/segment-matching/concept-segment-matching-step-01.png)
+
+Three groups: **VIP shoppers** (2+ past purchases), **First-time visitors** (0 past purchases), and a locked **Everyone else** catch-all. Order matters — the group nearer the top is checked first. Each group carries its own signal ranking.
+
+## 2. A shopper arrives
+
+![A shopper arrives](/assets/segment-matching/concept-segment-matching-step-02.png)
+
+This returning shopper has **3 past purchases**, recently viewed running shoes, and came from an email link. Each visitor is tested against every group's audience, beginning with the first.
+
+## 3. First match wins
+
+![First match wins](/assets/segment-matching/concept-segment-matching-step-03.png)
+
+3 past purchases satisfies **VIP shoppers** (2+), so the shopper is placed in that group and checking **stops immediately** — the groups below are never evaluated. This is why group order matters: put your most specific audiences near the top.
+
+## 4. They see that group's order
+
+![They see that group's order](/assets/segment-matching/concept-segment-matching-step-04.png)
+
+The shopper now sees the **VIP** ranking — Recently viewed first, then Top sellers, then New arrivals. A **first-time visitor** would fail the VIP audience, fall through to their own group, and see a completely different order. One rule, tailored to each shopper.
