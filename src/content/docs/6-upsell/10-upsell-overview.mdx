@@ -1,0 +1,47 @@
+---
+title: "Upsell offers — the six surfaces"
+description: "Six places QSortby can suggest another product — cart, free-shipping bar, product page, thank-you page, popups and inside checkout — all fed by the same live ranking."
+section: "Upsell"
+updated: 2026-08-13
+---
+import Callout from '../../../components/Callout.astro';
+
+Ranking decides which products a shopper **finds**. Upsell offers decide what else goes **in the bag**. Both run off the same engine, which is the part worth understanding first: every offer is drawn from your live ranking, so what gets suggested is what's actually selling and actually in stock — never a static list you have to maintain.
+
+Open **Upsell** from the left menu. The hub has two tabs: **Upsells** (the widgets themselves) and **Rules** (reusable conditions that decide when a widget shows).
+
+## The six surfaces
+
+| Widget | Where it renders | Included from |
+| --- | --- | --- |
+| **Cart upsell** | Cart drawer + cart page | Free |
+| **Free-shipping progress** | Cart drawer + cart page | Free |
+| **Frequently bought together** | Product page | Starter |
+| **Thank-you page upsell** | Order-status page, after payment | Starter |
+| **Popup upsell** | Any page, on a trigger you choose | Pro |
+| **In-checkout upsell** | Inside checkout, before payment | Growth · Shopify Plus only |
+
+A widget your plan doesn't include still appears in the catalogue, marked **Not in your plan** — clicking it opens the plan comparison. Nothing is hidden from you, so you can always see what a tier would add.
+
+## What every surface does the same way
+
+- **Nothing sold out.** Products with no available stock are filtered out of every offer.
+- **Nothing already in the cart.** Suggesting what a shopper has already added is the one thing an upsell must not do, so those are excluded too.
+- **A failed request hides the section.** If anything goes wrong fetching an offer, the widget simply doesn't render. A cart never blocks or breaks waiting for a suggestion.
+- **No theme code.** Widgets are injected by the QSortby app embed. You choose where they sit; you don't edit Liquid.
+
+## Creating one
+
+1. Click **Create upsell** and pick a widget from the catalogue.
+2. Give it a name — this is how you'll tell several of the same type apart later ("Drawer offer" vs "Cart page offer").
+3. You land in the editor. Every new upsell starts as a **Draft**: it saves and previews, but nothing renders on your storefront until you switch it on.
+
+## How many you can have
+
+Your plan sets how many of **each type** you can create — Free one of each, Starter three, Pro and Growth unlimited. The cap counts drafts too, so a parked draft still uses a slot.
+
+If you drop to a lower plan, nothing is deleted. Upsells beyond the new limit stop serving and are labelled **Over plan limit** in the list, keeping the ones you put at the top of the order. Upgrade again and they resume exactly as they were.
+
+<Callout type="note">
+Several of one type is a real setup, not an accident: a different offer in the cart drawer than on the cart page, or one popup for first-time visitors and another for returning ones. The one that shows is decided by **priority** and any **rules** attached — see [Display rules](/docs/upsell/display-rules).
+</Callout>

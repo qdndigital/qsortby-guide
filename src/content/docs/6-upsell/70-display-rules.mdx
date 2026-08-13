@@ -1,0 +1,43 @@
+---
+title: "Display rules"
+description: "Reusable AND/OR conditions that decide when an upsell shows — cart over $50, contains something from a collection, carries a tag."
+section: "Upsell"
+updated: 2026-08-13
+---
+import Callout from '../../../components/Callout.astro';
+
+A rule is a reusable condition you build once and attach to an upsell. An upsell with no rule shows unconditionally; attaching one turns it into "show this **only when**…".
+
+Rules live on the **Rules** tab of the Upsell hub. Included from **Pro**.
+
+## Building one
+
+A rule is made of **condition groups**. Conditions inside a group combine with **AND** (all must hold); the groups themselves combine with **OR** (any group can match). That's enough to express things like:
+
+> *cart total over $80* **AND** *contains something from /sale*
+> **OR**
+> *cart contains 3 or more items*
+
+Conditions can look at cart total, item count, which products or collections are in the cart, and product **tags**.
+
+<Callout type="note" title="Tag conditions cost a little more">
+Reading tags means the storefront has to fetch each cart product's tags. QSortby only pays that cost when a rule actually uses a tag condition — so build with tags freely, just know that a rule without them is slightly lighter.
+</Callout>
+
+## Attaching a rule
+
+Open the upsell, find **Rule**, and pick one. **One rule per upsell** — a rule carries its own trigger and conditions, so two of them on one widget would leave no defensible answer to "when does this fire?". If you need more logic, add another condition group to the rule itself.
+
+The same rule can gate **several** upsells, which is the direction that's actually useful: define "high-value cart" once and use it in the drawer, the popup, and the thank-you page.
+
+## Draft and published
+
+A rule has to be **Published** to gate anything. Only published rules appear in the picker.
+
+If you unpublish a rule that's already attached, the upsell it was gating **stays gated** — it doesn't quietly open up to everyone. The editor flags the situation so you can publish the rule again or pick a different one. Silently widening who sees an offer would be the worse failure of the two.
+
+## After a plan change
+
+If you move to a plan without the rule engine, the rules you already have **keep working** — they're still evaluated on every shopper, exactly as before.
+
+What you lose is the ability to add more: you can't create a new rule or attach one that isn't already attached. Editing, detaching and deleting stay available, so you're never stuck with gating you can't change. The rule picker narrows to *"None"* plus whatever that upsell already carries.

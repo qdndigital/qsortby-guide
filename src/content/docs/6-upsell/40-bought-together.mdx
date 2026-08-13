@@ -1,0 +1,41 @@
+---
+title: "Frequently bought together"
+description: "Suggest what shoppers actually buy in the same order as the product they're viewing, with a best-sellers fallback for the weeks before you have enough pair data."
+section: "Upsell"
+updated: 2026-08-13
+---
+import Callout from '../../../components/Callout.astro';
+
+This one is different from the other surfaces: it doesn't rank by velocity or margin, it ranks by **co-purchase**. QSortby reads your own order history and finds which products keep appearing in the same order as the one a shopper is looking at.
+
+Included from **Starter**.
+
+## Where it goes
+
+It renders on the product page, through the QSortby block — add it in the theme editor where you want the rail to sit. The product being viewed is the *anchor*, and it's excluded from its own suggestions.
+
+## What counts as a pair
+
+Two products count as a pair only after they've appeared in the same order **at least twice**.
+
+<Callout type="note" title="Why once isn't enough">
+On a young store almost every pair has been seen exactly once. Surfacing those would present coincidence as insight — one shopper who happened to buy a candle and a phone cable would make that a "bundle" forever.
+</Callout>
+
+Pairs are recomputed on a schedule from your recent orders, so the rail keeps up as buying habits shift.
+
+## The first few weeks
+
+Orders only start accruing when you install — there's no backfill of your history — so a new store has no pairs at all for a while. Rather than render an empty rail, QSortby tops it up from your shop-wide ranking.
+
+The dashboard tells you which mode you're in, and it matters: a rail marked as **real pairs** is genuine co-purchase data, while a padded one is partly your best sellers. QSortby won't badge a padded list as "bought together", because that would be a lie about your own data.
+
+## Settings
+
+- **How many** — 1 to 10 cards.
+- **Heading** — defaults to *"Frequently bought together"*.
+- **Layout** — grid or slider, columns on desktop and mobile.
+- **Card style** — App or Theme cards, same as the cart widget.
+- **Rank by / window** — used only for the fallback, ignored once you have enough pairs.
+
+Unlike the other surfaces, several bought-together widgets can each serve at once — one per block you place — so you can run a different one on different product templates. Your plan caps how many you can create.

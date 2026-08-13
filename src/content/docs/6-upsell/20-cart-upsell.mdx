@@ -1,0 +1,42 @@
+---
+title: "Cart upsell"
+description: "Suggest what's selling fastest in the cart drawer and on the cart page, ranked from your real orders and never showing what's already in the basket."
+section: "Upsell"
+updated: 2026-08-13
+---
+import Callout from '../../../components/Callout.astro';
+
+The cart upsell is the widest-reach offer you can run: every shopper who opens a cart sees it. It suggests products drawn from your live ranking, skipping anything already in the basket and anything out of stock.
+
+Included on **every plan**, including Free.
+
+## Choose what it suggests
+
+**Rank by** picks the signal — sales velocity, revenue, margin, conversion rate, trending, and the rest of the same list your collections use — and **Sales window** sets how far back to measure. Short windows chase trends; longer ones are steadier on a low-volume store.
+
+Switch **Mode** to **Manual** to hand-pick products instead. A manual list shows exactly what you chose, in your order, and is deliberately *not* topped up from the ranker: you picked a list, so a short list stays short.
+
+<Callout type="note" title="A short list gets padded, not truncated">
+In automatic mode, if the ranking can't fill the widget — a small catalogue, or most winners already in the cart — QSortby tops it up with your newest in-stock products rather than rendering one lonely card. The dashboard tells you when a preview is padded rather than purely ranked, so you always know which you're looking at.
+</Callout>
+
+## Choose where it appears
+
+The cart drawer and the cart page are configured **separately**, because they're different amounts of space. For each one you set:
+
+- **On / off** — run it in the drawer only, the page only, or both.
+- **Position** — before or after the cart contents, and which element to anchor to.
+- **Card style** — **App** cards (QSortby's own styling, works everywhere) or **Theme** cards (renders through one of your theme's own product snippets so it inherits your design).
+- **Layout** — grid or slider, and how many cards across on desktop and mobile.
+
+**How many** controls the number of suggestions. Fewer is usually better in a drawer.
+
+## Excluded products
+
+Products you've excluded in **Settings** never appear in any upsell, even if you hand-pick them in manual mode. That list is the single place to keep something out of every surface at once.
+
+## Running more than one
+
+A second cart upsell is how you run a different offer in the drawer than on the cart page, or a different offer for carts over a certain value. When several are switched on, QSortby walks them in **priority** order and serves the first whose [display rules](/docs/upsell/display-rules) match the cart as it stands. An upsell with no rules attached matches every cart.
+
+Your plan caps how many you can create — one on Free, three on Starter, unlimited above.

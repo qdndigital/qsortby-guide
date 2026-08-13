@@ -1,0 +1,37 @@
+---
+title: "Emotional suggest in upsells"
+description: "Let the emotional read choose between your ranked candidates, so an anxious shopper and a celebratory one get different suggestions from the same cart."
+section: "Upsell"
+updated: 2026-08-13
+---
+import Callout from '../../../components/Callout.astro';
+
+Every upsell ranks by the signal you pick — velocity, margin, conversion rate. **Emotional suggest** adds a second, lighter pass on top: among the products your ranking already chose, it prefers the ones that suit the state the shopper appears to be in.
+
+Available on **Growth**, where the emotional layer is applied live.
+
+## Where you'll find it
+
+A checkbox in the editor of the surfaces that can identify a shopper: **cart upsell**, **popup**, **in-checkout** and **thank-you page**. It only appears in **automatic** mode — a hand-picked list is your order, not ours — and only if your plan includes the emotional layer.
+
+It's **off by default** on every widget, including new ones. Turning it on is a decision you make per surface.
+
+<Callout type="note" title="Why not on bought-together or the shipping bar">
+Those two have their own logic that emotion would undermine. Bought-together sells one claim — *other people bought these in the same order* — and quietly reordering it by mood would make that claim untrue. The free-shipping bar can only suggest products that actually close the gap, which leaves almost nothing for a second signal to influence.
+</Callout>
+
+## What it needs to work
+
+**Emotional keywords on your products.** Set these in **Settings → Emotional keywords**. Products with no keywords carry no emotional signal, so the ordering can't change — if nothing is tagged, the widget behaves exactly as it did before.
+
+**A shopper the layer has read.** A brand-new visitor with no session history yet has no detected state. When that's the case the ordering is left exactly as your ranking produced it.
+
+## What it does and doesn't do
+
+It **nudges**, it doesn't take over. Your chosen signal still decides the pool and still dominates the order; the emotional pass moves matching products up within it. A product that isn't selling won't be promoted into the cart drawer because it happens to be tagged.
+
+It's also **fail-quiet by design**. No detected state, no tagged products, or any hiccup reading them, and you get your normal ranked order — never an empty widget and never an error in front of a shopper.
+
+## Seeing it work
+
+Because each shopper sees a different order, this layer is invisible from the storefront. **Insights** is where it becomes visible: the state mix across your sessions, and the journeys behind it. On plans below Growth the same read runs in preview only — it reports what it *would* have shown without changing your storefront.

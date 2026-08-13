@@ -1,0 +1,38 @@
+---
+title: "In-checkout upsell"
+description: "An offer inside checkout itself, before payment, so an accepted item joins the same order instead of starting a new one. Shopify Plus only."
+section: "Upsell"
+updated: 2026-08-13
+---
+import Callout from '../../../components/Callout.astro';
+
+This is the only surface where an accepted offer joins the **same** order. It runs inside checkout, before payment, so the shopper adds an item without a second transaction, a second shipping charge, or a second decision to buy.
+
+Included on **Growth**.
+
+<Callout type="warning" title="Shopify Plus only — and nothing in QSortby can change that">
+Shopify restricts pre-payment checkout extensions to Plus stores. On any other plan the extension simply won't render, no matter how the widget is configured. If your checkout looks unchanged after switching this on, that's almost always the reason.
+</Callout>
+
+## Before it can show
+
+The QSortby checkout extension has to be added to your checkout in the Shopify **checkout editor** — switching the widget on in QSortby arms it, but the block still has to be placed where you want it to appear.
+
+## Settings
+
+- **Rank by / window**, or **Manual** with a hand-picked list.
+- **How many to rank** — up to 4.
+- **How many to show** — 1 to 3, **defaulting to 1**.
+- **Heading** — defaults to *"Add to your order"*.
+
+## Why the default is one offer
+
+Checkout is the most abandonment-sensitive step in the whole funnel. An extra offer here doesn't cost you a page view, it costs you the order you had almost closed. So showing more than one is a choice you make deliberately, not something you inherit from a default.
+
+The same reasoning caps the rank list at four rather than ten: the extras exist as backups if a lead pick turns out to be unavailable in that shopper's checkout, not as a wall of suggestions.
+
+## What it never suggests
+
+Anything already in the checkout. Offering a shopper something they're in the middle of buying is the one thing this surface must not do.
+
+One checkout upsell serves at a time; if you create several, the first switched-on one is used.

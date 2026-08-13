@@ -1,0 +1,44 @@
+---
+title: "Popup upsell"
+description: "An offer that appears at a moment you choose — after an add to cart, on exit intent, or once the cart is near your free-shipping threshold."
+section: "Upsell"
+updated: 2026-08-13
+---
+import Callout from '../../../components/Callout.astro';
+
+The popup is the only surface that can appear on **any** page, which makes it the most powerful and the easiest to overuse. It's built to be gated: a trigger decides *when*, and a [display rule](/docs/upsell/display-rules) decides *whether*.
+
+Included from **Pro**, together with the rule engine.
+
+## Pick a trigger
+
+- **Add to cart** — fires just after a shopper adds something. The most natural moment: they've committed, and you're suggesting a companion.
+- **Exit intent** — fires when the pointer heads for the browser chrome. Desktop only by nature.
+- **Cart value** — fires once the cart crosses an amount you set. Good for pairing with free shipping.
+- **Time on page** — after a delay you choose.
+- **Scroll depth** — after a percentage of the page.
+
+## Keep it from becoming noise
+
+Two settings do most of the work here, and the defaults are deliberately quiet:
+
+- **Times per session** — how often one shopper can see it in a single visit. Default 1.
+- **Cooldown (hours)** — how long before a shopper who's already seen it can see it again. Default 24.
+
+<Callout type="warning" title="A popup with no rule shows to everyone">
+Rules are opt-in. A popup with none attached fires for every shopper who hits its trigger. On a page-wide surface that's rarely what you want — attach a rule so it fires for the carts that need the nudge.
+</Callout>
+
+## Appearance
+
+**Layout** is a centred **modal** or a corner **slide-in**; **size** sets the panel width. Then the usual grid or slider, columns, card style, and heading — or point it at one of your theme's product snippets so the cards match your storefront exactly.
+
+## What it suggests
+
+Same choices as the cart widget: **Rank by** and a **window**, or **Manual** with a hand-picked list. Products in the cart and out-of-stock products are excluded.
+
+## The gate is re-checked when it fires
+
+A popup is armed when the page loads but its rule is evaluated **when it actually fires**, against the cart as it stands at that moment. Carts change between arming and firing — a shopper removes an item, or crosses your threshold — and a check made at page load would already be stale. QSortby re-checks on the server, so a rule can't be bypassed from the browser.
+
+If the rule no longer holds, nothing shows. That's the intended outcome, not a failure.

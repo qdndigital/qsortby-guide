@@ -1,0 +1,36 @@
+---
+title: "Thank-you page upsell"
+description: "Offer products on the order-status page after payment — every plan, every payment method, and no risk to the conversion you just won."
+section: "Upsell"
+updated: 2026-08-13
+---
+import Callout from '../../../components/Callout.astro';
+
+This offer renders on the order-status page, after the order is already placed. That single fact shapes everything about it — and makes it the lowest-risk upsell you can run.
+
+Included from **Starter**.
+
+## Why it can't cost you anything
+
+The order is closed. Nothing you show here can interrupt a checkout, add friction to a payment, or lose you a sale that was already won. The worst case is a page a shopper scrolls past.
+
+The trade-off is on the other side: because the order is closed, **an accepted offer can't join it**. Tapping a suggestion opens that product's page, and buying it creates a new order. So this surface is best read as "start a second visit", not "add one more line".
+
+<Callout type="note" title="Not the same as a post-purchase offer">
+Shopify also has a post-purchase step, which sits between payment and this page and can charge the same card again without a second checkout. It's restricted to certain payment methods. The thank-you page has no such restriction — **every shopper who completes an order sees it**, on every Shopify plan.
+</Callout>
+
+## Settings
+
+- **Rank by / window** — the same signals as everywhere else, or switch to **Manual** and hand-pick.
+- **How many to rank** — up to 6.
+- **How many to show** — 1 to 3, defaulting to 2. The extras are backups: if a lead pick turns out to have no purchasable variant by the time the page renders, the next one takes its place.
+- **Heading** — defaults to *"You might also like"*.
+
+## What it never suggests
+
+Whatever the shopper just bought. QSortby excludes every product in the order from the result — more glaring here than anywhere else, because the receipt is on the same page.
+
+If nothing suitable is left after that exclusion, the section doesn't render at all rather than showing an empty block.
+
+One thank-you upsell serves at a time; if you create several, the first switched-on one is used.

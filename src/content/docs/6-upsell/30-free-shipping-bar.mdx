@@ -1,0 +1,44 @@
+---
+title: "Free-shipping progress bar"
+description: "Show how far a cart is from free shipping and suggest a product that actually closes the gap — not a $5 item against $40 missing."
+section: "Upsell"
+updated: 2026-08-13
+---
+import Callout from '../../../components/Callout.astro';
+
+The bar does two jobs. It tells the shopper how far they are from free shipping, and it suggests something that would get them there. The second is what makes it an offer rather than a label — "you're $41 away" with nothing to add is a fact, not a nudge.
+
+Included on **every plan**.
+
+## Set your threshold
+
+You enter the threshold yourself, in your store's currency.
+
+<Callout type="note" title="Why QSortby can't read it from Shopify">
+QSortby doesn't request the shipping-settings permission, so it has no way to read your rates. Asking you is the honest option — guessing would be wrong on every store with region-specific or tiered shipping. If you change your real threshold in Shopify, update it here too.
+</Callout>
+
+Leave the threshold at zero and the bar stays hidden. That's deliberate: a zero threshold would otherwise tell every shopper they already qualify.
+
+## The copy
+
+Two messages, both yours to write:
+
+- **Below the threshold** — use `{{amount}}` where the remaining amount should go: *"You're `{{amount}}` away from free shipping."* QSortby formats and inserts it in the shopper's currency.
+- **Once they qualify** — *"You qualify for free shipping."* No suggestions are shown at this point; the job is done.
+
+## The suggestions
+
+Turn **Suggest products** on and the bar recommends items that close the gap, ranked by the signal and window you choose. Two rules shape which ones:
+
+**Never cheaper than the gap.** Adding a $5 item when $40 is missing wouldn't qualify the shopper, which is the only thing this widget exists to do — so those are filtered out.
+
+**Never absurdly more.** QSortby prefers items around three times the gap (spend $15 to save $8 of shipping), and only widens that ceiling in steps if nothing suitable exists. If every qualifying product is far above the gap, it offers the cheapest of them and nothing else — a poor suggestion, but the only honest one.
+
+**How many** caps the suggestions. Two or three is plenty in a drawer.
+
+## Where it appears
+
+Toggle the **cart drawer** and **cart page** independently. The bar's configuration rides along with the rest of your storefront config, so it appears with the cart rather than a beat after it.
+
+One bar serves at a time. If you create more than one, the first switched-on bar is the one shoppers see.
