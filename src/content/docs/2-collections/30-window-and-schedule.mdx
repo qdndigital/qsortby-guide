@@ -2,9 +2,9 @@
 title: "Set the time window & keep it fresh"
 description: "Choose which period the ranking looks at (rolling, period, or snapshot) and how often QSortby re-sorts and pushes the collection to Shopify."
 section: "Collections"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
-Two settings control how a collection stays current: the **window** (which time period the ranking measures — e.g. sales in the last 7 days) and the **schedule** (how often QSortby recomputes and pushes the order). You'll find both on a collection's **Setup** tab. (See the *Windows* explainer for rolling vs. period vs. snapshot.)
+Two settings control how a collection stays current: the **window** (which time period the ranking measures — e.g. sales in the last 7 days) and the **schedule** (how often QSortby recomputes and pushes the order). You'll find both on a collection's **Setup** tab. (See the *Windows* explainer for rolling vs. period vs. snapshot — and note that Period and Snapshot only change the window for the **Best selling** rule.)
 
 ## 1. Open a collection's Setup tab
 
@@ -16,10 +16,10 @@ From **Collections**, click a collection to open it. The **Setup** tab is where 
 
 ![Pick the window](/assets/window-and-schedule/collections-window-step-02.png)
 
-**Use sales from** sets the period the ranking measures. **Rolling** always looks back N hours/days from now (e.g. “last 7 days”). **Period** tracks the most recent completed week/month (auto-rolls). **Snapshot** freezes a fixed date range that never moves.
+**Use sales from** sets the period the ranking measures. **Rolling** always looks back N hours/days from now (e.g. “last 7 days”). **Period** tracks the most recent completed hour, day, week or month (auto-rolls). **Snapshot** pins a fixed month, week or date range. Every rule honours Rolling; on Period and Snapshot, only Best selling is measured over the range you picked — the rest fall back to a rolling 30 days. Some rules have no window at all: Most profitable, Customer favorites and Personalize don't show this picker.
 
 ## 3. Keep it updated automatically
 
 ![Keep it updated automatically](/assets/window-and-schedule/collections-window-step-03.png)
 
-Turn on **Update automatically** to let QSortby re-sort on a schedule (set **How often** — Real-time / Hourly / Daily). With **Push to Shopify automatically** on, each new order is pushed straight to your store; off, it waits for you to review and push. Use **Resync now** to recompute on demand.
+Turn on **Update automatically** to let QSortby re-sort on a schedule (set **How often** — every 5, 15 or 30 minutes, hourly, every 6 hours, or a custom 5–1440 minutes; the list shows these as Real-time / Hourly / Daily). With **Push to Shopify automatically** on, each newly computed product order goes straight to your store; off, it's staged for you to review and push from the **Preview & test** tab. Use **Resync now** to recompute on demand.

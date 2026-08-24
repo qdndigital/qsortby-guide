@@ -2,9 +2,9 @@
 title: "How Most-profitable ranking works"
 description: "Ranks by the profit margin you set per product — a pure catalog attribute, no behaviour and no time window — so your highest-margin items lead."
 section: "How QSortby ranks"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
-**Most profitable** ranks by a **catalog attribute**: the profit margin you set on each product. Unlike every behavioural signal, it ignores sales, views and time entirely — it simply orders your collection so the items that make you the most money per sale come first.
+**Most profitable** ranks by a **catalog attribute**: the profit margin you set on each product. Unlike every behavioural signal, it ignores sales, views and time entirely — it simply orders your collection so the items that make you the most money per sale come first. Products you haven’t set a margin on can’t be ranked and are left out.
 
 ## 1. The collection, unranked
 
@@ -16,10 +16,10 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-margin/concept-ranking-margin-step-02.png)
 
-There’s no data pipeline behind this one — the engine reads each product’s **margin percent** straight from its metadata and sorts descending. Nothing rolls in or out over time; change a product’s margin and its rank changes immediately. It’s the signal for merchandising by profitability.
+There’s no data pipeline behind this one — the engine reads each product’s **margin percent** straight from its metadata and sorts descending, skipping any product with no margin set. Nothing rolls in or out over time, and there’s no window picker to set; change a product’s margin and its rank updates on the collection’s next sync. It’s the signal for merchandising by profitability.
 
 ## 3. The front row gets discovered
 
 ![The front row gets discovered](/assets/ranking-margin/concept-ranking-margin-step-03.png)
 
-The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first.
+The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first. If fewer products carry a margin than your **Max products** cap allows, the leftover slots are filled from the collection’s current order, below every product with a real margin.

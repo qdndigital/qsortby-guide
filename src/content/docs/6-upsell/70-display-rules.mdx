@@ -1,14 +1,14 @@
 ---
 title: "Display rules"
-description: "Reusable AND/OR conditions that decide when an upsell shows — cart over $50, contains something from a collection, carries a tag."
+description: "Reusable AND/OR conditions that decide when an upsell shows — cart over $50, contains something from a collection, carries a tag, comes from a vendor."
 section: "Upsell"
-updated: 2026-08-13
+updated: 2026-08-22
 ---
 import Callout from '../../../components/Callout.astro';
 
 A rule is a reusable condition you build once and attach to an upsell. An upsell with no rule shows unconditionally; attaching one turns it into "show this **only when**…".
 
-Rules live on the **Rules** tab of the Upsell hub. Included from **Pro**.
+Rules live on the **Rules** tab of the Upsell hub. Included from **Pro**. (Every new install runs on the Growth feature set for its first 10 days — see [Your first 10 days](/docs/getting-started/reverse-trial).)
 
 ## Building one
 
@@ -16,9 +16,9 @@ A rule is made of **condition groups**. Conditions inside a group combine with *
 
 > *cart total over $80* **AND** *contains something from /sale*
 > **OR**
-> *cart contains 3 or more items*
+> *cart contains something from the vendor "Aesop"*
 
-Conditions can look at cart total, item count, which products or collections are in the cart, and product **tags**.
+Conditions look at **cart total** — over or under an amount — and at what's in the cart: specific **products**, a **collection**, a **vendor**, a **product type**, or a **tag**. Each of those five is a "contains" or "doesn't contain" check. One rule holds up to ten groups of ten conditions, which is far more than any real targeting case needs.
 
 <Callout type="note" title="Tag conditions cost a little more">
 Reading tags means the storefront has to fetch each cart product's tags. QSortby only pays that cost when a rule actually uses a tag condition — so build with tags freely, just know that a rule without them is slightly lighter.

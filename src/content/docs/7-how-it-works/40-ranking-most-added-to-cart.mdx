@@ -2,9 +2,9 @@
 title: "How Most-added-to-cart ranking works"
 description: "Ranks by buying intent — the sum of add-to-cart events in the window — one step closer to checkout than a click."
 section: "How QSortby ranks"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
-**Most added to cart** ranks by the **sum of add-to-cart events** in the window. An add is a stronger signal than a view or a click — a shopper saying “I want this.”
+**Most added to cart** ranks by the **sum of add-to-cart events** in the window. An add is a stronger signal than a view or a click — a shopper saying “I want this.” Products with no add-to-carts in the window are left out rather than padding the bottom.
 
 ## 1. The collection, unranked
 
@@ -16,10 +16,10 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-most-added-to-cart/concept-ranking-most-added-to-cart-step-02.png)
 
-The engine sums each product’s add-to-cart events over the window. Views and clicks matter less here; the deliberate act of adding to cart is real purchase intent, one step from checkout — so the most-added product takes #1.
+The engine sums each product’s add-to-cart events over the window. Views and clicks matter less here; the deliberate act of adding to cart is real purchase intent, one step from checkout — so the most-added product takes #1. Engagement signals measure in whole days, so an hours-based window counts as one day, and a **Period** or **Snapshot** window falls back to the last 30 days.
 
 ## 3. The front row gets discovered
 
 ![The front row gets discovered](/assets/ranking-most-added-to-cart/concept-ranking-most-added-to-cart-step-03.png)
 
-The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first.
+The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first. If fewer products have add-to-carts than your **Max products** cap allows, the leftover slots are filled from the collection’s current order, below every product with real intent behind it.

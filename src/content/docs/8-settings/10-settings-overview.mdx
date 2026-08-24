@@ -1,0 +1,63 @@
+---
+title: "Settings: the shop-wide switches"
+description: "Excluded products, the attribution prefix, your product taxonomy, emotional keywords and the checkout Web Pixel — the handful of settings that apply everywhere at once."
+section: "Settings"
+updated: 2026-08-22
+---
+import Callout from '../../../components/Callout.astro';
+
+Most of QSortby is configured per collection or per widget. **Settings** holds the few things that are shop-wide — the ones you set once and forget, and the ones worth checking when something behaves the same way everywhere.
+
+Open **Settings** from the left menu.
+
+## Excluded products
+
+The single place to keep a product out of everything. Products you pick here are dropped from **every ranked feed** — For You, Best Sellers, sorted collections — and from any collection the app manages automatically. They're also dropped from every [upsell surface](/docs/upsell/upsell-overview), even if you hand-picked them in a manual list.
+
+Use it for the items a theme needs but a shopper shouldn't be steered toward: gift cards, samples, warranty add-ons, a placeholder product your theme depends on.
+
+<Callout type="note" title="Exclusions apply before caching">
+The list is applied to the candidate pool before a feed is cached, so an exclusion never sits inside an already-cached ranking waiting to expire. Add a product here and it's gone from the next feed QSortby builds.
+</Callout>
+
+## Attribution prefix
+
+Every order QSortby influenced arrives in Shopify carrying a few hidden note attributes — the flag that says it was influenced, which surface it came from, which A/B variant, which ranking config, and the anonymous visitor id. **Attribution prefix** is the word those keys are built from: with the default `qsortby`, they read `_qsortby_influenced`, `_qsortby_surface`, and so on.
+
+Lowercase letters, numbers and dashes, up to 20 characters. Leave it blank to reset to `qsortby`.
+
+Change it only if you have a reason to — another app writing the same keys, or a naming convention you have to match. The underscore prefix keeps all of them hidden from shoppers in the cart and checkout, and [Attribution](/docs/analytics/experiments-attribution) reads them back regardless of what you call them.
+
+## Product taxonomy
+
+The vocabulary QSortby uses to describe your catalogue: the dimensions it groups products by — category family, attributes, lifecycle, mood, season, context — and the Shopify metafields behind them. You pick an industry during [setup](/docs/getting-started/setup-wizard) and QSortby builds a starting taxonomy from it, which you can refine here.
+
+Alongside it, **Product metadata** shows your **coverage**: what share of your catalogue actually carries a category, attributes and lifecycle data. This is the number to look at when personalization feels blunt — the *Favorite category affinity* signal can only work on products it can describe, and low coverage means most of your catalogue is invisible to it.
+
+## Emotional keywords
+
+The 12 emotional states are fixed. **Which product fits which state** is decided by a short keyword phrase per state, and those phrases are industry-specific: a "sad" fragrance is warm vanilla, a "sad" fashion item is a cozy knit. This page is where you set them.
+
+The flow is three steps:
+
+1. **Generate** — AI drafts all 12 phrases from your industry.
+2. **Edit** — rewrite anything that doesn't sound like your catalogue. This is the step that matters; a generic set produces generic tags.
+3. **Confirm** — save. Only a **confirmed** set is used for tagging. Drafts are ignored, so an unsaved edit changes nothing.
+
+From then on **Mood embeddings** tags each product against those phrases automatically as it syncs — you never tag products one by one. Every product QSortby has embedded ends up carrying one to three states.
+
+<Callout type="tip" title="Retag after a big edit">
+Products are tagged as they're embedded, so a rewritten keyword set only reaches products QSortby processes afterwards. If you've substantially changed the phrases, click **Generate embeddings** under Mood embeddings so the whole catalogue is judged against the new set.
+</Callout>
+
+These keywords are what [Emotional suggest](/docs/upsell/emotional-suggest) and [Insights](/docs/analytics/insights) both rest on. They only do anything on a plan that includes the emotional layer.
+
+## Web Pixel
+
+A repair button, not a setting. It re-registers the QSortby **Web Pixel** in your shop's Customer Events sandbox — the pixel that sees checkout, which the storefront pixel can't reach.
+
+Run it if checkout and post-purchase events have stopped flowing, which usually means the pixel was deleted from your Customer Events page. Without it, purchases don't reach QSortby: sales-based ranking still works from your order webhooks, but conversion signals and purchase outcomes go quiet.
+
+## Plan
+
+Where you see the tier you're on and what it grants. If a feature behaves differently from what this guide describes for your tier, two things are worth checking here: whether you're still inside [your first 10 days](/docs/getting-started/reverse-trial), and whether an individual capability has been granted or withheld for your store on top of the plan.

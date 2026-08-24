@@ -1,0 +1,35 @@
+---
+title: "How Personalize (For You) collections work"
+description: "The one collection with no shop-wide order: QSortby pushes it to Shopify empty on purpose, and your theme renders a different order for every visitor."
+section: "How QSortby ranks"
+updated: 2026-08-22
+---
+import Callout from '../../../components/Callout.astro';
+
+Every other rule produces **one** order that everybody sees. **Personalize (For You per visitor)** produces a different order for every shopper, so there is no single list to push. QSortby creates the Shopify collection and deliberately leaves it **empty** — your theme fills it live, per visitor, as each page loads.
+
+<Callout type="warning" title="An empty collection in Shopify admin is correct">
+Open a Personalize collection in Shopify and you'll see **0 products**. That's the design, not a failed sync — the product list is assembled per shopper at request time and never written back to Shopify. Don't add products by hand and don't switch the collection's sort order in Shopify; neither has any effect on what shoppers see.
+</Callout>
+
+## What decides the order
+
+Each visitor is routed to a shopper group, and that group's scoring recipe ranks your catalog for them — recently viewed, favorite category, repeat purchases, price affinity, top sellers, and so on, each with a weight. See *How segment matching picks each shopper's order* for the routing walkthrough.
+
+Because the order is per-visitor, there's no time window to set: the window picker doesn't appear on this rule. The lookbacks the recipe uses are tuned per collection instead — engagement signals default to the last 30 days, repeat purchases to the last 365, and “recently clicked” to the last 30 minutes.
+
+## Where you'll find the settings
+
+Pick **Personalize (For You per visitor)** as the ranking criteria when you create the collection. Everything else is tuned afterwards from the collection's own page, which overrides your shop-wide For You defaults for this collection only — including **Emotional suggest**, off by default.
+
+Membership is always algorithmic here, so the Manual option and **Max products** cap don't apply. What does apply is the **refresh interval**: each visitor's ranked feed is cached between 1 and 24 hours, so a change you make won't show up in an already-cached feed until it expires.
+
+## What you'll see in Shopify vs. on the storefront
+
+| | Shopify admin | Storefront |
+| --- | --- | --- |
+| Products in the collection | Always 0 | A full ranked feed |
+| Order | Not applicable | Different per visitor |
+| Updated by | Nothing — never written | Rendered live on each page load |
+
+If the storefront shows nothing at all, the theme block is the thing to check — without it there's no surface to render the per-visitor feed into.

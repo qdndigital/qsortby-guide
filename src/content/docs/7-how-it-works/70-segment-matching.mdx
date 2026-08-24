@@ -1,22 +1,30 @@
 ---
 title: "How segment matching picks each shopper's order"
-description: "Step by step: how a personalization rule routes each shopper — checked top to bottom, first matching group wins, and that group's ranking is what they see."
+description: "Step by step: how a personalization rule routes each shopper — checked top to bottom, first matching group wins, and that group's scoring recipe is what they see."
 section: "How QSortby ranks"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
-Ranking signals decide the *order of products*; **segment matching** decides *which order each shopper gets*. A personalization rule is an ordered list of shopper groups — each with an **audience** (who qualifies) and a **ranking** (what they see). Every visitor is checked top to bottom, and the **first group they match wins**. Here's how one shopper is routed.
+import Callout from '../../../components/Callout.astro';
+
+Ranking signals decide the *order of products*; **segment matching** decides *which order each shopper gets*. A personalization rule is an ordered list of shopper groups — each with an **audience** (who qualifies) and a **scoring recipe** (what they see). Every visitor is checked top to bottom, and the **first group they match wins**. Here's how one shopper is routed.
 
 ## 1. A rule is an ordered list of groups
 
 ![A rule is an ordered list of groups](/assets/segment-matching/concept-segment-matching-step-01.png)
 
-Three groups: **VIP shoppers** (2+ past purchases), **First-time visitors** (0 past purchases), and a locked **Everyone else** catch-all. Order matters — the group nearer the top is checked first. Each group carries its own signal ranking.
+Three groups: **VIP shoppers** (2+ past purchases), **First-time visitors** (0 past purchases), and a locked **Everyone else** catch-all. Order matters — the group nearer the top is checked first. Each group carries its own scoring recipe: a set of signals with weights.
 
 ## 2. A shopper arrives
 
 ![A shopper arrives](/assets/segment-matching/concept-segment-matching-step-02.png)
 
 This returning shopper has **3 past purchases**, recently viewed running shoes, and came from an email link. Each visitor is tested against every group's audience, beginning with the first.
+
+An audience reads a small set of numbers about the visitor, not their whole history: **purchase count**, **days since last visit**, **visit count** and **cart size**. Everything else about them — what they browsed, where they came from — belongs to the scoring recipe, not the audience. A brand-new visitor has no prior visit on record, so a condition on *days since last visit* never matches for them and they fall through to the next group.
+
+<Callout type="warning" title="Cart value doesn't work yet">
+**Cart value** is offered as a condition but can't match today: the storefront block sends QSortby the products in a cart without their prices, so cart value always reads as 0. A group gated on "cart value over $X" is never entered, and its visitors fall through to the group below. Use **cart size** until this is wired up.
+</Callout>
 
 ## 3. First match wins
 
@@ -28,4 +36,4 @@ This returning shopper has **3 past purchases**, recently viewed running shoes, 
 
 ![They see that group's order](/assets/segment-matching/concept-segment-matching-step-04.png)
 
-The shopper now sees the **VIP** ranking — Recently viewed first, then Top sellers, then New arrivals. A **first-time visitor** would fail the VIP audience, fall through to their own group, and see a completely different order. One rule, tailored to each shopper.
+The shopper now sees the **VIP** order — every product scored on that group's recipe, with *Recently viewed* and *Repeat purchase* weighted heaviest and *Top sellers* only nudging the result. It's a weighted blend, not a priority list: a strong enough score on one signal can outweigh a weak one on another. A **first-time visitor** would fail the VIP audience, fall through to their own group, and be scored on a completely different recipe. One rule, tailored to each shopper.

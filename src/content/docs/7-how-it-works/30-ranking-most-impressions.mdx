@@ -2,9 +2,9 @@
 title: "How Most-impressions ranking works"
 description: "Ranks by raw reach — the sum of impressions in the window — so the most-seen products lead, which grows awareness even when they aren’t the best converters."
 section: "How QSortby ranks"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
-**Most impressions** ranks by raw reach — the **sum of impressions** in the window. It’s an awareness signal: most-seen first, regardless of how well they convert.
+**Most impressions** ranks by raw reach — the **sum of impressions** in the window. It’s an awareness signal: most-seen first, regardless of how well they convert. Products with no impressions in the window are left out.
 
 ## 1. The collection, unranked
 
@@ -16,10 +16,10 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-most-impressions/concept-ranking-most-impressions-step-02.png)
 
-The engine sums each product’s impressions from the storefront pixel over the window. A product that converts brilliantly but is rarely seen still ranks below a widely-viewed one — reach, not conversion, sets this order.
+The engine sums each product’s impressions from the storefront pixel over the window. A product that converts brilliantly but is rarely seen still ranks below a widely-viewed one — reach, not conversion, sets this order. Engagement signals measure in whole days, so an hours-based window counts as one day, and a **Period** or **Snapshot** window falls back to the last 30 days.
 
 ## 3. The front row gets discovered
 
 ![The front row gets discovered](/assets/ranking-most-impressions/concept-ranking-most-impressions-step-03.png)
 
-The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first.
+The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first. If fewer products have impressions than your **Max products** cap allows, the leftover slots are filled from the collection’s current order, below everything that was actually seen.

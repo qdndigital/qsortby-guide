@@ -2,7 +2,7 @@
 title: "How Best-selling ranking works"
 description: "The default signal: a plain sum of units ordered in the window — no rate, no decay."
 section: "How QSortby ranks"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
 **Best selling** (the default) ranks by a plain **sum of units ordered** in the window — highest first. It’s not a per-day rate and it isn’t time-decayed. Sold-out products stay in the collection but are pushed to the bottom.
 
@@ -16,7 +16,7 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-best-selling/concept-ranking-best-selling-step-02.png)
 
-The engine sums each product’s ordered quantity across the window and sorts by it. It’s the most literal signal — raw sales volume. (Sold-out items aren’t removed; they’re re-bucketed to the end so live stock always leads.)
+The engine sums each product’s ordered quantity across the window and sorts by it. It’s the most literal signal — raw sales volume. (Sold-out items aren’t removed; they’re re-bucketed to the end so live stock always leads. They do still occupy one of your **Max products** slots, so raise the cap if sold-outs are crowding out live stock.)
 
 ## 3. The front row gets discovered
 

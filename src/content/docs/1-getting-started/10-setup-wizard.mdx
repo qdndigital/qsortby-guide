@@ -2,8 +2,10 @@
 title: "Set up QSortby — the 5-step wizard"
 description: "Get your store sorting in five guided steps: choose your industry, enable the pixel, turn on tracking, add the storefront feeds, and pick a plan."
 section: "Getting started"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
+import Callout from '../../../components/Callout.astro';
+
 When you install QSortby, a short setup wizard gets your store ready in five guided steps. You can complete it in one sitting or come back to it any time — it always resumes at your first unfinished step. This guide walks through each step and how to move between them.
 
 ## 1. Open setup from the Dashboard
@@ -16,13 +18,13 @@ When you install QSortby a short **setup wizard** gets your store ready in five 
 
 ![Follow your progress](/assets/setup-wizard/getting-started-setup-step-02.png)
 
-The wizard runs across **five steps**. The header shows exactly where you are — **Step 1 of 5** — with a progress bar and percentage, so you always know how much is left. Each step focuses on one decision.
+The wizard runs across **five steps**, and the header shows which one you're on with a progress bar and a percentage of the way through. Three of them are the ones that matter — industry, pixel, tracking — and they carry a **To do** or **Done** badge. The last two are marked **Optional** and are ticked from the start: adding the storefront blocks and picking a plan are things you can do whenever you like, and neither blocks you from finishing.
 
 ## 3. Step 1 — Tell us your industry
 
 ![Step 1 — Tell us your industry](/assets/setup-wizard/getting-started-setup-step-03.png)
 
-Pick the industry that best matches your store. QSortby builds a starting product taxonomy and the matching Shopify metafields — the foundation personalization learns from. Click **Continue** when done.
+Pick the industry that best matches your store. QSortby builds a starting product taxonomy and the matching Shopify metafields — the vocabulary personalization uses to describe your catalogue, and what your [emotional keyword set](/docs/settings/settings-overview) is generated against. Click **Continue** when done.
 
 ## 4. Steps 2 & 3 — Turn on tracking
 
@@ -30,8 +32,12 @@ Pick the industry that best matches your store. QSortby builds a starting produc
 
 **Step 2** enables the **QSortby pixel** on your storefront — open the theme editor, toggle *QSortby Pixel* on in App embeds, and Save. It captures the views, clicks and CTR that power ranking; the *events received* line confirms it's live. **Step 3** then turns on top-sellers tracking with one click.
 
+<Callout type="note" title="A consent banner changes what arrives">
+The pixel honours your store's customer-privacy settings. Until a shopper grants **analytics** consent, QSortby records only that a visit happened — no views, clicks or cart events — so those shoppers contribute nothing to ranking and see the same order as everyone else. If *events received* looks low for your traffic, check what share of visitors accepts analytics before assuming the pixel is broken.
+</Callout>
+
 ## 5. Move between steps — or skip for now
 
 ![Move between steps — or skip for now](/assets/setup-wizard/getting-started-setup-step-05.png)
 
-The **Checklist** on the right lists all five steps and marks each as you finish it — click any row to jump straight to it. Not ready to finish everything? **Skip for now** exits the wizard; you can always resume later from the Dashboard.
+The **Checklist** on the right lists all five steps and marks each as you finish it — click any row to jump straight to it. The two optional steps show as done from the outset, so read the checklist as "what's still blocking me" rather than a to-do list. Not ready to finish everything? **Skip for now** exits the wizard; you can always resume later from the Dashboard.

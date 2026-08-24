@@ -2,13 +2,13 @@
 title: "In-checkout upsell"
 description: "An offer inside checkout itself, before payment, so an accepted item joins the same order instead of starting a new one. Shopify Plus only."
 section: "Upsell"
-updated: 2026-08-13
+updated: 2026-08-22
 ---
 import Callout from '../../../components/Callout.astro';
 
 This is the only surface where an accepted offer joins the **same** order. It runs inside checkout, before payment, so the shopper adds an item without a second transaction, a second shipping charge, or a second decision to buy.
 
-Included on **Growth**.
+Included on **Growth**. (Every new install runs on the Growth feature set for its first 10 days — see [Your first 10 days](/docs/getting-started/reverse-trial).)
 
 <Callout type="warning" title="Shopify Plus only — and nothing in QSortby can change that">
 Shopify restricts pre-payment checkout extensions to Plus stores. On any other plan the extension simply won't render, no matter how the widget is configured. If your checkout looks unchanged after switching this on, that's almost always the reason.
@@ -20,7 +20,7 @@ The QSortby checkout extension has to be added to your checkout in the Shopify *
 
 ## Settings
 
-- **Rank by / window**, or **Manual** with a hand-picked list.
+- **Rank by / window** — automatic only. Checkout has no hand-picked mode.
 - **How many to rank** — up to 4.
 - **How many to show** — 1 to 3, **defaulting to 1**.
 - **Heading** — defaults to *"Add to your order"*.

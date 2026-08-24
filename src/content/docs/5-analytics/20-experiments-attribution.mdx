@@ -1,53 +1,65 @@
 ---
 title: "Experiments & attribution: prove a sort lifts sales"
-description: "Run an A/B experiment on the Best Sellers block or For You feed, read the statistical-significance verdict, and see the revenue each sort influenced with last-touch attribution."
+description: "Run an A/B experiment on the Best Sellers block or the For You feed, read the significance verdict, and see the revenue each sort influenced with last-touch attribution."
 section: "Analytics & attribution"
-updated: 2026-07-05
+updated: 2026-08-22
 ---
 import Callout from '../../../components/Callout.astro';
 
-A better sort should mean more sales — but "should" isn't proof. QSortby lets you **test a sort against your current order and measure what it actually earned**, so you ship the version the data supports instead of a hunch. This is the honest answer to "which sort maximizes conversion value": you don't guess, you run the experiment.
+A better sort should mean more sales — but "should" isn't proof. QSortby lets you **run two versions side by side and measure what each actually earned**, so you ship the version the data supports instead of a hunch. This is the honest answer to "which sort maximizes conversion value": you don't guess, you run the experiment.
 
 ## Two ways QSortby shows lift
 
-- **Per collection — the Activity tab.** Every collection's **Activity** tab compares click-through before and after QSortby took over and shows the uplift, plus a run-history log. It's the quickest read for a single collection.
-- **Best Sellers block & For You feed — Experiments.** For the storefront feeds, the **Experiments** page runs a live A/B test between your current order and a new sort, and reports the full funnel with a significance verdict. That's what the rest of this guide covers.
+- **Per collection — Attribution.** A sorted collection page is credited like any other surface: the orders it was in the path of show up under **Attribution** as `Collection`, and the **Sort projects** tab in Analytics splits that by the config version that was live at the time. That's the read for a single collection.
+- **Best Sellers block & For You feed — Experiments.** For the storefront feeds, the **Experiments** page runs a live A/B test between two versions and reports the funnel with a significance verdict. That's what the rest of this guide covers.
+
+<Callout type="note" title="The collection Activity tab isn't a scoreboard">
+A collection's **Activity** tab is a health check, not a lift report: when it was last sorted, when it was last computed, its schedule, its status, and the last error if a sync failed. It carries no before/after CTR and no run history — detailed run logs live in QSortby's internal tools. Use Attribution and Sort projects for performance.
+</Callout>
 
 ## Run an A/B experiment
 
-Left menu → **Experiments** → start a new experiment. Choose the surface to test — the **Best Sellers** block or the **For You** feed — and the sort you want to try. QSortby then serves two versions side by side:
+Left menu → **Experiments** → start a new experiment. What you pick depends on the surface, because the two surfaces test different things:
 
-- **Control (A)** — your current order.
-- **Variant (B)** — the sort you're testing.
+- **Best Sellers block** — you're testing one sales window against another. **A** is the window the block is configured with; **B** is the control window you nominate.
+- **For You block** — you're testing one personalize logic against another, head to head. You need **two saved logics** before this option does anything; the Start button stays disabled until you pick two different ones.
+
+Then set a traffic split — **50/50**, **70/30** or **90/10**. An even split reaches a verdict fastest. One running experiment per surface.
 
 Visitors are split **deterministically**: the same shopper always sees the same version for the life of the test, so the comparison stays clean.
 
-<Callout type="note" title="Native collection sorts">
-A/B experiments run on the Best Sellers block and the For You feed. For a standard collection sort, use that collection's **Activity** tab to see its click-through uplift over its previous order.
-</Callout>
-
 ## Read the funnel
 
-For each version, QSortby tracks the whole path from the storefront:
+For each version, QSortby tracks what it can honestly see from the storefront:
 
-1. **Impressions** — how often the feed was seen.
-2. **Click-through rate (CTR)** — clicks into a product from the feed.
-3. **Add-to-cart** — the step before purchase.
-4. **Influenced revenue** — orders attributed back to the feed a shopper engaged with.
+1. **Impressions** — cards that came into view. **Best Sellers only.** QSortby deliberately doesn't count impressions inside the For You block: feeding "was shown" back into a personalized ranking would make top products rank higher just for having been shown.
+2. **Click-through rate (CTR)** — clicks into a product from the feed, over those impressions.
+3. **Add-to-cart** — the step before purchase. Counted on both surfaces.
+4. **Influenced revenue** — orders attributed back to the feed a shopper engaged with, per version.
 
 Comparing A and B across these tells you not just whether more people clicked, but whether the sort moved shoppers all the way to a **purchase**.
 
 ## Let significance call the winner
 
-A version can look ahead by chance when traffic is low. QSortby waits until each version has enough impressions, then reports a **statistical-significance** verdict — how confident it is that the leader is genuinely better, not noise. Ship the variant once it's a significant winner; keep running if it's still too close to call.
+A version can look ahead by chance when traffic is low. The verdict is computed on **CTR** — clicks ÷ impressions — because that's the highest-volume signal both versions stamp. QSortby stays on *"not enough data"* until **each** version has at least **300 impressions**, then either calls a winner at 95% confidence or reports *inconclusive*. Ship the variant once it's a significant winner; keep running if it's still too close to call.
+
+<Callout type="warning" title="A For You test never reaches a CTR verdict">
+Because the For You block logs no impressions, a For You experiment has no CTR denominator — it will sit on *"not enough data"* however long you leave it running. That's a known limitation of the two choices meeting, not a fault in your setup. Read a For You test on its **clicks, add-to-carts and influenced revenue per version** and treat the result as directional; a Best Sellers test is the one that gives you a verdict.
+</Callout>
 
 <Callout type="tip" title="Give it enough traffic">
-Significance needs a few hundred impressions per version. On a quiet store, leave the experiment running longer before reading too much into an early lead.
+Three hundred impressions per version is the floor, not a target. On a quiet store, leave the experiment running longer before reading too much into an early lead.
 </Callout>
 
 ## Attribution: the revenue a sort influenced
 
-Left menu → **Attribution** shows the orders a QSortby feed helped drive, with the **influenced revenue** behind them — broken down by surface, variant and the position a product was shown in. It's the money view that sits underneath the experiment funnel.
+Left menu → **Attribution** shows the orders a QSortby feed helped drive and the **influenced revenue** behind them, broken down by **surface** and **variant**. It's the money view that sits underneath the experiment funnel.
+
+Below it, a second table breaks the For You and Best Sellers blocks down by **position** — clicks and add-to-carts per slot, so you can see whether engagement concentrates near the top where it should. That one is a shape check on your sort, not a revenue view: no money is attributed per position, and impressions are left out on purpose, since the For You block doesn't log them and any rate built on them would read as a misleading 0%.
+
+<Callout type="note" title="Which surfaces are credited">
+Attribution covers the three ranked surfaces a shopper browses: **sorted collection pages**, the **Best Sellers** block and the **For You** feed. Upsell widgets — cart, popup, thank-you, in-checkout — are not attributed; their offers don't stamp the cart, so their orders don't appear here.
+</Callout>
 
 <Callout type="note" title="What “influenced” means">
 Attribution is **last-touch**: it credits the QSortby feed a shopper interacted with before they bought. It's an honest, directional read of impact — great for comparing sorts and surfaces — not a lab-grade incrementality study that isolates a single cause. Read it as "this sort was in the path of $X in orders," not "this sort created $X out of nothing."
@@ -55,8 +67,8 @@ Attribution is **last-touch**: it credits the QSortby feed a shopper interacted 
 
 ## A simple workflow
 
-1. Pick a collection or feed you want to improve.
+1. Pick a feed you want to improve.
 2. Try a signal that fits it — see the **How QSortby ranks** guides — e.g. *Best converting* or *Trending*.
-3. Run it as an experiment against your current order.
-4. Wait for significance, read CTR → add-to-cart → influenced revenue.
+3. Run it as an experiment: a window against a window on Best Sellers, a logic against a logic on For You.
+4. On Best Sellers, wait for significance, then read CTR → add-to-cart → influenced revenue. On For You, skip straight to clicks → add-to-cart → influenced revenue.
 5. Ship the winner; then test the next idea. Small, proven steps compound.

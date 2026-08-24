@@ -2,13 +2,13 @@
 title: "Frequently bought together"
 description: "Suggest what shoppers actually buy in the same order as the product they're viewing, with a best-sellers fallback for the weeks before you have enough pair data."
 section: "Upsell"
-updated: 2026-08-13
+updated: 2026-08-22
 ---
 import Callout from '../../../components/Callout.astro';
 
 This one is different from the other surfaces: it doesn't rank by velocity or margin, it ranks by **co-purchase**. QSortby reads your own order history and finds which products keep appearing in the same order as the one a shopper is looking at.
 
-Included from **Starter**.
+Included from **Starter**. (Every new install runs on the Growth feature set for its first 10 days — see [Your first 10 days](/docs/getting-started/reverse-trial).)
 
 ## Where it goes
 
@@ -28,7 +28,11 @@ Pairs are recomputed on a schedule from your recent orders, so the rail keeps up
 
 Orders only start accruing when you install — there's no backfill of your history — so a new store has no pairs at all for a while. Rather than render an empty rail, QSortby tops it up from your shop-wide ranking.
 
-The dashboard tells you which mode you're in, and it matters: a rail marked as **real pairs** is genuine co-purchase data, while a padded one is partly your best sellers. QSortby won't badge a padded list as "bought together", because that would be a lie about your own data.
+The editor tells you where you stand: it shows how many co-purchase pairs your store has, and warns you when that number is zero — every rail will be fallback until orders arrive. The fallback settings sit under an **Only when pairs are missing** badge, because real pairs always win when they exist.
+
+<Callout type="warning" title="The heading doesn't change when a rail is padded">
+The heading is your setting, and it renders the same whether the rail is genuine co-purchase data or partly your best sellers. If you'd rather not claim "bought together" on a young store, rename it to something like *"You may also like"* and switch back once your pair count is healthy.
+</Callout>
 
 ## Settings
 

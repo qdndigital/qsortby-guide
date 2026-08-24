@@ -1,10 +1,12 @@
 ---
 title: "How Top-grossing ranking works"
-description: "Ranks by money, not units — sum of price × quantity in the window, so a pricier item can out-rank a higher-volume cheaper one."
+description: "Ranks by money, not units — summed revenue from the daily sales rollup, so a pricier item can out-rank a higher-volume cheaper one."
 section: "How QSortby ranks"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
-**Top grossing** ranks by **revenue**, not unit count. It sums each product’s line totals (price × quantity) over the window, so a high-margin, lower-volume item can beat a cheap best-seller. Use it to lead with the products that actually drive your GMV.
+import Callout from '../../../components/Callout.astro';
+
+**Top grossing** ranks by **revenue**, not unit count. It reads the daily sales rollup and sums each product’s recorded revenue over the window, so a high-margin, lower-volume item can beat a cheap best-seller. Use it to lead with the products that actually drive your GMV.
 
 ## 1. The collection, unranked
 
@@ -16,10 +18,14 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-revenue/concept-ranking-revenue-step-02.png)
 
-The engine sums every order line’s **price × quantity** for each product across the window. A $168 jacket selling 71 units out-earns a $28 tee selling 142 — so unit-count leaders don’t always top the revenue ranking. It’s the signal for merchandising by dollars.
+The engine sums each product’s recorded revenue across the window. A $168 jacket selling 71 units out-earns a $28 tee selling 142 — so unit-count leaders don’t always top the revenue ranking. Products with no recorded revenue in the window are dropped. The window snaps to whole days in UTC here, so “last 7 days” means today plus the six days before it, and an hours-based window counts as a single day.
+
+<Callout type="warning" title="Revenue comes from the rollup, not your order lines">
+Top grossing reads the daily sales rollup rather than your raw order lines, and today that rollup is only populated on demo data — on a live store it records no revenue. Until that changes, a Top-grossing collection finds nothing to rank and fills itself entirely from the fallback order described below. If ranking by money is the point right now, **Best selling** on a short window is the closer signal.
+</Callout>
 
 ## 3. The front row gets discovered
 
 ![The front row gets discovered](/assets/ranking-revenue/concept-ranking-revenue-step-03.png)
 
-The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first.
+The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first. When fewer products have revenue than your **Max products** cap allows, the app widens the window to all-time and then falls back to the collection’s current order — filler always sits below every genuinely ranked product.

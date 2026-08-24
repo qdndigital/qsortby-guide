@@ -1,10 +1,10 @@
 ---
 title: "How Longest-dwell ranking works"
-description: "Ranks by attention — average time on the product page = total dwell ÷ impressions — surfacing considered items people study before deciding."
+description: "Ranks by attention — average time on the product page = total dwell ÷ the views that actually timed it — surfacing considered items people study before deciding."
 section: "How QSortby ranks"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
-**Longest dwell** ranks by **average time on the product page** — total dwell divided by impressions. Long dwell means shoppers are studying it: a considered purchase. It surfaces the items that hold interest.
+**Longest dwell** ranks by **average time on the product page** — total dwell divided by the number of views that actually reported a dwell time. Long dwell means shoppers are studying it: a considered purchase. It surfaces the items that hold interest. Products with no timed views are dropped.
 
 ## 1. The collection, unranked
 
@@ -16,10 +16,10 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-longest-dwell/concept-ranking-longest-dwell-step-02.png)
 
-The engine divides each product’s total dwell time by its number of impressions to get the average time per view. A product seen by thousands but skimmed in seconds ranks below one that fewer shoppers study for longer — attention, not traffic.
+The engine divides each product’s total dwell time by the number of views that reported one — views the pixel never timed don’t dilute the average, and a single view counts for at most 10 minutes. A product seen by thousands but skimmed in seconds ranks below one that fewer shoppers study for longer — attention, not traffic. Engagement signals measure in whole days, so an hours-based window counts as one day, and a **Period** or **Snapshot** window falls back to the last 30 days.
 
 ## 3. The front row gets discovered
 
 ![The front row gets discovered](/assets/ranking-longest-dwell/concept-ranking-longest-dwell-step-03.png)
 
-The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first.
+The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first. If fewer products have a timed view than your **Max products** cap allows, the leftover slots are filled from the collection’s current order, below everything with a real dwell time.

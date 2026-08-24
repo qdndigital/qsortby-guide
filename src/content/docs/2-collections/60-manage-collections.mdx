@@ -2,15 +2,17 @@
 title: "Manage your collections"
 description: "Read collection statuses at a glance, filter by source or state, import Shopify collections, and pause or resume smart sorting."
 section: "Collections"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
+import Callout from '../../../components/Callout.astro';
+
 The Collections list is mission control. Every collection shows a status, its sort rule, its schedule, and when it last sorted — so you can see what's working and step in when needed.
 
 ## 1. Read statuses at a glance
 
 ![Read statuses at a glance](/assets/manage-collections/collections-manage-step-01.png)
 
-The tiles up top count your collections by state: **Live** (actively sorting), **Needs setup** (no rule chosen yet), and **Paused**. In the table, each row shows the same status plus its **Sort Rule**, **Schedule** (Real-time / Hourly / Daily / Manual), and **Last sorted** time.
+The tiles up top count your collections in total and by state: **Live** (actively sorting), **Needs setup** (no rule chosen yet), and **Paused** (a rule is set, automatic updates are off). In the table, each row shows the same status plus its **Sort Rule**, **Schedule** (Real-time / Hourly / Daily / Manual), and **Last sorted** time.
 
 ## 2. Filter by source
 
@@ -22,4 +24,8 @@ The tabs filter the list: **All**, **From Shopify** (collections you imported), 
 
 ![Import Shopify collections](/assets/manage-collections/collections-manage-step-03.png)
 
-Click **Sync all from Shopify** to pull your existing Shopify collections in, so you can apply smart sorting to them. To pause or resume a collection, open it and use **Pause smart sort** / **Resume smart sort** on its detail page.
+Click **Sync all from Shopify** to pull your existing Shopify collections in, so you can apply smart sorting to them. Smart sorting on an imported collection only ever **reorders**: the app never adds or removes products, because you own the membership. The products your rule scores rise to the top, products with no score keep their current relative order below them, and anything sold out, draft or archived sinks to the bottom. To pause or resume a collection, open it and use **Pause smart sort** / **Resume smart sort** on its detail page.
+
+<Callout type="note" title="Keeping a product out of every collection">
+**Settings → Excluded products** keeps a product out of every app-managed collection; a collection's own excluded list keeps it out of just that one. Exclusions beat ranking — an excluded product never appears, however well it scores, and it's dropped from top-up filler too.
+</Callout>

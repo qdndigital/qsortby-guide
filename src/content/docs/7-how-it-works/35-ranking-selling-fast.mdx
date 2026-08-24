@@ -2,9 +2,9 @@
 title: "How Selling-fast ranking works"
 description: "Ranks by urgency — inventory divided by sales rate = days of stock left, lowest first."
 section: "How QSortby ranks"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
-**Selling fast** ranks by **scarcity**: how many days of stock are left at the current sales rate. It divides on-hand inventory by the average daily sales rate — the *lowest* result (closest to selling out) ranks first. Great for creating urgency and clearing hot stock.
+**Selling fast** ranks by **scarcity**: how many days of stock are left at the current sales rate. It divides on-hand inventory by the average daily sales rate — the *lowest* result (closest to selling out) ranks first. Great for creating urgency and clearing hot stock. Products that have already sold out, or that had no sales in the window, are left out entirely — there’s no “days left” to compute for either.
 
 ## 1. The collection, unranked
 
@@ -16,10 +16,10 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-selling-fast/concept-ranking-selling-fast-step-02.png)
 
-For each product the engine computes **inventory ÷ (units sold ÷ window days)** — the days of stock remaining. Unlike every other signal, **lower ranks higher** here: the product nearest to selling out leads the collection, so shoppers see it while it lasts.
+For each product the engine computes **inventory ÷ (purchases ÷ window days)** — the days of stock remaining, where “purchases” counts checkouts containing the product rather than units. Unlike every other signal, **lower ranks higher** here: the product nearest to selling out leads the collection, so shoppers see it while it lasts. The window snaps to whole days in UTC, so an hours-based window counts as a single day.
 
 ## 3. The front row gets discovered
 
 ![The front row gets discovered](/assets/ranking-selling-fast/concept-ranking-selling-fast-step-03.png)
 
-The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first.
+The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first. Because sold-out items drop out here rather than sinking to the bottom, a collection on this rule can come back short — the leftover slots are filled from its current order, below every product with real days-of-stock.

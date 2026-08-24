@@ -1,0 +1,40 @@
+---
+title: "Your first 10 days — the reverse trial"
+description: "Every new install runs on the Growth feature set for 10 days, then settles onto the plan you're actually paying for. What that means for what you see, and what changes on day 11."
+section: "Getting started"
+updated: 2026-08-22
+---
+import Callout from '../../../components/Callout.astro';
+
+QSortby doesn't make you upgrade to find out what a tier does. For the first **10 days after install**, an unpaid store runs on the **Growth** feature set — every surface, every signal, the emotional layer, Insights. Then it settles onto the plan you're actually on, which is **Free** unless you've started a subscription.
+
+This is worth reading before you build anything, because the guide's plan labels — *"Included from Pro"*, *"Available on Growth"* — describe where a feature lives **after** the trial, not what you'll see on day one.
+
+## What counts as trialing
+
+Two things have to be true: the store has no active subscription, and it's still inside the 10-day window that started at install. Start a paid plan at any point and the trial stops mattering — you're on that plan's features from then on.
+
+The app tells you where you stand: while the trial is running, a banner across the top of every page counts down the days left.
+
+<Callout type="note" title="Days are rounded up">
+A store two hours into its trial still reads "10 days left". The counter never rounds down, so the number you see is the number of calendar days you can still count on.
+</Callout>
+
+## What changes on day 11
+
+Nothing is deleted. Everything you configured is still there, and re-subscribing restores it exactly as it was. What stops is **serving**:
+
+- **Upsell surfaces above your plan** stop rendering. The widgets stay in your list, marked **Over plan limit** — and where a plan caps *how many* of a type you can run, the ones you put at the top of the priority order are the ones that keep serving. See [Upsell offers](/docs/upsell/upsell-overview).
+- **Display rules** you already attached keep being evaluated, exactly as before. You just can't create new ones or attach one that isn't already attached — QSortby would rather leave a gate in place than quietly widen who sees an offer.
+- **The emotional layer** drops from live to off. On Pro it keeps classifying in the background and reporting into [Insights](/docs/analytics/insights) without touching your storefront; on Free and Starter it goes dark entirely. See [Emotional suggest](/docs/upsell/emotional-suggest).
+- **Analytics, Insights and per-collection caps** follow the same pattern — the page stays in the menu and shows you what the tier would add, rather than disappearing.
+
+## A sensible way to use the 10 days
+
+1. Finish the [setup wizard](/docs/getting-started/setup-wizard) on day one. The pixel needs time to accumulate behaviour before any ranking looks interesting.
+2. Turn on the surfaces you're curious about, not all of them. Two widgets you actually read the numbers on beat six you don't.
+3. Around day seven, look at [Attribution](/docs/analytics/experiments-attribution) and decide which tier's surfaces earned their place. That's a much better basis for picking a plan than the feature table.
+
+<Callout type="tip" title="Ask if something looks pinned">
+Plan tiers are the baseline, not the last word — QSortby can grant or withhold an individual feature for your store on top of whatever your plan says. If a capability behaves differently from what this guide describes for your tier, that's the likeliest reason.
+</Callout>

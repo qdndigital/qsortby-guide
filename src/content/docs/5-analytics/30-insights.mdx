@@ -1,0 +1,45 @@
+---
+title: "Insights: the emotional read on your traffic"
+description: "See the mix of emotional states across your sessions, when each one shows up in the week, and the journeys behind them — the one place the emotional layer becomes visible."
+section: "Analytics & attribution"
+updated: 2026-08-22
+---
+import Callout from '../../../components/Callout.astro';
+
+[Emotional suggest](/docs/upsell/emotional-suggest) is invisible from the storefront by design — every shopper sees a slightly different order, so there is nothing to look at. **Insights** is where it becomes visible: what states your traffic is actually in, when they show up, and what a session in each state looks like.
+
+Included on **Growth**. **Pro** gets a read-only slice of it (see below). (Every new install runs on the Growth feature set for its first 10 days — see [Your first 10 days](/docs/getting-started/reverse-trial).)
+
+## Three tabs
+
+**Customer emotions** — the distribution of the 12 states across your sessions in the window you pick, with how many sessions were classified. This is the tab to start on: if 90% of your traffic reads as one state, your [emotional keyword set](/docs/settings/settings-overview) is probably too generic to separate your catalogue.
+
+**Heatmap** — the same states laid out across day and hour, so you can see the shape of your week. A store whose "celebratory" traffic clusters on Friday evenings and "focused" traffic on Tuesday mornings is a store with two different audiences, and that's worth knowing before you write copy.
+
+**Customer journey** — the sessions behind the numbers: what a shopper in a given state did, step by step. It's the slowest tab to load and the only one that answers "why did it call this shopper anxious", so it loads on demand rather than on first paint.
+
+Each tab carries a short **AI-written summary** of what it's showing — a starting read, not a verdict.
+
+<Callout type="note" title="It counts sessions, not shoppers">
+The distribution counts one classification per session, so a shopper who visits three times over a week appears three times, possibly in three different states. That's deliberate: mood is a property of a visit, not of a person.
+</Callout>
+
+## Why it might be empty
+
+The emotional layer reads a shopper **once they pause** — thirty seconds without a scroll, click or keystroke — and then not again for half an hour. So:
+
+- A brand-new install has nothing until the pixel has been collecting for a while.
+- Traffic that lands, buys fast and leaves is never read at all, and never appears here.
+- Visitors who haven't granted **analytics** consent send almost nothing, so they can't be classified either. See the note in [Set up QSortby](/docs/getting-started/setup-wizard).
+
+If the page says there's no state data yet, that's usually one of those three rather than a fault.
+
+## On Pro: the shadow read
+
+On **Pro** the layer runs in shadow — sessions are classified and logged, and nothing is applied to your storefront. Insights reflects that: you get the **Customer emotions** distribution, read-only, and an upgrade prompt in place of the heatmap, the journeys and the AI summaries. It's the honest version of a preview: real numbers from your own traffic, no effect on what shoppers see.
+
+On **Free** and **Starter** the layer is dark — nothing is classified, so Insights doesn't appear in the menu at all.
+
+<Callout type="tip" title="Read it before you turn anything on">
+Insights is worth a week on its own, before you enable emotional suggest anywhere. If your state mix is flat, the reordering has little to work with; if it's genuinely varied, you know which surfaces are worth switching on first.
+</Callout>

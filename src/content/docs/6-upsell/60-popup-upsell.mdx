@@ -1,22 +1,23 @@
 ---
 title: "Popup upsell"
-description: "An offer that appears at a moment you choose — after an add to cart, on exit intent, or once the cart is near your free-shipping threshold."
+description: "An offer that appears at a moment you choose — after an add to cart, on exit intent, once the cart is near your free-shipping threshold, or after a delay or scroll."
 section: "Upsell"
-updated: 2026-08-13
+updated: 2026-08-22
 ---
 import Callout from '../../../components/Callout.astro';
 
 The popup is the only surface that can appear on **any** page, which makes it the most powerful and the easiest to overuse. It's built to be gated: a trigger decides *when*, and a [display rule](/docs/upsell/display-rules) decides *whether*.
 
-Included from **Pro**, together with the rule engine.
+Included from **Pro**, together with the rule engine. (Every new install runs on the Growth feature set for its first 10 days — see [Your first 10 days](/docs/getting-started/reverse-trial).)
 
 ## Pick a trigger
 
-- **Add to cart** — fires just after a shopper adds something. The most natural moment: they've committed, and you're suggesting a companion.
-- **Exit intent** — fires when the pointer heads for the browser chrome. Desktop only by nature.
-- **Cart value** — fires once the cart crosses an amount you set. Good for pairing with free shipping.
-- **Time on page** — after a delay you choose.
-- **Scroll depth** — after a percentage of the page.
+Four of them, one per popup:
+
+- **After add to cart** — fires just after a shopper adds something. The most natural moment: they've committed, and you're suggesting a companion.
+- **On exit intent** — fires when the pointer heads for the browser chrome. Desktop only by nature.
+- **When close to free shipping** — fires once the cart comes within reach of the threshold you set here. Pairs naturally with the [shipping bar](/docs/upsell/free-shipping-bar).
+- **After a delay or scroll depth** — one trigger with two ways to arm it. Set a delay in seconds, a scroll percentage, or both; whichever happens first fires the popup.
 
 ## Keep it from becoming noise
 

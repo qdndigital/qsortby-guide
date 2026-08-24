@@ -2,9 +2,9 @@
 title: "How Highest-CTR ranking works"
 description: "Ranks by click-through rate = clicks ÷ impressions, raw with no statistical smoothing, so an efficient low-traffic product can beat a more-viewed one."
 section: "How QSortby ranks"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
-**Highest CTR** ranks by click-through rate — **clicks ÷ impressions** — a raw ratio with no smoothing. It rewards efficiency, not traffic, so a product few people see but many click can lead. Zero-view products are dropped.
+**Highest CTR** ranks by click-through rate — **clicks ÷ impressions** — a raw ratio with no smoothing. It rewards efficiency, not traffic, so a product few people see but many click can lead. Any product whose CTR works out to zero is dropped — that includes a heavily-viewed product nobody has clicked, not just unseen ones.
 
 ## 1. The collection, unranked
 
@@ -16,10 +16,10 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-highest-ctr/concept-ranking-highest-ctr-step-02.png)
 
-The engine divides each product’s clicks by its impressions over the window. There’s no Bayesian/Wilson smoothing — it’s the literal rate — with a single guard that drops products with zero views. The highest rate takes #1, even if it’s seen the least.
+The engine divides each product’s clicks by its impressions over the window. There’s no Bayesian/Wilson smoothing — it’s the literal rate — with a single guard that drops every product scoring 0, whether that’s because it had no views or because it had views and no clicks. The highest rate takes #1, even if it’s seen the least. Engagement signals measure in whole days, so an hours-based window counts as one day, and a **Period** or **Snapshot** window falls back to the last 30 days.
 
 ## 3. The front row gets discovered
 
 ![The front row gets discovered](/assets/ranking-highest-ctr/concept-ranking-highest-ctr-step-03.png)
 
-The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first.
+The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first. If fewer products clear the guard than your **Max products** cap allows, the leftover slots are filled from the collection’s current order, below every product that has a real CTR.

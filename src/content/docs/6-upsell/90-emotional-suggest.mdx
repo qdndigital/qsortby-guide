@@ -1,20 +1,22 @@
 ---
-title: "Emotional suggest in upsells"
-description: "Let the emotional read choose between your ranked candidates, so an anxious shopper and a celebratory one get different suggestions from the same cart."
+title: "Emotional suggest"
+description: "Let the emotional read choose between your ranked candidates, so an anxious shopper and a celebratory one get different suggestions from the same cart — or the same feed."
 section: "Upsell"
-updated: 2026-08-13
+updated: 2026-08-22
 ---
 import Callout from '../../../components/Callout.astro';
 
 Every upsell ranks by the signal you pick — velocity, margin, conversion rate. **Emotional suggest** adds a second, lighter pass on top: among the products your ranking already chose, it prefers the ones that suit the state the shopper appears to be in.
 
-Available on **Growth**, where the emotional layer is applied live.
+Available on **Growth**, where the emotional layer is applied live. (Every new install runs on the Growth feature set for its first 10 days — see [Your first 10 days](/docs/getting-started/reverse-trial) — so you'll see this working before you're paying for it.)
 
 ## Where you'll find it
 
-A checkbox in the editor of the surfaces that can identify a shopper: **cart upsell**, **popup**, **in-checkout** and **thank-you page**. It only appears in **automatic** mode — a hand-picked list is your order, not ours — and only if your plan includes the emotional layer.
+A checkbox in the editor of the surfaces that can identify a shopper: **cart upsell**, **popup**, **in-checkout** and **thank-you page**. On the cart upsell and the popup it only appears in **automatic** mode — a hand-picked list is your order, not ours. The thank-you and in-checkout surfaces are automatic anyway, so the checkbox is always there. In all four cases it needs a plan that includes the emotional layer.
 
-It's **off by default** on every widget, including new ones. Turning it on is a decision you make per surface.
+It also appears on a **personalize collection** — Collections → your For You collection → **Emotional suggest**. That one is worth calling out separately, because it works differently: on the feed the emotional read becomes a weighted signal alongside your others, and it's the only surface a trained model can ever reach. In the four cart-side surfaces the read is a tag match and nothing more.
+
+It's **off by default** on every widget and every collection, including new ones. Turning it on is a decision you make per surface.
 
 <Callout type="note" title="Why not on bought-together or the shipping bar">
 Those two have their own logic that emotion would undermine. Bought-together sells one claim — *other people bought these in the same order* — and quietly reordering it by mood would make that claim untrue. The free-shipping bar can only suggest products that actually close the gap, which leaves almost nothing for a second signal to influence.
@@ -22,16 +24,30 @@ Those two have their own logic that emotion would undermine. Bought-together sel
 
 ## What it needs to work
 
-**Emotional keywords on your products.** Set these in **Settings → Emotional keywords**. Products with no keywords carry no emotional signal, so the ordering can't change — if nothing is tagged, the widget behaves exactly as it did before.
+**Emotional keywords for your industry.** In **Settings → Emotional keywords** you describe each of the 12 states in your own vocabulary — a "sad" fragrance is warm vanilla; a "sad" fashion item is a cozy knit. Generate the set with AI, edit it, then **confirm** it: only a confirmed set is used, drafts are ignored. QSortby then tags each product against those descriptions automatically as it syncs, so you never tag products one by one. See [Settings](/docs/settings/settings-overview).
 
-**A shopper the layer has read.** A brand-new visitor with no session history yet has no detected state. When that's the case the ordering is left exactly as your ranking produced it.
+**A tagged catalogue.** Every product QSortby has embedded carries between one and three states — its closest matches, and at minimum the single nearest one even when nothing is a strong fit. So the thing to check isn't whether *some* products are tagged, it's whether the tagging separates your catalogue: a generic keyword set produces generic tags, and the reordering will look arbitrary. Products QSortby hasn't embedded yet carry no state and are left where your ranking put them.
+
+**A shopper the layer has read.** QSortby reads a shopper once they pause — thirty seconds without a scroll, click or keystroke — and then not again for half an hour. So a visitor who lands, buys fast and leaves is never read at all, and a visitor who *is* read carries that state into their next visit, not just the current one. Until there's a read, the ordering is left exactly as your ranking produced it.
+
+The read itself is a language model looking at a few dozen behavioural signals from the session — scroll speed, idle time, the price band they hovered, whether they opened the return policy, whether their search read as urgent or as gift-shopping — and naming one of the 12 states. If it's unavailable or its answer doesn't validate, a rule-based fallback scores the same signals on arousal and valence and picks a state that way. Either way a state comes back — you never get a half-read session.
 
 ## What it does and doesn't do
 
 It **nudges**, it doesn't take over. Your chosen signal still decides the pool and still dominates the order; the emotional pass moves matching products up within it. A product that isn't selling won't be promoted into the cart drawer because it happens to be tagged.
 
+Concretely, on the cart-side surfaces the emotional bonus is worth roughly a third of the pool's height — about eleven places on the forty-row pool those widgets rank against. So a tagged product sitting twelfth can lead; one sitting thirteenth or lower can't reach the top on a tag alone. On the For You feed the signal enters the formula at a moderate weight next to your others and is normalised with them.
+
 It's also **fail-quiet by design**. No detected state, no tagged products, or any hiccup reading them, and you get your normal ranked order — never an empty widget and never an error in front of a shopper.
+
+## What "learns" means here, honestly
+
+Today the emotional layer is **rules, not a model**. A product's states come from its own text compared against your industry's keyword descriptions; a shopper's state comes from their session behaviour. Match the two and the product moves up. That's the whole mechanism — and it works from day one, with nothing to warm up.
+
+QSortby does record every ranking it serves on the **For You feed**, together with what the shopper did next, so a model can later be trained on your real outcomes. Two things have to be true before that reaches your storefront: enough of your own data to train on, and QSortby promoting the resulting model to live. When one is live, the emotional signal on the For You feed becomes mostly model with the tag match kept as a floor, so a correctly-tagged product can't be buried by a model that got it wrong. The cart, popup, checkout and thank-you surfaces stay on tag match either way, and nothing they serve is recorded for training.
 
 ## Seeing it work
 
-Because each shopper sees a different order, this layer is invisible from the storefront. **Insights** is where it becomes visible: the state mix across your sessions, and the journeys behind it. On plans below Growth the same read runs in preview only — it reports what it *would* have shown without changing your storefront.
+Because each shopper sees a different order, this layer is invisible from the storefront. [**Insights**](/docs/analytics/insights) is where it becomes visible: the state mix across your sessions, when each state shows up in your week, and the journeys behind them.
+
+On **Pro** the same read runs in shadow — sessions are classified and logged, Insights shows you the state mix, and your storefront is untouched. The heatmap, the journeys and the AI summaries stay on Growth. On **Free** and **Starter** the layer is dark: nothing is classified, so there's nothing to preview.

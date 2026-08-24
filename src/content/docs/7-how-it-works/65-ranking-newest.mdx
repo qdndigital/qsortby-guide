@@ -1,10 +1,10 @@
 ---
 title: "How New-arrivals ranking works"
-description: "Ranks by go-live date, newest first — and only products that went live inside the window qualify, so the collection stays fresh automatically."
+description: "Ranks by go-live date, newest first — products that went live inside the window lead, and older arrivals are only used to top the collection up."
 section: "How QSortby ranks"
-updated: 2026-07-09
+updated: 2026-08-22
 ---
-**New arrivals** ranks by **go-live date**, newest first. It also uses the window as a filter: only products that went live *within* the window appear at all, so as items age past the window they drop out and the collection refreshes itself.
+**New arrivals** ranks by **go-live date**, newest first. It also uses the window as a filter: products that went live *within* the window are the ones that qualify, so the collection refreshes itself as items age out. If fewer products qualify than your **Max products** cap allows, the app tops the collection up with older arrivals rather than leaving slots empty.
 
 ## 1. The collection, unranked
 
@@ -16,7 +16,7 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-newest/concept-ranking-newest-step-02.png)
 
-The engine sorts by each product’s **live date**, most-recent first, and keeps only those whose live date falls inside the window. There’s no behaviour involved — it’s purely “what’s new” — and the window doubles as an auto-expiry so yesterday’s launches don’t linger.
+The engine sorts by each product’s **live date**, most-recent first, and puts the ones whose live date falls inside the window on top. There’s no behaviour involved — it’s purely “what’s new” — and a product with no live date on record can’t be ranked at all. Anything outside the window is used only as filler below the genuine new arrivals, so lower your **Max products** cap if you want the collection to hold nothing but in-window launches.
 
 ## 3. The front row gets discovered
 

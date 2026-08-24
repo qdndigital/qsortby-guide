@@ -1,0 +1,74 @@
+---
+title: "Storefront blocks: For You & Best Sellers"
+description: "Place the two ranked feeds in your theme, understand the three things a block can do when something's misconfigured, and tune the per-visitor cache."
+section: "Collections"
+updated: 2026-08-22
+---
+import Callout from '../../../components/Callout.astro';
+
+Most QSortby collections need no theme work: the app writes the order back to Shopify and your theme renders it like any other collection. Two feeds are different, because there's nothing to write back — they're assembled at request time and rendered by a **QSortby block** you place in the theme editor.
+
+- **For You** — a different order per visitor, driven by a [Personalize collection](/docs/how-it-works/ranking-personalize).
+- **Best Sellers** — one shop-wide order over a sales window you set on the block itself.
+
+## Adding a block
+
+Theme editor → add a section → pick the QSortby block. Both live in the same place and share most of their settings.
+
+For the **For You** block, the one setting that matters most is **the collection it points at**. The dropdown lists every collection in your shop, but the block only fetches a personalized feed when the collection you pick is a **Personalize** collection. Leave it blank and the block falls back to your shop-wide For You settings.
+
+The **Best Sellers** block needs no collection: set **Window (days)** and **Total products** and it ranks your catalogue directly.
+
+## Three things a block can do when something's off
+
+Worth knowing, because the three look different on the storefront and mean different things:
+
+**Shop-wide For You is switched off.** The block renders nothing and clears its placeholder. Turn For You back on in Settings.
+
+**The collection no longer exists.** The block shows a message aimed at you, not shoppers: *"The collection set on this block doesn't exist anymore. Pick another in the theme editor."* This happens when a collection is deleted in Shopify after the block was configured — the block keeps the old handle until you change it.
+
+**The collection isn't a Personalize collection.** This one is deliberately *not* treated as an error. If you've pointed the block at one of your theme's product snippets, it renders that collection's own product order instead — so shoppers still see products, just not personalized ones. Without a snippet configured the block clears silently rather than showing an empty state, because there's nothing wrong with the collection, only with the block pointing at it.
+
+<Callout type="tip" title="Check the browser console while you configure">
+The For You block logs which visitor group a shopper matched, the numbers behind that decision and how many products came back. If a feed looks wrong, that line usually says why before you have to guess.
+</Callout>
+
+## Pagination and the per-visitor cache
+
+The feed is paginated **on the server**. The block asks for one page at a time and QSortby ranks the whole list once, caches it for that visitor, and slices to the page asked for — so Prev/Next and infinite scroll are near-instant instead of re-running the ranker.
+
+Two settings control the shape of that:
+
+- **Products per page** — how many cards are visible at once.
+- **Pagination mode** — numbered **Prev/Next** controls, or **infinite scroll** that loads the next page as the shopper nears the bottom.
+
+And two separate caches control the freshness:
+
+- **Refresh interval** on the collection — how long a single visitor's ranked list is reused before QSortby recomputes it. **1 hour by default**, tunable from 1 to 24. Up to 100 products are held per visitor.
+- **Cache TTL (minutes)** on the block — how long the visitor's own browser reuses the previous render on reload before asking again. Default 5 minutes; 0 always fetches.
+
+<Callout type="warning" title="Publishing a rule doesn't clear the cache">
+A shopper who already has a feed built keeps their old order until the **Refresh interval** expires — up to 24 hours if you've raised it. New visitors get the new ranking immediately. So test a published rule in a fresh browser profile rather than reloading your own, and keep the interval short while you're iterating.
+</Callout>
+
+The cache is keyed per shopper, per collection and per cart, so a shopper who adds something to their cart gets a fresh ranking straight away rather than waiting out the interval.
+
+## Per-collection settings worth knowing
+
+A Personalize collection carries its own copy of the knobs the feed uses, so two feeds in the same shop can behave differently:
+
+- **Default limit** — how many products a visitor sees.
+- **Emotional suggest** — the on/off for the [emotional layer](/docs/upsell/emotional-suggest) on this feed.
+- **Refresh interval (hours)** — as above.
+- **Repeat purchase / Return rate / Session windows** — how far back the matching signals look.
+- **Hide poorly rated products**, with a star threshold and a minimum review count.
+- **Low-inventory threshold** — soft-suppress products running short on stock.
+- **Family** — restrict the feed to one category.
+
+Products you've excluded shop-wide in [Settings](/docs/settings/settings-overview) are dropped from every feed before it's cached, so an exclusion never sits inside a cached list waiting to expire.
+
+## Appearance
+
+Both blocks share the same layout vocabulary: columns and gap per breakpoint, padding and margin per breakpoint, heading text, alignment, colour, weight and size per breakpoint, and an optional **container class** so the block picks up your theme's own width wrapper (`page-width` on Dawn, `container` on many others).
+
+For cards that match your storefront exactly, point the block at one of your theme's own product snippets instead of using QSortby's card markup — the same **App cards vs Theme cards** choice the [upsell widgets](/docs/upsell/cart-upsell) offer.
