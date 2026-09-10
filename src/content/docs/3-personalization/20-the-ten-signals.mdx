@@ -1,0 +1,54 @@
+---
+title: "The ten signals, and what each one needs"
+description: "What every personalization signal measures, which ones work on a first-time visitor, and the two that quietly do nothing until something else is in place."
+section: "Personalization"
+updated: 2026-09-10
+---
+import Callout from '../../../components/Callout.astro';
+
+A shopper group's ranking is a weighted mix of ten signals. You choose which ones matter and how much — that mix is the rule, and it is yours to read and change. This page is what each signal actually measures, and what it needs before it does anything.
+
+## The ten
+
+| Signal | What it boosts |
+| --- | --- |
+| **Recently viewed** | Products the visitor browsed in this session or recent ones |
+| **Favorite category affinity** | Products whose category or attributes match the visitor's profile |
+| **Cart history** | Products the visitor has added to cart, now or before |
+| **Repeat purchase** | Products the visitor bought before — for reorder flows |
+| **Top sellers** | Shop-wide bestsellers, inside the collection's window |
+| **New arrivals** | Products released in roughly the last 30 days |
+| **Session intent** | Products similar to what the visitor clicked in this visit |
+| **Return rate penalty** | *Lowers* products with a high historical return rate |
+| **Price affinity** | Products near the price band this visitor browses or buys in, fading as the price moves away |
+| **Emotional affinity** | Products whose tags match the shopper's read state |
+
+## Most of these work on a stranger
+
+This is the part worth internalising, because it is the opposite of how recommendation engines usually work: **eight of the ten need no purchase history and no login.**
+
+*Top sellers*, *New arrivals* and *Return rate penalty* are facts about your catalogue — they apply to anyone. *Recently viewed*, *Session intent*, *Cart history* and *Price affinity* are read from the visit happening right now, so they start working within a few pageviews. *Favorite category affinity* builds from browsing.
+
+Only **Repeat purchase** genuinely requires a shopper who has bought before.
+
+<Callout type="tip" title="This is what makes a first-visit rule possible">
+A group defined as first-time visitors, weighted toward Top sellers, New arrivals and Session intent, is a complete and useful rule — no identity, no history, no quiz. Most stores' collection traffic is people you have never seen before, so this is usually the group worth writing first.
+</Callout>
+
+## The two that need something first
+
+Two signals will sit in your mix scoring nothing at all unless a condition is met, and neither announces it:
+
+**Repeat purchase** only applies to products marked **replenishable** — consumables you would expect somebody to buy again. That is deliberate: re-surfacing a mattress to the person who just bought one is noise. But the flag is a product metafield, and it is **not filled in for you**. Until something sets it, this signal returns nothing for every product. If you sell consumables and you weight it, set the flag first.
+
+**Emotional affinity** needs Emotional Suggest switched on in Settings, and the plan that carries it. Weighted without that, it contributes nothing.
+
+<Callout type="note" title="A signal that needs data is not a broken signal">
+Both behave the same way when their condition is missing: they score zero and let the rest of your mix decide. Nothing breaks — but a weight you thought was doing work is not, which is worth knowing before you conclude a rule underperforms.
+</Callout>
+
+## Weighting them
+
+Give more weight to what should decide more. There is no correct set — a fashion store leaning on *New arrivals* and a supplement store leaning on *Repeat purchase* are both right, because they sell differently.
+
+Two habits that help: start with two or three signals rather than all ten, and change one thing at a time so you can tell what moved. See [Create a segment rule](/docs/personalization/create-segment-rule) for the workflow, and [How segment matching works](/docs/how-it-works/segment-matching) for how a shopper is routed to a group.

@@ -2,8 +2,10 @@
 title: "Set the time window & keep it fresh"
 description: "Choose which period the ranking looks at (rolling, period, or snapshot) and how often QSortby re-sorts and pushes the collection to Shopify."
 section: "Collections"
-updated: 2026-08-22
+updated: 2026-08-24
 ---
+import Callout from '../../../components/Callout.astro';
+
 Two settings control how a collection stays current: the **window** (which time period the ranking measures — e.g. sales in the last 7 days) and the **schedule** (how often QSortby recomputes and pushes the order). You'll find both on a collection's **Setup** tab. (See the *Windows* explainer for rolling vs. period vs. snapshot — and note that Period and Snapshot only change the window for the **Best selling** rule.)
 
 ## 1. Open a collection's Setup tab
@@ -17,6 +19,10 @@ From **Collections**, click a collection to open it. The **Setup** tab is where 
 ![Pick the window](/assets/window-and-schedule/collections-window-step-02.png)
 
 **Use sales from** sets the period the ranking measures. **Rolling** always looks back N hours/days from now (e.g. “last 7 days”). **Period** tracks the most recent completed hour, day, week or month (auto-rolls). **Snapshot** pins a fixed month, week or date range. Every rule honours Rolling; on Period and Snapshot, only Best selling is measured over the range you picked — the rest fall back to a rolling 30 days. Some rules have no window at all: Most profitable, Customer favorites and Personalize don't show this picker.
+
+<Callout type="note" title="On Free the shortest window is 7 days">
+Free pins a 7-day floor, so the short end of the picker is unavailable — you can still rank on 30 days or a year, just not on the last 24 hours. Every paid plan removes the floor, down to 1 hour. See [Plan limits](/docs/getting-started/plans-and-limits).
+</Callout>
 
 ## 3. Keep it updated automatically
 

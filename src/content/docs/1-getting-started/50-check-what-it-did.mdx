@@ -1,0 +1,60 @@
+---
+title: "Check what the sort actually did"
+description: "Where to look before a new order publishes, which rule was live when, whether a suggestion made sense, and how to read the revenue figure without over-reading it."
+section: "Getting started"
+updated: 2026-09-10
+---
+import Callout from '../../../components/Callout.astro';
+
+Handing your collection order to an app is a real act of trust, and the honest way to earn it is to let you check the result rather than ask you to assume it. Everything below is a place in QSortby where you can see what happened and why — four of the five are on the **Free** plan.
+
+This page is a map of those places. Each one is covered in depth elsewhere; the point here is knowing they exist before you need them.
+
+## Before anything publishes
+
+On a collection's **Setup** tab, turn **Push to Shopify automatically** off. A newly computed order is then staged instead of going live, and you approve it from the **Preview** tab — a side-by-side of what is live now against what the next run would produce, with added, removed and reordered counted for you.
+
+Leave it on once you trust the rule. The point is that the first few runs do not have to be taken on faith. See [Set the time window & keep it fresh](/docs/collections/window-and-schedule).
+
+<Callout type="tip" title="Preview is also how you compare two rules">
+Change the criteria, press Preview, and read the difference before you commit. Nothing reaches your storefront until you push.
+</Callout>
+
+## The rule itself is yours to read
+
+There is no hidden model deciding your order. On the **Setup** tab you can see the criteria the collection ranks by and the window it measures, in the same words you picked them in, and change either at any time.
+
+That matters more than it sounds. If a result surprises you, the rule is right there — you can disagree with it and fix it, rather than concluding the feature is broken. See [How ranking works](/docs/how-it-works/ranking-best-selling).
+
+## Why a product was matched to another
+
+Open any product and look at the **Similar** tab. Every row names the signal that produced it — same product type, shared tags, shared collections, similar price, sells well, same vendor — so a match you disagree with points you at the data behind it.
+
+Only signals that could actually be compared are listed. If neither product has tags, the tag row is left out rather than shown as zero, because zero would read as "no overlap" when it means "nothing to compare". See [One product: what it sells with, and why](/docs/products/product-detail).
+
+## Which rule was live, and when
+
+**Analytics → Sort projects** keeps the ranking configuration on record with its dates. When a week goes unusually well or badly, you can tell which rule was actually running at the time instead of reconstructing it from memory.
+
+<Callout type="note" title="Analytics is a Pro feature">
+Sort projects, Impact and the rest of Analytics sit on **Pro**. Every new install runs on the Growth feature set for its first 10 days — see [Your first 10 days](/docs/getting-started/reverse-trial).
+</Callout>
+
+## What it earned — and what that number is not
+
+**Analytics → Impact** reports **influenced revenue**: orders where a shopper interacted with a QSortby feed before buying. The word is deliberate. Attribution here is last-touch, which means the figure tells you the sort was *involved* in those orders — not that it *caused* them.
+
+The same care applies to experiments. A result is reported as **directional**, never as proof, and the minimum sample per arm stays on screen whether or not you have reached it, so you know when a difference is still too early to act on.
+
+<Callout type="note" title="A smaller honest number beats a bigger one">
+Most apps in this category report last-touch revenue without saying so, which flatters the total. Ours is labelled, so you can weigh it properly — and compare like with like when you evaluate another app.
+</Callout>
+
+See [Experiments & attribution](/docs/analytics/experiments-attribution).
+
+## What is not here yet
+
+Two things merchants reasonably expect that QSortby does not do today, said plainly so you do not go looking:
+
+- **Restoring a previous product order.** Collections you archive can be restored, and configuration changes are on record — but there is no one-click rewind to the exact order a collection had on a given day.
+- **A per-product score breakdown for collection ranking.** The reasoning behind a *similar-product* match is shown; the contribution of each criterion to a single product's rank is not surfaced in the dashboard.

@@ -1,0 +1,49 @@
+---
+title: "One product: what it sells with, and why"
+description: "The five tabs on a product — what shoppers actually did with it, what you configured, and the signals behind every similar-product match."
+section: "Products"
+updated: 2026-09-10
+---
+import Callout from '../../../components/Callout.astro';
+
+Click any row on **Products** to open a single product. The metrics at the top are the same ones from the list; the five tabs underneath answer a different question: **what does this product travel with, and on what basis?**
+
+Three of the tabs report what shoppers did. Two report what you configured. They are kept apart on purpose.
+
+## What shoppers actually did
+
+| Tab | What it counts |
+| --- | --- |
+| **Bought together** | Products that appear in the same completed orders |
+| **Added together** | Products added to the same cart, whether or not it converted |
+| **Viewed together** | Products seen in the same browsing session |
+
+These are observations from your own store. Nothing here is a setting, and nothing here was chosen by you — which is exactly what makes them useful when you are deciding what to configure.
+
+## What you configured
+
+**Pair with** shows the pairing rule this product falls under, if any — the rule that keeps a set adjacent in a sorted collection. See [Keep products side by side](/docs/collections/manage-collections).
+
+<Callout type="note" title="Evidence and configuration stay separate">
+A product set you wrote will never appear under Bought together, and co-purchase data will never quietly become a rule. If your own rule showed up as evidence, you would be reading your decision back to yourself as proof that the decision was right.
+</Callout>
+
+## Similar — and the reason for every row
+
+**Similar** is the one tab that is inferred rather than observed: products the catalogue implies are alike. Every row carries the signals that produced it, each as a percentage:
+
+- **Same product type** · **Same vendor** — structural matches
+- **Shared tags** · **Shared collections** — how you have organised the catalogue
+- **Similar price** — closeness in price band
+- **Sells well** — general popularity
+
+So a match you disagree with is never a dead end. You can see which signal produced it and go fix the data — retag the product, move it out of a collection — rather than concluding the feature is broken.
+
+Two details worth knowing:
+
+- **A signal that could not be compared is left out, not shown as 0%.** If neither product has tags, the tag row simply is not there. Zero would read as "no overlap" when the truth is "nothing to compare".
+- **Co-purchase is reported here but kept out of the score.** If two products genuinely sell together you will see *Also bought together 12×* beside the row — labelled, and never folded into the similarity number, because "bought with" and "alike" are different questions.
+
+<Callout type="tip" title="This tab needs no plan">
+Similar and the three observation tabs are available on every plan, including Free.
+</Callout>
