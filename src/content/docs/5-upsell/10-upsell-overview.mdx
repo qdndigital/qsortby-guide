@@ -1,0 +1,62 @@
+---
+title: "Upsell offers — the six touch points"
+description: "Six places on the path a shopper is already walking where QSortby can suggest another product — cart drawer, free-shipping bar, product page, thank-you page, popup and inside checkout — all fed by the same live ranking."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+Ranking decides which products a shopper **finds**. Upsell offers decide what else goes **in the bag**. Both run off the same engine, which is the part worth understanding first: every offer is drawn from your live ranking, so what gets suggested is what's actually selling and actually in stock — never a static list you have to maintain.
+
+Open **Upsell** from the left-hand menu. It lists the six **touch points** — places on your storefront where QSortby can suggest another product — with the offers you have under each, and a **Display rules** section for the reusable conditions that decide who sees an offer. Add the touch points you want, in any order; nothing here depends on anything else. Every offer is also listed once in an **Offers** list at the bottom of the page; the first one listed for a place is the one a one-offer place would render.
+
+## The six touch points
+
+| Touch point | Where it renders | Included from |
+| --- | --- | --- |
+| **Cart drawer** | Cart drawer + cart page | Free |
+| **Free-shipping bar** | Cart drawer + cart page | Free |
+| **Frequently bought together** | Product page | Starter |
+| **Thank-you page** | Order-status page, after payment — anything taken becomes a *new* order | Starter |
+| **Popup** | Any page, on a trigger you choose — attach a display rule first | Pro |
+| **In-checkout** | Inside checkout, before payment | Growth · renders on Shopify Plus only |
+
+A touch point your plan doesn't include is still listed, labelled with the plan that carries it, and not clickable until you are on it. Nothing is hidden from you, so you can always see what a tier would add.
+
+**Start with the cart drawer.** It is fed by the same order data as your ranking, it never touches checkout, and it is the fastest of the six to show a result.
+
+The *Included from* column describes where each surface lives once you're on a paid plan. For the first 10 days after install every store runs on the Growth feature set, so all six render — see [Your first 10 days](/docs/getting-started/reverse-trial) for what changes when that window closes.
+
+## Two conditions worth knowing before you plan around them
+
+The **in-checkout offer renders on Shopify Plus only** — that is Shopify's rule, not ours. On any other Shopify plan you can configure it here and no shopper will see it, so check your Shopify plan before you build one.
+
+Anything a shopper takes on the **thank-you page becomes a new order**, shipped and charged separately, because Shopify does not let an app add to an order that is already paid. Say so plainly in the offer's copy; a shopper who expects it in the same box opens a ticket.
+
+## Display rules narrow, never widen
+
+A rule decides who sees an offer, and it only ever **narrows** the audience. An offer with no rule is seen by everyone — which also means deleting a rule makes an offer *more* visible, not less. This matters most on the **popup**, the one touch point that can appear on any page: without a rule it is shown to every visitor everywhere, so attach one before you switch it on. Frequently bought together takes no rules. See [Display rules](/docs/upsell/display-rules).
+
+## What every touch point does the same way
+
+- **Nothing sold out.** Products with no available stock are filtered out of every offer.
+- **Nothing already in the cart.** Suggesting what a shopper has already added is the one thing an upsell must not do, so those are excluded too.
+- **A failed request hides the section.** If anything goes wrong fetching an offer, the widget simply doesn't render. A cart never blocks or breaks waiting for a suggestion.
+- **No theme code.** Offers are injected by the QSortby app embed. You choose where they sit; you don't edit Liquid. If one lands in the wrong place on your theme, give it an **anchor** — a selector it should attach to — in the offer's *Where it shows* section.
+- **Preview on any theme.** Every editor has a preview-theme picker that searches your shop's full theme list, so you can test an offer on an unpublished theme before it reaches the live one.
+- **What it earned.** Each offer's row shows an **Earning** column — the items shoppers added from it, never the whole order around them.
+
+## Creating one
+
+1. Open a touch point and press **Set up** — or **Add another** on a place that already has an offer and whose plan has room.
+2. Give it a name — this is how you'll tell several of the same type apart later ("Drawer offer" vs "Cart page offer").
+3. You land in the editor. Every new upsell starts as a **Draft**: it saves and previews, but nothing renders on your storefront until you switch it on.
+
+## How many you can have
+
+Your plan sets how many offers **each touch point** can hold — Free one, Starter three, Pro and Growth unlimited. The cap counts drafts too, so a parked draft still uses a slot.
+
+If you drop to a lower plan, nothing is deleted. Upsells beyond the new limit stop serving and are labelled **Over plan limit** in the list, keeping the ones you put at the top of the order. Upgrade again and they resume exactly as they were.
+
+<Callout type="note">
+Several of one type is a real setup, not an accident: a different offer in the cart drawer than on the cart page, or one popup for first-time visitors and another for returning ones. The one that shows is decided by **priority** and any **rules** attached — see [Display rules](/docs/upsell/display-rules).
+</Callout>

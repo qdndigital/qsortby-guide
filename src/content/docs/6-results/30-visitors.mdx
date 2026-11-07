@@ -1,0 +1,34 @@
+---
+title: "Visitors — behaviour, never identity"
+description: "Every visitor QSortby has served, with what they looked at, what they put in a cart and how they decided — so you can answer “why did this shopper see that order”. It stores behaviour, not identity."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+**Results → Visitors** lists the visitors QSortby has served over the range at the top of the page. It exists so you can answer one question — *why did this shopper see that order?* — and it is built so that answering it never requires knowing who they are.
+
+## What is stored, and what is not
+
+Behaviour is stored; identity is not. An anonymous visitor is **an id, what they looked at, and what they bought**. No email and no personal data is kept. A shopper who **signs in** is matched to their Shopify customer so their history carries across devices — and that is still a customer id, not a name, on this page.
+
+<Callout type="note" title="Privacy requests are honoured in full">
+A customer data erasure request from Shopify deletes that visitor's events along with the rest of their data, device by device. There is nothing to reconstruct afterwards.
+</Callout>
+
+## The list
+
+Filter by **device** and by what the visitor was **seen** doing (viewed, carted, bought); **Search visitors** finds an id or a customer. *No visitor activity yet* on a new install means the theme app embed has not reported a visit — [Setup](/docs/getting-started/setup) step 1.
+
+## One visitor
+
+Click a row for the visitor's timeline, in three parts:
+
+**What they did** — the events in order: pages viewed, products opened, cart adds and removals, orders, and which **surface** served each product they opened. Where a product came from a QSortby surface, the row says which one — the collection, the For You feed, an upsell — which is the "why" behind an influenced order.
+
+**Taste profile** — what the app has inferred for ranking: recently viewed, looked at most, put in a cart, the categories and price band they lean to, and anything they have **hidden** (a product they dismissed from a feed is never shown to them again). **Built from** says how many sessions and orders the profile rests on, so a profile built from one visit is read as one visit.
+
+**How they decided** — which personalization group the visitor matched, the conditions that put them there, and the intent they were read as, with its margin. This is the same arithmetic as [Why this order](/docs/personalization/why-this-order), for a real person instead of a simulated one.
+
+## What it is for
+
+Two things, mostly. Checking a rule against reality — *"first-time visitors should be landing in group 2; are they?"* — and understanding a surprising order before you change a setting on a hunch. It is not a CRM, and it does not try to be one.

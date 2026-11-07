@@ -1,0 +1,45 @@
+---
+title: "Home — is QSortby making money?"
+description: "Home answers one question with one number: influenced revenue. Then what is running, what needs attention, and what happened recently."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+**Home** is the app's own name at the top of the left-hand menu — click it from anywhere. It is built around the one number worth judging this app on: **influenced revenue**, the total of orders containing a product QSortby ranked before the shopper bought it.
+
+## The number, and what it is not
+
+Influenced revenue is **last-touch attribution**. The tag is written when a shopper opens a product from a surface QSortby ordered, it expires after thirty minutes, and an order placed inside that window counts. An order placed the next day counts for nothing. An upsell is credited only with the items a shopper added from it, never with the whole order around them.
+
+It measures **influence, not proven cause** — a shopper who would have bought anyway is counted the same as one who would not. The app never uses the word "caused", and neither does this guide. Treat it as the upper bound of what the sorting touched; the lower bound is what an [experiment](/docs/results/experiments) can tell you.
+
+<Callout type="tip" title="A smaller honest number beats a bigger one">
+Most apps in this category report last-touch revenue without saying so. Ours is labelled, so you can weigh it — and compare like with like when you evaluate another app.
+</Callout>
+
+## When your numbers arrive
+
+A fresh install has nothing to show, and Home says so rather than drawing an empty chart. Three things have to be true first: the theme app embed is on, at least one collection is being sorted, and shoppers have placed orders since. On a new shop the first figure usually appears within a day or two of Setup; on a quiet shop it can take longer, and that is the shop, not the app.
+
+If the embed stops reporting, Home says so at the top — *Your storefront pixel stopped reporting N hours ago* — and the figures below are marked **frozen** rather than silently going stale. Auto-sort keeps running on your orders in the meantime; it is measurement that stops, not sorting.
+
+## Running now
+
+What QSortby is doing for your store at this moment: each collection it keeps sorted, the recipe it runs, and how far the order moved on its last sort. Rules that change the order for some shoppers — the published personalization rule, the Goes-with rules that are on — are listed beside the surfaces they modify. Each row is a link to the thing itself.
+
+## Needs attention
+
+Two kinds of item land here, and neither means something is broken:
+
+- **A collection on a Manual schedule that has not re-sorted in over two days.** Nothing is wrong — it simply will not move on its own, which is worth saying out loud before you go looking for a fault. Open it and pick a schedule, or leave it if that order is deliberate.
+- **An import that stopped.** *Reading your orders stopped* heads the list above everything else, because every figure on the page is built on what landed before it stopped. Resuming continues from where it got to.
+
+A collection frozen by a plan cap is not listed here; it has its own banner on Auto-sort.
+
+## Intent AI, tested
+
+When [Intent AI](/docs/results/intent) is on and has been running its on/off test, Home shows the measured lift beside the running read — with the sample size, so a difference from forty visits is never dressed up as a result.
+
+## Recent activity
+
+The last three sorts, with how long ago each landed. It is the quickest answer to "did anything change this morning"; the long answer is each collection's [Snapshots](/docs/auto-sort/snapshots-and-restore) page.

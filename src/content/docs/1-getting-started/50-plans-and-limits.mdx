@@ -1,0 +1,57 @@
+---
+title: "Plan limits — what each tier actually caps"
+description: "The enforced numbers behind the four plans: managed collections, the ranking-window floor, personalization rules, how many of each upsell you can run, and which extras — Goes-with publishing, storefront data, AI connections — each tier carries."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+Most of this guide describes what a feature *does*. This page is the other half: the numbers the app **enforces**, so that when something says *Over plan limit* you can see why without opening a support ticket.
+
+Every figure here is the app's own default for that plan. Prices live on the [pricing page](https://qsortby.com/pricing) and in the Shopify App Store listing — deliberately not here, so there is only ever one place to change them.
+
+## The caps, in one table
+
+| | Free | Starter | Pro | Growth |
+|---|---|---|---|---|
+| Auto-sorted collections | 1 | 5 | Unlimited | Unlimited |
+| Shortest ranking window | 7 days | Any | Any | Any |
+| Snapshots kept per collection | 5 | 50 | 200 | 200 |
+| Personalization rules | — | 3 | Unlimited | Unlimited |
+| Shopper groups per rule | — | 5 | Unlimited | Unlimited |
+| Goes-with rules | ✓ | ✓ | ✓ | ✓ |
+| Goes-with published to your storefront | — | ✓ | ✓ | ✓ |
+| Cart drawer offers | 1 | 3 | Unlimited | Unlimited |
+| Free-shipping bars | 1 | 3 | Unlimited | Unlimited |
+| Frequently-bought-together offers | — | 3 | Unlimited | Unlimited |
+| Thank-you page offers | — | 3 | Unlimited | Unlimited |
+| Popup offers | — | — | Unlimited | Unlimited |
+| In-checkout offers (Shopify Plus) | — | — | — | Unlimited |
+| Display rules (AND/OR) | — | — | ✓ | ✓ |
+| A/B experiments running at once | Unlimited | 1 | Unlimited | Unlimited |
+| Intent AI | — | — | Shadow (reads, reports) | Applied live |
+| Storefront data — related-products API & metafields | — | — | ✓ | ✓ |
+| AI connections (Claude / ChatGPT over MCP) | — | — | ✓ | ✓ |
+
+## The three that surprise people
+
+**The ranking-window floor on Free.** Free pins the shortest window to **7 days**. It is a floor, not a fixed setting — a Free store can rank on the last 30 days or the last year, it just cannot pick "last 24 hours". The reason is statistical rather than commercial: at a small store's order volume a one-day window is mostly noise, and a collection that reshuffles daily on two orders looks broken. Every paid plan removes the floor, down to one hour.
+
+**Goes-with rules are free to write, paid to publish.** Every plan can write Goes-with rules and apply them to a sorted collection's order. Writing the pairs onto your products as metafields — so your theme or another app can read them — starts on Starter. See [Publish to a product metafield](/docs/goes-with/publish-to-metafields).
+
+**A/B testing is on Free with no cap, and on Starter it is one at a time.** That is not a typo: Free carries the uncapped experiments it has always had, Starter adds personalization and more collections but runs one experiment at a time, and Pro lifts the cap again. If you are on Starter and the **New experiment** button is disabled, a test is already running — finish or stop it first.
+
+## What happens when you hit a cap
+
+Nothing is deleted, and nothing is hidden. The pattern is the same everywhere in the app:
+
+- **Collections** beyond the cap stay in your list and stop updating; the order already on your storefront stays. Pause or remove one and the next resumes on its normal schedule.
+- **Upsell offers** beyond the cap stay configured and stop rendering, marked **Over plan limit**. Where a type is capped by count, the ones highest in your priority order are the ones that keep serving — so the order you set decides what survives a downgrade. See [Upsell offers](/docs/upsell/upsell-overview).
+- **Display rules** already attached to an offer keep being evaluated. You just cannot create a new one or attach one that is not already attached; QSortby would rather leave a gate in place than quietly widen who sees an offer.
+- **Tabs** for a tier you are not on — Intent in Results, AI connections in Settings — stay where they are and show what the tier would add rather than disappearing.
+- **One exception:** the related-product metafields are deleted from your products when the plan no longer includes them, so your theme never renders a list that has stopped updating. See [Storefront data](/docs/settings/storefront-data).
+
+Starting a paid plan restores everything exactly as it was.
+
+## Before you pick a tier
+
+Every new install runs on the **Growth** feature set for its first 10 days, so you can measure the surfaces rather than read about them. [Your first 10 days](/docs/getting-started/reverse-trial) explains what changes on day 11 — and suggests deciding from your own [Impact numbers](/docs/results/impact) around day seven, which beats choosing from any feature table, this one included.

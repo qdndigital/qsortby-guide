@@ -10,6 +10,21 @@ const numOf = (s: string) => {
 const titleCase = (s: string) =>
   s.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 
+/** Group labels, in the app's own words (the nav says "Auto-sort", not "Auto Sort").
+ *  A folder not listed here falls back to title-casing its slug. */
+const SECTION_LABELS: Record<string, string> = {
+  'getting-started': 'Getting started',
+  'auto-sort': 'Auto-sort',
+  'personalization': 'Personalization',
+  'goes-with': 'Goes with',
+  'upsell': 'Upsell',
+  'results': 'Results',
+  'settings': 'Settings',
+  'how-it-works': 'How ranking works',
+  'help': 'Help',
+};
+const sectionLabelOf = (slug: string) => SECTION_LABELS[slug] ?? titleCase(slug);
+
 export type DocInfo = {
   entry: CollectionEntry<'docs'>;
   url: string;          // "/docs/getting-started/install"  (prefixes stripped)
@@ -35,7 +50,7 @@ export async function loadDocs(): Promise<DocInfo[]> {
     if (parts.length > 1) {
       const folder = parts[0];
       sectionSlug = strip(folder);
-      sectionLabel = entry.data.section ?? titleCase(sectionSlug);
+      sectionLabel = entry.data.section ?? sectionLabelOf(sectionSlug);
       sectionOrder = entry.data.sectionOrder ?? numOf(folder);
     }
     return { entry, url: `/docs/${slugParam}`, slugParam, sectionSlug, sectionLabel, sectionOrder, order };

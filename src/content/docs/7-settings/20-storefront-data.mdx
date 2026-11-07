@@ -1,0 +1,59 @@
+---
+title: "Storefront data — related products for your theme"
+description: "Two ways to get each product's related lists into your own theme: a JSON API your theme's JavaScript calls, and metafields written onto every product for Liquid. Bought, added and viewed together, similar, and goes-with."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+QSortby's own blocks render related products for you. **Settings → Storefront data** is for the other case: your theme draws its own "Complete the look" section, or a developer wants the lists in their own markup. Two switches, both on **Pro** and **Growth**, both off until you turn them on.
+
+## The five lists
+
+Both features serve the same five lists a product page shows under **What it travels with**:
+
+| List | What it is | At most |
+| --- | --- | --- |
+| **Bought together** | Bought in the same order — things shoppers take as well | Every pair |
+| **Added together** | In the same cart, whether or not that cart was bought | Every pair |
+| **Viewed together** | Opened in the same visit — alternatives, not add-ons; shoppers chose between them | Every pair |
+| **Similar** | Most alike in your catalogue, worked out from your products rather than from what shoppers did | 20, refreshed nightly |
+| **Goes with** | Your own [Goes-with rules](/docs/goes-with/goes-with-overview), exactly as the Goes-with block shows them | 50 |
+
+A pair seen only once is not published — the same floor the widgets use — and products that cannot be rendered (draft, unpublished, no handle) are removed before the list is counted.
+
+## The storefront data API
+
+**Publish related-product lists to my storefront** lets your theme's own JavaScript fetch any of the five lists for one product, as JSON, paginated:
+
+```js
+window.fetch('/apps/qsortby/v1/related?product_id=' + productId + '&type=bought&pageSize=4')
+  .then((r) => (r.ok ? r.json() : null))
+  .then((data) => {
+    if (!data) return
+    // data.products: [{ id, handle, title, imageUrl, available }]
+    // data.page, data.pageSize, data.totalCount, data.totalPages
+  })
+```
+
+`type` is `bought`, `added`, `viewed`, `similar` or `goes_with`. **Price is not included** — read `/products/<handle>.js`, which Shopify serves in the shopper's own currency. `/apps/qsortby` is the App Proxy path; if you have renamed it in Shopify, the card shows yours.
+
+The answer carries a reason when a list is empty: `no_data` (nothing observed yet), `not_built_yet` (similar, before the first nightly pass), `not_in_plan` (goes-with, when Goes-with publishing is off), `unknown_product`. With the switch off, or on a plan without the feature, every call answers **403** before anything else — your theme should treat that as "render nothing", the way QSortby's own blocks do.
+
+## Related-product metafields
+
+**Write related products to my product metafields** writes each product's **top 10** of every list onto the product itself, so your theme can show them from Liquid without calling anything:
+
+`qsortby.related_bought` · `qsortby.related_added` · `qsortby.related_viewed` · `qsortby.related_similar` · `qsortby.related_goes_with`
+
+A check runs every **n minutes** — you set n, from 5 minutes to once a day — and writes to Shopify **only what changed**. A check that finds nothing new writes nothing. The status line says where it is: *On — the first check starts within a minute*, then the time of the last check and how many values it wrote. The card tells you the cost in Shopify writes before you switch it on; a large catalogue's first run takes a while and is paced to Shopify's rate limit.
+
+<Callout type="warning" title="Switching it off deletes what it wrote">
+So does a plan that stops including it. Your theme never renders a list that has stopped updating. The goes-with list also needs **Publish to a product metafield** switched on in Goes with — without it, `related_goes_with` is simply not written.
+</Callout>
+
+## Which one to use
+
+- **Metafields** when the theme renders in Liquid and ten per list is enough. Nothing to call, nothing to fail at request time.
+- **The API** when you need more than ten, pagination, or a list chosen at runtime — a tab strip that switches between *bought together* and *similar*, say.
+
+Both can be on at once; they read the same data.

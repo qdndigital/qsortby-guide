@@ -1,0 +1,51 @@
+---
+title: "AI connections — Claude and ChatGPT on your QSortby data"
+description: "Connect your own Claude or ChatGPT account to QSortby. The assistant can answer questions about your store's QSortby data — and, where you allow it, set up collections, rules and offers as drafts for you to review. It never sees customer personal data and never changes anything live."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+**Settings → AI connections** lets an AI assistant you already use read your store's QSortby data over **MCP**, the open connector standard Claude and ChatGPT both speak. You ask the assistant in plain words; it asks QSortby; QSortby answers with the same honesty rules as its own screens. Pro and Growth; rolling out, so the tab may say *not offered on this app right now* for a while yet.
+
+## What an assistant can read
+
+The same things you can read in the app, through eight tools:
+
+- your **collections** and how each is sorted;
+- **why products rank** where they do;
+- **influenced revenue**, with the same last-touch caveat the app prints;
+- products **moving up or down**;
+- your **experiments** and their verdicts;
+- **what shoppers came for** — the intent mix.
+
+It never sees customer personal data: the tools answer with aggregates and product-level facts, and every answer is a fixed allowlist of fields, so a question phrased cleverly cannot pull out more than the screen would show.
+
+## What an assistant can set up
+
+Where the store allows it, the assistant can also prepare things **for you to review** — never anything live:
+
+- **collections**, created in [test mode](/docs/auto-sort/test-mode-and-preview), of any size;
+- **personalization rules**, as drafts;
+- **Goes-with rules**, switched off;
+- **upsell offers**, created and configured but switched off.
+
+It can also **start and stop A/B tests**, which run at once — a test changes nothing on its own, so this is the one write that does not wait. Everything else lands as a draft with an **Approve** beside it on the AI connections tab, and nothing reaches a shopper until you press it.
+
+## Connecting
+
+Each store has its own connector address, shown on the tab. Add it to Claude as a **custom connector**, or to ChatGPT in **developer mode**; the assistant sends you to sign in to your Shopify store, QSortby checks that you are allowed to connect, and you confirm what the assistant may do. The connection then appears in the list with the name the assistant gave it and who connected it, and **Disconnect** revokes it.
+
+## Who may connect, and who may let it write
+
+Two policies, both changeable **only by the store owner**:
+
+- **Who may connect an assistant** — only when the store owner connected it; the owner or staff; or the owner, staff and collaborator accounts. Narrowing it disconnects anyone it no longer allows.
+- **Who may let an assistant make changes** — no one (assistants only read); only when the owner connected it; or when the owner, staff or a collaborator connected it. It applies to the next change an assistant tries; existing connections stay connected.
+
+<Callout type="note" title="Why the defaults are tight">
+A connection is a standing permission, and a read-only one is harmless at worst. Writing — even as drafts — is owner-only by default because an assistant that drafts twenty collections overnight is a cleanup job, and the person who pays for the store should be the one who opened that door.
+</Callout>
+
+## What it cannot do
+
+Change anything live. Read another store. See a shopper's email or name. Be connected by an account the policy does not allow. If the plan stops including it, or the app is uninstalled, every connection is refused from that moment — the gate fails closed.

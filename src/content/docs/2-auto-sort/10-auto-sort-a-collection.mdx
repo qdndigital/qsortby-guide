@@ -1,0 +1,62 @@
+---
+title: "Auto-sort a collection"
+description: "Turn a collection you already have into one that sorts itself — pick a recipe, QSortby snapshots the current order, writes the new one to Shopify and keeps it fresh. Or let the app build a collection from scratch."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+**Auto-sort** is the main job of the app, and the first entry in the menu after Home. Its **Collections** tab lists every collection QSortby keeps sorted and what each is sorted by; the tiles above the list count them by state — **Live**, **Needs setup**, **Paused**. Three more tabs sit beside it — [Products](/docs/auto-sort/products-tab), [Personalization](/docs/personalization/create-a-rule) and [Goes with](/docs/goes-with/goes-with-overview) — because all three are ways of deciding an order, not separate places.
+
+There are two ways to get a collection in here, and they differ on one thing: **who decides which products are in it**.
+
+## Auto-sort a collection you already have
+
+Press **Auto-sort a collection**, choose the collection and a recipe, then **Apply**. About a minute, and reversible. QSortby:
+
+1. **Saves a snapshot** of the order the collection has right now, so there is always a way back.
+2. **Writes the new order to Shopify**, and sets the collection's sort order to **Manual** so Shopify holds the order instead of recomputing its own.
+3. **Keeps it fresh** — re-sorts on the schedule you choose, and whenever a new order lands.
+
+Only the **order** changes. Smart sorting on a collection you already have never adds or removes a product, because you own the membership. Products the recipe can score rise to the top; products it cannot score keep their relative order below them; sold-out products go to the end unless you tell it otherwise.
+
+<Callout type="warning" title="This changes what shoppers see on your storefront">
+The app says this sentence before every live write, and it means it: a few minutes after you press Apply, shoppers see the new order. If you would rather look first, switch on [test mode](/docs/auto-sort/test-mode-and-preview) on the collection instead — QSortby computes the order on schedule without publishing it, and can show it to you in your own theme through a temporary preview collection.
+</Callout>
+
+## Create a collection the app runs
+
+**Create collection** is the other door. A collection created here is **run by the app**: QSortby picks which products are in it from your criteria and keeps that membership up to date, as well as the order. That is the one thing it does that auto-sorting an existing collection does not.
+
+- **Name it**, then choose what to rank by and the window to count.
+- **Set how many products it should hold.** The app fills it from your criteria and keeps it filled — a "Top 24 this week" that is always exactly 24 products, re-chosen on every sort.
+- Only products that are **Active** and **published to the Online Store** are eligible. Drafts and archived products are never promoted; sold-out products stay eligible and sink to the end.
+- To hand-pick the products instead, create it and switch membership to **Manual** on the collection page; the app then only reorders what you put in.
+
+A **Personalized** collection is a special case of this: on Shopify it holds your best sellers, the same for everyone, so theme sections such as *Featured collection* still show products — and the **For You** theme block renders a different order per shopper on top of it. See [How Personalize collections work](/docs/how-it-works/ranking-personalize).
+
+## The collection page
+
+Open any row and you land on the collection's **Setup** tab, which answers one question: *what order does this collection run, and why does each product sit where it does?*
+
+- **Sort by** — the recipe, and the window it counts. An **In plain words** card restates the setting as a sentence: *"Best selling, based on sales from the last 30 days, sold-out products last."* The noun changes with the recipe — *launched in* for New arrivals, *reviewed in* for Top rated, *activity from* for an engagement metric — because those recipes count something other than sales.
+- **Updates** — how often it re-sorts and whether the result is pushed to Shopify automatically. See [Set the time window & keep it fresh](/docs/auto-sort/window-and-schedule).
+- **Sold-out products** — what the recipe does with products that are out of stock when it sorts — **Show last** (the default), **Keep in their ranked position**, or **Hide from this collection** (offered only where the app runs the membership).
+- **Max products** — a cap on how many the collection promotes; **No limit** ranks and promotes every product in it.
+- **Advanced** — four fields, all inheriting a shop-wide default, so a setting only needs your attention when this collection needs a different value: hide poorly rated products, the low-stock threshold, how many slots a personalization rule may rewrite, and whether to give under-measured products a chance to be seen.
+- **Intent suggest** — lets the [intent read](/docs/upsell/intent-suggest) nudge the order for shoppers it has read. Off by default.
+
+Beside Setup sit **Preview** (a dry run you look at once) and **Test results** (test mode, a state), and a link to **Snapshots**. The products table below the settings shows the order the recipe produces right now, with the metric it ranked each product on.
+
+<Callout type="note" title="Nothing is written the moment you change a setting">
+Saving the recipe or the window does not re-sort on the spot. The change is applied by the collection's next scheduled sort, and the page says when that is. Press **Resync now** if you want it this minute.
+</Callout>
+
+## Leaving
+
+The bottom of the Setup tab has the ways out, each spelled out before it happens:
+
+- **Hand the collection back to Shopify's sort order** — Shopify maintains the order again and recomputes QSortby's away.
+- **Put the products back in the order they were in before QSortby** — the collection stays on Manual, holding that order, and you maintain it from then on.
+- **Remove from QSortby** — stops the app touching it; the collection stays in Shopify with whatever order it has. Ticking **Also delete this collection in Shopify** removes the page and every link to it, and the app asks you to type the collection's name before it will.
+
+Your products are never deleted by any of these. They just stop being ordered, or grouped, by QSortby.

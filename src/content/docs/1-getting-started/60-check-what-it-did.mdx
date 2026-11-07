@@ -1,0 +1,55 @@
+---
+title: "Check what the sort actually did"
+description: "Where to look before a new order publishes, how to undo one, which rule was live when, why a product sits where it does, and how to read the revenue figure without over-reading it."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+Handing your collection order to an app is a real act of trust, and the honest way to earn it is to let you check the result rather than ask you to assume it. Everything below is a place in QSortby where you can see what happened and why — most of them on the **Free** plan.
+
+This page is a map of those places. Each one is covered in depth elsewhere; the point here is knowing they exist before you need them.
+
+## Before anything publishes
+
+Two tabs on a collection both sound like "look before you leap", and they do two different things:
+
+- **Preview** is a dry run — computed on demand, looked at once. Change the recipe or the window, press Preview, and read the side-by-side of what is live now against what the next run would produce, with added, removed and moved counts. Nothing reaches your storefront.
+- **Test results** is a *state* — test mode. Switch it on and QSortby keeps computing the order on schedule without writing it to your real collection, and can publish it to a temporary preview collection so you can see it in your own theme. See [Test mode & preview](/docs/auto-sort/test-mode-and-preview).
+
+Leave both alone once you trust the rule. The point is that the first few runs do not have to be taken on faith.
+
+## Undo is a feature, not a support ticket
+
+Every sort saves the exact order it produced — including the order before QSortby touched the collection the first time. The collection's **Snapshots** page lists them, lets you compare any two, and restores one to your live storefront with a sentence that says plainly that is what it is about to do. See [Snapshots & restore](/docs/auto-sort/snapshots-and-restore).
+
+## The rule itself is yours to read
+
+There is no hidden model deciding your order. On the collection's **Setup** tab you can see the recipe it ranks by and the window it measures, in the same words you picked them in, and change either at any time. The **In plain words** card says the same thing as a sentence — *"Best selling, based on sales from the last 30 days, sold-out products last"*.
+
+That matters more than it sounds. If a result surprises you, the rule is right there — you can disagree with it and fix it, rather than concluding the feature is broken. See [How ranking works](/docs/how-it-works/ranking-best-selling).
+
+## Why a product sits where it does
+
+For a **personalization rule**, open **Why this order** before you publish. It runs the real ranker — the same function the storefront calls, not a browser copy of it — for one shopper group, and prints what each signal contributed to every product's score. See [Why this order](/docs/personalization/why-this-order).
+
+For a **product**, open it from the Products tab and look at **What it travels with**. Every similar-product match names the signal that produced it — same product type, shared tags, shared collections, similar price, sells well, same vendor — so a match you disagree with points you at the data behind it. Only signals that could actually be compared are listed; if neither product has tags, the tag row is left out rather than shown as zero. See [One product](/docs/auto-sort/product-detail).
+
+## Which rule was live, and when
+
+**Results → Impact → Where that revenue came from** credits revenue to the surface and the ranking configuration that served it, with dates — so when a week goes unusually well or badly you can tell which rule was actually running instead of reconstructing it from memory. Per-configuration reporting is a **Pro** feature; the surface breakdown is on every plan.
+
+## What it earned — and what that number is not
+
+**Home** and **Results → Impact** report **influenced revenue**: orders where a shopper opened a product from a surface QSortby ordered, within the same session. The word is deliberate. Attribution here is last-touch, which means the figure tells you the sort was *involved* in those orders — not that it *caused* them.
+
+The same care applies to experiments. A result is reported as **directional**, never as proof, and the minimum sample per arm — 300 visits — stays on screen whether or not you have reached it, so you know when a difference is still too early to act on.
+
+<Callout type="note" title="A smaller honest number beats a bigger one">
+Most apps in this category report last-touch revenue without saying so, which flatters the total. Ours is labelled, so you can weigh it properly — and compare like with like when you evaluate another app.
+</Callout>
+
+See [Experiments](/docs/results/experiments).
+
+## What is not here
+
+One thing merchants reasonably expect that QSortby does not do, said plainly so you do not go looking: a **per-product score breakdown for a collection's recipe order**. You can see every product's rank and the recipe that produced it, and *Why this order* explains a personalization rule product by product — but the contribution of each criterion to one product's position in a plain sorted collection is not drawn.

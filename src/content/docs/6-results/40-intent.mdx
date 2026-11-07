@@ -1,0 +1,50 @@
+---
+title: "Intent — what shoppers came for"
+description: "What shoppers came for in the range you pick — buying a gift, replacing something, close to buying, browsing, treating themselves — how each kind behaves, what is trending with each, when each peaks, and what Intent AI is actually doing for your store."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+[Intent suggest](/docs/upsell/intent-suggest) is invisible from the storefront by design — every shopper sees a slightly different order, so there is nothing to look at. **Results → Intent** is where it becomes visible: what your visits were actually read as, how each kind of shopper behaves, and whether the layer is earning anything.
+
+Full on **Growth**. **Pro** sees the *what shoppers came for* reading — the layer runs in shadow there, classifying and reporting without touching your storefront. Recording runs on every plan, so the day you upgrade the history is already there. (Every new install runs on the Growth feature set for its first 10 days — see [Your first 10 days](/docs/getting-started/reverse-trial).)
+
+## What shoppers came for
+
+The share of visits in the range read as each of the five intents, with the count of **visits read** against visits in total. A visit is a 30-minute run of behaviour, and it is read **once its behaviour points clearly at one intent** — so a short visit, or one that stays ambiguous, is *not read yet* and shown in grey rather than forced into a bucket. If 90% of your read traffic lands in one intent, your [intent keywords](/docs/settings/settings-overview) are probably too generic for your catalogue.
+
+Under it, how each kind of shopper behaves: visits, product views, carts, purchases and revenue per intent. This is the table that tells you whether *Close to buying* is really closing, and how much a *Browsing* visit is worth to you.
+
+## Do the tags match what shoppers buy?
+
+An order is evidence about the reading. A visit read as *Buying a gift* that ended in a gift-set order agrees; one that ended in a restock does not. Where enough checked visits exist — at least thirty — this card says how often the reading agreed with what the order showed, per intent. *Treating themselves* is read mostly from price and is deliberately left out of the headline number; it is a weak proxy, and the page says so.
+
+## Trending with each intent
+
+Which products are rising with each kind of shopper: what gift-buyers are moving toward this week that they weren't last week. **New** and **Rising** appear once the period before this one was read too, so they take a range or two to show up on a fresh install.
+
+## When it peaks
+
+Visits by day across the range and by hour of day, coloured by intent, in **your store's own time zone**. A store whose gift-buying clusters on weekday lunchtimes and whose browsing clusters on Sunday evenings has two audiences, and that is worth knowing before you write copy or schedule a popup.
+
+## What Intent AI is doing
+
+The honest status card, per intent:
+
+- **How products are chosen** — *By rules: a product's intent tags against the shopper's intent* until a model has earned its place. When learned picks are on for an intent, it says so, and says what the check showed: that before going live the model beat the tags at putting what shoppers went on to click first, on visits it had not seen, by how much, and how sure that is. A model in training says it is in training and does not rank yet.
+- **For You serves** — whether intent reaches your storefront at all. It does so through a Personalized collection with *Rank by intent* on; the card tells you when there isn't one, or when there is but the switch is off.
+- **Measured lift** — the result of the **on/off test**, or *Not measured yet*. The test switches intent off for half your shoppers on For You and every offer that ranks by intent, for a length you set, and reports how much more (or less) often the intent group bought, with a range. See [Experiments](/docs/results/experiments).
+
+Each section carries a short **AI summary** of what it is showing — a starting read, not a verdict.
+
+<Callout type="note" title="It counts visits, not shoppers">
+A shopper who comes three times in a week appears three times, possibly read three different ways. That is deliberate: intent is a property of a visit, not of a person — the same person is a gift-buyer in December and a restocker in January.
+</Callout>
+
+## Why it might be empty
+
+- A brand-new install has nothing until the theme app embed has been collecting for a while.
+- Traffic that lands, buys fast and leaves is often never read clearly, and shows as *not read yet*.
+- Visitors who haven't granted **analytics** consent send almost nothing, so they can't be read either. See the note in [Set up QSortby](/docs/getting-started/setup).
+
+If the page says no visit in this range was read yet, it is usually one of those three rather than a fault.

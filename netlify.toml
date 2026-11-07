@@ -21,3 +21,60 @@
   to   = "https://guide.qsortby.com/:splat"
   status = 301
   force = true
+# 2026-11 guide restructure — old article URLs keep working
+[[redirects]]
+  from = "/docs/getting-started/setup-wizard"
+  to = "/docs/getting-started/setup"
+  status = 301
+[[redirects]]
+  from = "/docs/getting-started/dashboard"
+  to = "/docs/getting-started/home"
+  status = 301
+[[redirects]]
+  from = "/docs/collections/create-collection"
+  to = "/docs/auto-sort/auto-sort-a-collection"
+  status = 301
+[[redirects]]
+  from = "/docs/collections/window-and-schedule"
+  to = "/docs/auto-sort/window-and-schedule"
+  status = 301
+[[redirects]]
+  from = "/docs/collections/manage-collections"
+  to = "/docs/auto-sort/manage-collections"
+  status = 301
+[[redirects]]
+  from = "/docs/collections/storefront-blocks"
+  to = "/docs/auto-sort/theme-blocks"
+  status = 301
+[[redirects]]
+  from = "/docs/products/explore-products"
+  to = "/docs/auto-sort/products-tab"
+  status = 301
+[[redirects]]
+  from = "/docs/products/product-detail"
+  to = "/docs/auto-sort/product-detail"
+  status = 301
+[[redirects]]
+  from = "/docs/personalization/create-segment-rule"
+  to = "/docs/personalization/create-a-rule"
+  status = 301
+[[redirects]]
+  from = "/docs/personalization/the-ten-signals"
+  to = "/docs/personalization/the-twelve-signals"
+  status = 301
+[[redirects]]
+  from = "/docs/analytics/analytics-overview"
+  to = "/docs/results/impact"
+  status = 301
+[[redirects]]
+  from = "/docs/analytics/experiments-attribution"
+  to = "/docs/results/experiments"
+  status = 301
+[[redirects]]
+  from = "/docs/analytics/insights"
+  to = "/docs/results/intent"
+  status = 301
+[[redirects]]
+  from = "/docs/upsell/emotional-suggest"
+  to = "/docs/upsell/intent-suggest"
+  status = 301

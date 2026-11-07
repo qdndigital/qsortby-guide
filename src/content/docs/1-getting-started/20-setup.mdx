@@ -1,0 +1,42 @@
+---
+title: "Set up QSortby — two steps"
+description: "Setup is two jobs: switch QSortby on in your theme, then auto-sort one collection you already have. It ends when the order on your storefront has actually changed."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+**Setup** sits below the rule in the left-hand menu, and it opens automatically after you install. It used to be a five-step wizard — industry, theme, plan, feeds, done — and a merchant could finish all five, look at the storefront, and see nothing had changed. So it is now exactly two jobs, and the second one really does change the order on your store. Everything else is asked at the moment it starts to mean something: the industry when you first describe your catalogue, the plan when you first open something your plan doesn't include.
+
+## Before you start: the import runs by itself
+
+Importing your orders and products is **not a step**. It starts on its own after install and runs in the background; Setup shows it as a notice strip at the top — *Reading your store in the background* — and tells you when there are enough orders to rank by. On a shop with no orders yet, the strip says so, and step 2 offers a recipe that needs no sales history instead.
+
+## Step 1 · Switch QSortby on in your theme
+
+QSortby reads your storefront through a **theme app embed**. Open your theme editor, find **QSortby** under *App embeds*, switch it on and save. Setup checks every fifteen seconds whether the embed has come alive — you are switching it on in another tab, so there is nothing to click back here — and marks the step done the moment it sees events arrive.
+
+Without the embed, nothing downstream works: no views, no clicks, no cart adds, and the storefront blocks have nothing to render. If the numbers in the app are empty a week from now, this is the first thing to check (**Settings → Tracking** says in one word whether the pixel is receiving).
+
+<Callout type="note" title="A consent banner changes what arrives">
+The embed honours your store's customer-privacy settings. Until a shopper grants **analytics** consent, QSortby records only that a visit happened — no views, clicks or cart events — so those shoppers contribute nothing to behaviour-based ranking and see the same order as everyone else. If the events line looks low for your traffic, check what share of visitors accepts analytics before assuming the embed is broken. Sales-based recipes are unaffected: they rank from your orders, not the pixel.
+</Callout>
+
+## Step 2 · Sort one collection
+
+Pick **one collection you already have** from the dropdown (the twenty-five largest are offered; the full list is on Auto-sort), choose one of three recipes, and press **Sort it**. QSortby saves a snapshot of the current order first, writes the new order to Shopify, and sets the collection to **Manual** sort so the order survives.
+
+The three recipes offered here are the three that need the least explanation:
+
+- **Best selling** — most units sold in the window, sold-out products pushed to the end. The safe default.
+- **Trending now** — rate of change rather than total: what is climbing this week.
+- **New & selling** — recently added products that have actually sold.
+
+<Callout type="warning" title="This writes to your live storefront">
+Step 2 is a live sort, and the card says so twice. Nothing is lost — the order before QSortby is kept as a snapshot and can be restored from the collection's **Snapshots** page — but shoppers see the new order within a few minutes. If you'd rather look first, skip this step, open the collection from Auto-sort and use [test mode](/docs/auto-sort/test-mode-and-preview) instead.
+</Callout>
+
+## Setup is done — what it shows next
+
+Once a collection is sorting, Setup turns into a short summary: what QSortby is actually sorting, with the recipe each collection runs, and a **Worth switching on next** list. Those suggestions have evidence behind them — *Keep a product next to the one it goes with* appears only when your orders show pairs that are worth grouping — so the list is often short, and sometimes empty. That is a fact about your store, not a fault.
+
+From here, [Auto-sort a collection](/docs/auto-sort/auto-sort-a-collection) is where the rest of your collections are, and [Home](/docs/getting-started/home) is where the money shows up.

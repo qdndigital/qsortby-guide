@@ -1,0 +1,66 @@
+---
+title: "Settings — how the app measures, connects and shares data"
+description: "Six tabs: Tracking, Product data & AI, Integrations, Storefront data, AI connections and Plan. Settings holds measurement and connections, not how your storefront is sorted — sorting lives in Auto-sort, offers in Upsell."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+Sorting and offers live in **Auto-sort** and **Upsell**. **Settings** holds the rest: how the app **measures**, what it **connects** to, the data it hands your **theme**, and what you are **paying**. Six tabs, in that order.
+
+<Callout type="warning" title="Changing a measurement definition changes every figure in Results">
+What counts as a product view, the session gap, the cart window — change one and every number on Impact is counted the new way from then on. Figures from before the change were counted the old way, so comparisons across it are not like for like. The page says so before you save.
+</Callout>
+
+## Tracking
+
+Whether the app can see your storefront, and how it reads what it sees.
+
+**Reading your store** — the import: how far back your orders have been read, whether it is still running, and where it stopped if it did. Until it finishes, short ranking windows are thin and Home says so.
+
+**The storefront pixel** — one word on whether the theme app embed is receiving events, with the time of the last one. If it reads *not receiving*, nothing behaviour-based works; [Setup](/docs/getting-started/setup) step 1 is the fix. **Auto-sort still runs; measurement does not** — sales-based recipes rank from your orders regardless.
+
+**What counts as a product view** — a visit shorter than the **minimum time on page** is discarded (raise it for considered purchases, lower it for things people recognise on sight; 0 turns the time test off), and by default the shopper also has to **scroll or move the pointer**, because a tab left open in a background window is otherwise the most attentive view in your store. **Split browsing sessions after** sets the gap beyond which two products no longer count as viewed together.
+
+**Shared cart window** — **split carts after** a gap of so many minutes, so two products count as added together only when they were added in one go; and **ignore items removed within** a short time, because an item taken back out that quickly was a mis-tap, not a decision.
+
+**Web Pixel** — a repair button, not a setting. It re-registers QSortby's Web Pixel in your shop's Customer Events sandbox, which is what sees checkout. Run it if purchase events have stopped flowing; sales-based ranking keeps working from your order webhooks meanwhile, but conversion signals go quiet.
+
+**Tracking debug** — a live view of the raw event stream. Most merchants never open it; the ones who do are usually checking whether a theme change broke the pixel. Click around your storefront in another tab and events appear within a second or two. It identifies no one.
+
+## Product data & AI
+
+Everything that describes your catalogue to the app.
+
+**Product metadata** — your **coverage**: what share of your products carry a category, attributes, a launch date or a replenishable flag. This is the number to look at when personalization feels blunt — *Favorite category affinity* can only work on products it can describe, and *Repeat purchase* only on products marked replenishable.
+
+**Classification dimensions** — the vocabulary QSortby groups products by (what you call it, what kind of grouping, the values to choose from, the Shopify metafield behind it). The AI proposes a set for your industry; you edit it. Fields that wait on a human stay empty in every shop, so…
+
+**Fill product values with AI** — fills a value on each product for you, from its title, description and tags, instead of leaving it to you one product at a time. The page marks values you have edited by hand, so a re-run never overwrites them.
+
+**Intent keywords** — the words that tag each product with the intent it suits, matched against titles, tags and types. Read the industry defaults against your own product names and remove any word that means something else in your catalogue. Confirming saves the words; it does not re-read your catalogue — products already tagged keep their tags until you run **Generate embeddings**.
+
+**Product intent tags** — what carries each intent, filterable by intent and by *Weak matches only*. Replace the AI's tags on any product (one or two of the five, primary first); your choice stays until you press Generate embeddings or hand the row back with **Use AI's pick**. See [Intent suggest](/docs/upsell/intent-suggest).
+
+**Excluded products** — the single place to keep a product out of **everything**: every sorted collection, every feed, every offer. Gift cards, samples, warranty add-ons, a placeholder your theme depends on. Exclusions beat ranking and apply before caching, so an excluded product is gone from the next feed QSortby builds.
+
+## Integrations
+
+Accounts the app connects **to**.
+
+**Review source** — which review app's ratings feed *Top rated* and the *Hide poorly rated products* filter. QSortby detects whichever of several review-metafield shapes is richest (Judge.me, Fera, REVIEWS.io, Stamped, and others), and you can pin one. That matters when you switch review apps: uninstalling one does not delete its metafields, so the dead app's frozen numbers can outrank the live one and your ratings stop moving.
+
+**Google Analytics** — a GA4 property to receive QSortby's events, so a surface's clicks show up beside the rest of your analytics.
+
+**Attribution prefix** — the word QSortby's hidden order attributes are built from (`_qsortby_…` by default). Lowercase letters, numbers and dashes, up to 20; blank resets. Change it only if another app writes the same keys. Attribution reads them back whatever the prefix.
+
+## Storefront data
+
+What the app hands your **theme**: a related-products API your theme's JavaScript can call, and related-product metafields written onto your products for Liquid. A shopper sees these only where your theme chooses to show them. Pro and Growth. See [Storefront data](/docs/settings/storefront-data).
+
+## AI connections
+
+Let Claude or ChatGPT answer questions about your QSortby data — and, where you allow it, set things up as drafts for you to review. Pro and Growth. See [AI connections](/docs/settings/ai-connections).
+
+## Plan
+
+The four plans with what each grants, generated from the grants themselves so the bullets cannot drift from what the app enforces; your current plan with the price your subscription actually carries; the days left on either trial; and **What happens if you downgrade**, spelled out. See [Your first 10 days](/docs/getting-started/reverse-trial) and [Plan limits](/docs/getting-started/plans-and-limits).

@@ -1,0 +1,44 @@
+---
+title: "Troubleshooting — the four things that go wrong most often"
+description: "Numbers all empty, a surface showing 0 views, an order that looks unchanged, a recipe that does nothing — the four failures support actually receives, what each one means, and the fix."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+These are not a generic FAQ. They are the four things that have actually gone wrong in real stores, in the order support hears about them. Each is a real failure with a real cause, and none of them is the app being broken.
+
+## The numbers are all empty
+
+**The theme app embed is probably off.** Every behaviour figure — views, clicks, cart adds, the engagement recipes, the Visitors tab, Intent — comes through the embed, and without it the app sees orders and nothing else. **Settings → Tracking** says in one word whether the pixel is receiving, with the time of the last event.
+
+Fix: theme editor → App embeds → switch **QSortby** on → save. Setup checks every fifteen seconds and marks step 1 done when events arrive. If the embed is on and the numbers are still thin, check what share of your visitors grants **analytics** consent — until they do, the embed records only that a visit happened.
+
+Sales-based recipes are unaffected either way: Best selling, Trending now, Profit first and the rest rank from your orders, which arrive through webhooks whether or not the embed is on.
+
+## A surface shows 0 views
+
+**It is configured but has nowhere to render.** A sorted collection page needs no placement — Shopify renders it. But a **For You**, **Best sellers**, **Goes with** or **Frequently bought together** row is a theme block, and a block you configured in the app but never placed in the theme editor is a surface with no screen.
+
+Fix: **Auto-sort → Theme blocks** shows which of the four are placed and where. Open your theme editor and check the block is actually on the template you expect — the product template for Goes with and FBT, the home page or collection template for the two feeds. An upsell offer with 0 views on a theme QSortby does not know usually wants an **anchor**: a selector in the offer's *Where it shows* section telling it what to attach to.
+
+## The order looks unchanged
+
+**Check the collection is set to Manual sort in Shopify.** QSortby writes an order and sets the collection to Manual so Shopify holds it. Any other sort order — Best selling, Newest, Price — overrides what QSortby writes on the next page load, and someone on your team changing it back in Shopify admin is the usual cause.
+
+Fix: Shopify admin → Products → Collections → the collection → **Sort** → Manual. QSortby's next scheduled sort rewrites the order. If the collection is on a **Manual schedule** in QSortby, it will not re-sort on its own either; Home lists those under *Needs attention*.
+
+Also worth a look: the collection's **Updates** setting. With **Push to Shopify automatically** off, each new order is staged on the Preview tab for you to approve, and nothing reaches the storefront until you do.
+
+## Margin ranking does nothing
+
+**It needs a cost per item on your Shopify variants.** Profit first ranks on margin, and margin is price minus cost — with no cost recorded, every product has the same margin and the recipe has nothing to rank by. The recipe picker marks it *no data* rather than letting it look ready; forced through *Write your own*, the order simply does not move.
+
+Fix: Shopify admin → Products → each variant → **Cost per item**. QSortby picks it up on the next product sync. The same is true of **Top rated** without reviews — and if you have switched review apps, see *Review source* under [Settings → Integrations](/docs/settings/settings-overview), because the dead app's frozen numbers may still be the ones being read.
+
+<Callout type="tip" title="Home tells you before you have to look">
+All four show up on **Home** under *Needs attention* or in the pixel banner, surfaced before you go looking. If Home is quiet and something still looks wrong, [Check what the sort actually did](/docs/getting-started/check-what-it-did) is the map of every place you can see what happened and why.
+</Callout>
+
+## Still stuck
+
+Email **support@qsortby.com** with your store's `.myshopify.com` address and the collection or offer in question. We reply within one business day, and we read code rather than guess — if something here is wrong, we would rather know.

@@ -1,0 +1,43 @@
+---
+title: "The six recipes"
+description: "A recipe is a ranking formula with a name. Six are offered when you auto-sort — Best selling, Trending now, New & selling, Profit first, Personalized and Write your own — and this is what each one means, and what it needs."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+A **recipe** is a ranking formula with a name. It decides **order only** — never prices, never products, never which collection something belongs to. The recipe picker offers six, and a recipe that has no data to rank by on your store is marked *no data* in the picker rather than letting it look ready.
+
+| Recipe | What leads | Needs |
+| --- | --- | --- |
+| **Best selling** | Most units sold in the window, sold-out products pushed to the end. The safe default. | Orders |
+| **Trending now** | Rate of change, not total — what is climbing this week. A sales floor stops a jump from 1 to 3 units winning. | Orders in two consecutive windows |
+| **New & selling** | Recently added products that have actually sold. | Launch dates + orders |
+| **Profit first** | Highest margin first, with a sales floor so revenue does not fall away. | A **cost per item** on your Shopify variants |
+| **Personalized** | A different order per shopper, driven by your [personalization rule](/docs/personalization/create-a-rule). | The For You theme block, and a published rule |
+| **Write your own** | All eleven criteria with your own weights. For the exceptions. | Whatever the criteria you pick need |
+
+## Best seller and trending are different questions
+
+A product holding at 168 units a month is a **best seller**. A product that went from 4 to 11 units this week is **trending**. Both are worth showing, and they need different recipes — which is why the [Products tab](/docs/auto-sort/products-tab) sits next to the collection list rather than in Results: it is where you find out which question a collection should answer before you commit it to one. *New Arrivals* is the usual home for Trending now, re-sorting hourly.
+
+## The sales floor
+
+Trending now and Profit first both carry a **sales floor**, and it damps rather than excludes. A product whose sales in the window sit well below the best seller's — under about 15% of it — keeps its rank but has its trend or margin score multiplied down, so it can still appear, just not lead on a jump from one unit to three. A hard cutoff would hide a genuine riser in its first week; the floor only stops it winning before it has earned it. The floor is part of the recipe, not a setting.
+
+## "Write your own" — the eleven criteria
+
+Behind the six recipes are eleven **criteria**, and Write your own exposes them all with weights. A shop can hold a collection on a criterion no recipe card offers directly — *Most profitable* without the floor, say, or *Selling fast* — and the collection list names what each one actually runs:
+
+Best selling · Top revenue · Most profitable · Customer favorites · Trending · Selling fast · Newest · Top rated · Engagement (most impressions, most clicks, highest CTR, most added to cart, longest dwell, best converting) · Personalize · Your own formula.
+
+Each one has its own page under [How ranking works](/docs/how-it-works/ranking-best-selling), with the arithmetic and the window it reads.
+
+<Callout type="note" title="Shopify has a sort called “Best selling” too — it is a different order">
+Shopify's own collection sort dropdown offers *Best selling*: an opaque all-time figure with no stock handling. QSortby's is units sold in the collection's rolling window with sold-out products demoted. The two extra words — "in your window", "sold-out last" — are the two differences, and they are why a collection sorted by QSortby is set to **Manual** in Shopify rather than to Shopify's Best selling.
+</Callout>
+
+## Two recipes that look ready and are not
+
+**Profit first** needs a cost per item on your Shopify variants. Without it the recipe has nothing to rank by, so the picker marks it as having no data rather than letting it look ready — and if you force it through Write your own, every product scores the same and the order does not move.
+
+**Top rated** needs reviews, from a review app QSortby can read (Judge.me, Fera, REVIEWS.io, Stamped and others; **Settings → Integrations** shows which source it found). Uninstalling a review app does not delete its metafields, so a shop that switched apps can keep ranking on the dead app's frozen numbers — if your ratings have stopped moving, pin the live source there.

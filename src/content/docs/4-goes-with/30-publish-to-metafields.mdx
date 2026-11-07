@@ -1,0 +1,31 @@
+---
+title: "Publish Goes-with sets to a product metafield"
+description: "Write each rule's sets onto your products in Shopify — qsortby.pairwith plus a product list per rule — so your theme can render them in Liquid without calling QSortby. Off until you turn it on; switching it off removes what it wrote."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+A rule on its own lives inside QSortby. **Publish to a product metafield** writes its sets onto each product in Shopify, so your theme can show them without calling the app — and so another app that wants the pairs can read them. Available from **Starter**.
+
+## What gets written
+
+Each product gets two things:
+
+- **`qsortby.pairwith`** — every set the product belongs to, with the rule's name and its partners' ids and handles.
+- **A product list per rule**, under a key made from the rule's handle — for a rule named *Complete the look*, `qsortby.pairwith_complete-the-look`. The Shopify admin shows a product list as product cards, and a theme section can loop over it and render the partners.
+
+In-stock partners are always listed first. Each rule has its own **Products from this rule** cap; **Products per rule** on the publish card is what a blank one falls back to, and left blank too, each rule uses its default — 5 for *Similar products* and *Bought together*, 50 otherwise. 50 is the most a rule can take, and one product's list holds at most 128, which is Shopify's limit.
+
+## When it runs
+
+Publishing runs in the background and is paced to Shopify's rate limit, so a large catalogue takes a few minutes the first time. After that the metafields are rewritten **when you save a rule**, **when a product's pairing fields change**, and **every night**. Stock changes do not trigger it on their own — **Publish now** writes them straight away.
+
+<Callout type="warning" title="Turning it off removes the values it wrote">
+The switch is off until you turn it on, and switching it back off clears every value QSortby wrote. The same happens when your plan stops including it, so your theme never renders a list that has stopped updating. Changes you make to these metafields in Shopify by hand are overwritten on the next publish.
+</Callout>
+
+## Who reads it
+
+- **QSortby's own Goes-with theme block** reads this metafield first, and asks the app only until it has been written — so publishing also makes the rail faster.
+- **Your theme**, when it draws its own "Complete the look" section in Liquid.
+- **Settings → Storefront data**, which can also write a product's top ten *goes-with* partners into `qsortby.related_goes_with` alongside bought-, added- and viewed-together and similar lists. That feature needs this publish switch on for the goes-with list to be filled. See [Storefront data](/docs/settings/storefront-data).

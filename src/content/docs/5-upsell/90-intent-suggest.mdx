@@ -1,0 +1,67 @@
+---
+title: "Intent suggest"
+description: "Let the intent read choose between your ranked candidates, so a gift-buyer and a shopper replacing something get different suggestions from the same cart — or the same feed. Rules first; a learned model only where it has proved it picks better."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+Every offer ranks by the signal you pick — velocity, margin, conversion rate. **Intent suggest** adds a second, lighter pass on top: among the products your ranking already chose, it prefers the ones that suit **what the shopper came for**.
+
+Applied live on **Growth**. On **Pro** the same read runs in shadow — visits are classified and reported in [Results → Intent](/docs/results/intent), and your storefront is untouched. (Every new install runs on the Growth feature set for its first 10 days — see [Your first 10 days](/docs/getting-started/reverse-trial) — so you'll see it working before you're paying for it.)
+
+## The five intents
+
+Intent AI reads each visit as one of five reasons to be in the store:
+
+| Intent | What the visit looks like | What sells |
+| --- | --- | --- |
+| **Treating themselves** | Unhurried, lingering on the dearer items — often late evening or the weekend, in from social on a phone. No deadline, nothing particular in mind. | Premium bundles and the nicer size. Don't discount. |
+| **Replacing something** | Arrived knowing what they want and moving fast — an urgent-reading search, quick scrolling, the cheaper end. Restocking, not exploring. | Make the obvious choice easy to find. Fewer options, not more. |
+| **Buying a gift** | Shopping for someone else — gift wording in the search, or ranging across unrelated categories at prices all over the map. Usually a first-time visitor. | Gift sets, wrapping and delivery dates. |
+| **Browsing** | Looking around with nothing picked out — many pages across many categories, a long session, nothing in the cart. | Range and new arrivals. Nothing here is ready to be closed. |
+| **Close to buying** | Came straight here, has been before, acting decisively — few pages, something in the cart, nothing taken back out. | Stock, shipping and returns. Anything else is a distraction. |
+
+The read comes from **how the visit behaves** — scroll speed, dwell, cart activity, referrer, what was searched — not from who the shopper is. No purchase history is required, nothing identifies anyone, and the app reports a *margin* (how clearly one intent led) rather than dressing coverage up as confidence.
+
+<Callout type="note" title="It used to be called Emotional">
+The earlier model named twelve emotional states. It overclaimed: those signals cannot establish a shopper's *feeling*, and a merchant cannot act on "anxious". The five intents are the question a merchant actually has — *what did this shopper come for?* — and the readings of the earlier model are excluded from today's totals rather than summed into them.
+</Callout>
+
+## Where you'll find it
+
+A checkbox in the editor of the touch points that can identify a shopper: **cart drawer**, **popup**, **in-checkout** and **thank-you page**. On the cart drawer and the popup it only appears in **automatic** mode — a hand-picked list is your order, not ours.
+
+It also appears on a **Personalized collection** and on the **For You** feed. There it works differently: the intent read becomes the **Intent match** signal inside your [personalization rule](/docs/personalization/the-twelve-signals), weighted alongside the others.
+
+It's **off by default** on every offer and every collection, including new ones. Turning it on is a decision you make per surface.
+
+<Callout type="note" title="Why not on Frequently bought together or the shipping bar">
+Those two have their own logic that intent would undermine. Frequently bought together sells one claim — *other people bought these in the same order* — and quietly reordering it by intent would make that claim untrue. The free-shipping bar can only suggest products that actually close the gap, which leaves no room for a second opinion.
+</Callout>
+
+## What it needs to work
+
+**Intent keywords for your industry.** In **Settings → Product data & AI → Intent keywords** each intent is described by words matched against your product titles, tags and types. The shipped list is a starting point that is wrong somewhere in every shop — "fresh" is a scent family in home fragrance and a shelf life in groceries — so read it against your own product names and remove any word that means something else in your catalogue. A wrong word does not sit idle; it tags the wrong products.
+
+**A tagged catalogue.** Every product QSortby has embedded carries **one or two intents**, the primary first. The **Product intent tags** list on the same tab shows what carries each intent; filter it to *Weak matches only* to see the words that are failing. You can replace the AI's tags on any product — from the five, one or two — and your choice stays until you press **Generate embeddings** again, or hand the row back with **Use AI's pick**.
+
+**A shopper the layer has read.** A visit is read as it goes, and the read firms up as the shopper does more. A visitor who lands, buys in forty seconds and leaves may never be read at all.
+
+## What it does and doesn't do
+
+It **nudges**, it doesn't take over. Your chosen signal still decides the pool and still dominates the order; the intent pass moves matching products up within it. A product that isn't selling won't be promoted into the cart drawer because it happens to carry a tag.
+
+It's also **fail-quiet by design**. No reading, no tagged products, or any hiccup reading them, and you get your normal ranked order — never an empty widget and never an error in front of a shopper.
+
+## What "learns" means here, honestly
+
+Out of the box the pass is **rules, not a model**: a product's intents come from its own text matched against the keywords; a shopper's intent from their visit. Match the two and the product moves up. That works from day one.
+
+Behind it, QSortby records what shoppers with each intent went on to **buy** at your store, and recomputes a per-intent pick nightly. Those **learned picks** replace the tag match **only where they have shown, on your recent orders, that they pick better than your own best sellers** — and the [Intent tab](/docs/results/intent) says, per intent, whether that is on and why. Until then the storefront ranks by the tag match, and the guide says so rather than claiming a learned model is running.
+
+## Proving it
+
+Because each shopper sees a different order, this layer is invisible from the storefront. Two places make it visible:
+
+- **Results → Intent** — what shoppers came for in the window you pick, how each kind behaves, what is trending with each, and when each peaks.
+- **The on/off test** — an [experiment](/docs/results/experiments) that switches intent off for half your shoppers on For You and every offer that ranks by intent, for a length you set. At the end it says how much more (or less) often the intent group bought, with a range — and if there is no clear difference, how large a difference the test could have seen. Home shows the result beside the running read.

@@ -1,0 +1,44 @@
+---
+title: "Impact — what the sorting earned"
+description: "Influenced revenue over the range you pick, where it came from, which collections earn their clicks, how the personalized feed did, what moved, and which sort version produced it. One tab, one range, and an honest word for every number."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+**Results** is the fourth entry in the menu, and **Impact** is its first tab: the money question. Three more sit beside it — [Experiments](/docs/results/experiments), [Visitors](/docs/results/visitors) and [Intent](/docs/results/intent) — and all four read the **same range**, chosen once at the top of the page. There are no second rows of tabs and no per-card date buttons, so two figures side by side always cover the same period.
+
+The range control also does **custom ranges** and a **side-by-side comparison** of two periods, which is the quickest way to read a before/after around the day you changed a recipe.
+
+## What this is, honestly
+
+Influenced revenue is **last-touch attribution over one shopping session**: when a shopper opens a product from a surface QSortby ordered, a tag is written; it expires after thirty minutes; an order placed while it is live is credited to that surface. An upsell is credited only with the items it added, never with the whole order around them.
+
+It measures **influence, not proven cause**. A shopper who would have bought anyway is counted the same as one who would not, and the app never uses the word "caused". What it is good for: telling you which surfaces are *involved* in sales, and how that changes when you change them. What it is not: a profit-and-loss line. For a number that controls for shoppers who would have bought anyway, run an [experiment](/docs/results/experiments).
+
+<Callout type="note" title="Attribution is on every plan">
+Influenced revenue, the surface breakdown and the daily series are Free. Per-sort-version reporting, the personalized-feed funnel and CSV export are **Pro**. A plan that cannot open a report sees what the tier would add, not a page of zeros.
+</Callout>
+
+## The sections, top to bottom
+
+**Influenced revenue** — the headline for the range, with the **daily series** underneath so a spike has a date.
+
+**Against the whole store** — store revenue and store orders for the same range, beside the influenced share, and the **influenced basket** next to the **untouched basket**. The comparison is against the orders QSortby did *not* touch, not against the store average — the average contains the influenced orders, so differencing against it would subtract the effect from itself.
+
+**Where that revenue came from** — one row per surface (a sorted collection, the For You feed, the Best sellers row, each upsell touch point) with its type, influenced revenue, orders and basket. *No surface has been credited with an order in this range* is a real answer, usually on a new install or a short range.
+
+**Which collections earn their clicks** — impressions, clicks and CTR per sorted collection, with a small CTR trend and the recipe each runs. The fastest way to see which sorts shoppers actually respond to.
+
+**How the personalized feed did** (Pro) — the For You surface on its own: shoppers served, click-through, cart adds, orders and revenue, split by device and by experiment arm where one is running.
+
+**What moved** — products rising and falling on revenue over the range, with the change behind each move. It loads after the rest of the page, because it answers a question that belongs to the [Products tab](/docs/auto-sort/products-tab) as much as to Results.
+
+**Sort projects** (Pro) — what each ranking configuration earned *while it was live*: attributed orders, revenue, basket and feed CTR per version, so a sort you have since changed is still judged on its own window. When a week goes unusually well or badly, this is how you tell which rule was running.
+
+## Export
+
+Each table has **Export CSV** (Pro), with the same range and the same definitions as the screen — so a figure in your spreadsheet means what the same figure meant on the page.
+
+## When the pixel is down
+
+Impressions, clicks and CTR come from the storefront pixel; influenced revenue is counted from orders. If the theme app embed stops reporting, the pixel-fed figures are marked **frozen** rather than silently going stale, and the revenue line carries a note saying it is unaffected. Auto-sort keeps running from your orders in the meantime; it is measurement that stops, not sorting.

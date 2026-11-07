@@ -1,0 +1,45 @@
+---
+title: "Your first 10 days — the reverse trial"
+description: "Every new install runs on the Growth feature set for 10 days, then settles onto Free. Your first paid plan adds a separate 7-day trial. What that means for what you see, and what changes on day 11."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+QSortby doesn't make you upgrade to find out what a tier does. For the first **10 days after install**, an unpaid store runs on the **Growth** feature set — every surface, every signal, Intent AI applied live, the in-checkout offer. Then it settles onto **Free**, automatically, with no card and no interruption.
+
+This is worth reading before you build anything, because the plan labels in this guide — *"from Starter"*, *"on Pro"*, *"Growth only"* — describe where a feature lives **after** the trial, not what you'll see on day one.
+
+## Two trials, not one
+
+There are two separate windows, and they are easy to confuse:
+
+- **The 10 free days on install.** Counted from the moment you install, on every new store, with no card. While it runs, a banner across the top of every page counts the days down. When it ends, your plan becomes Free.
+- **A 7-day trial on your first paid plan.** When you approve your first paid plan in Shopify — Starter, Pro or Growth — it starts with 7 free days, counted from the day you approve it. This is **once per store**: changing plans later, or cancelling and re-subscribing, does not start another.
+
+The two are separate, not added. Pick a plan on day 2 of the install window and your card is charged on day 9. Pick one on day 12, after the install window has closed, and you still get the full 7 days. The billing page words its offer from exactly those rules, so the line under each paid plan is the number you can count on.
+
+<Callout type="note" title="Days are rounded up">
+A store two hours into its install window still reads "10 days left". The counter never rounds down, so the number you see is the number of calendar days you can still count on.
+</Callout>
+
+## What changes on day 11
+
+Nothing is deleted. Everything you configured is still there, and starting a paid plan restores it exactly as it was. What stops is **serving**:
+
+- **Collections beyond the Free limit** (one) keep every setting and stop updating. The order already on your storefront stays as it is — QSortby does not undo a sort to sell a plan.
+- **Personalization rules** are kept and readable; the published rule stops being applied.
+- **Upsell places above your plan** stop rendering but keep their configuration. The cart drawer and the free-shipping bar are on every plan, so those two keep going.
+- **Intent AI** drops from applied to off. Nothing is classified on Free, so the Intent tab in Results shows what the tier would add rather than disappearing.
+- **One thing is removed:** the related-product metafields QSortby writes onto your products (Settings → Storefront data) are deleted when your plan no longer includes them, so your theme never shows lists that have stopped updating. See [Storefront data](/docs/settings/storefront-data).
+
+Orders, snapshots and history are never deleted.
+
+## A sensible way to use the 10 days
+
+1. Finish [Setup](/docs/getting-started/setup) on day one. Behaviour-based signals need time to accumulate before any ranking looks interesting; sales-based recipes work from your existing orders at once.
+2. Turn on the surfaces you're curious about, not all of them. Two offers you actually read the numbers on beat six you don't.
+3. Around day seven, look at [Impact](/docs/results/impact) and decide which tier's features earned their place. That's a much better basis for picking a plan than the feature table — and the 7-day paid trial means the decision is still reversible.
+
+<Callout type="tip" title="Ask if something looks pinned">
+Plan tiers are the baseline, not the last word — QSortby can grant or withhold an individual feature for your store on top of whatever your plan says. If a capability behaves differently from what this guide describes for your tier, that's the likeliest reason.
+</Callout>

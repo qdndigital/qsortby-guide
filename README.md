@@ -79,7 +79,7 @@ Presets reuse the exact QDN-family marks + colours:
 | preset | colour | glyph |
 | --- | --- | --- |
 | `qdn` | ember | square |
-| `qsortby` | green | ranked stack |
+| `qsortby` | green | its own symbol (Q + square, brand guide 2026-11) |
 | `qnotify` | blue | signal |
 | `qmember` | violet | rosette |
 
@@ -123,14 +123,13 @@ import Callout from '../../../components/Callout.astro';
 - **Edit history / rollback** — free via git once pushed to a repo.
 - **Multiple doc versions** (v1 / v2) — add a top folder like `0-v2/…`; URLs follow.
 
-## Optional: search
+## Search
 
-Add [Pagefind](https://pagefind.app) for zero-infra static search:
-
-```bash
-npm i -D pagefind
-# package.json → "postbuild": "pagefind --site dist"
-```
+Built in: [Pagefind](https://pagefind.app) indexes `dist/` after `astro build`
+(`npm run build` runs both). The dialog (`src/components/SearchDialog.astro`,
+⌘K) 404s under `astro dev` by design — try it with `npm run build && npm run preview`.
+Articles are indexed from `<article data-pagefind-body>`; mark anything to skip
+with `data-pagefind-ignore`.
 
 ## Deploy
 

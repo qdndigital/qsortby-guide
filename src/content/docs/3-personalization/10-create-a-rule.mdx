@@ -1,0 +1,51 @@
+---
+title: "Create a personalization rule"
+description: "A rule is groups of shoppers, each with its own order of priorities. Write it, read what it produces with Why this order, then publish — exactly one rule is live at a time, and nothing reaches a shopper until you press Publish."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+**Auto-sort → Personalization** shows each shopper a product order tuned to them, on a surface you already have. You answer three questions: **who** (a group of shoppers, computed from your store's own behaviour), **what matters to them** (priorities in order — you are not asked to invent numbers), and then you **turn it on**.
+
+Included from **Starter** — three rules, five groups each. Pro and Growth are uncapped. (Every new install runs on the Growth feature set for its first 10 days — see [Your first 10 days](/docs/getting-started/reverse-trial).)
+
+## Exactly one rule is published
+
+The Personalization tab lists your rules with a **Published** or **Draft** badge, and the ranker reads the published one. Everything else on the list is a draft — writing a rule, editing it or saving it changes **nothing a shopper sees** until you press Publish. Drafts cost nothing, so keep as many as you like.
+
+With no rule published, ranking does not stop: the app falls back to its own default order, which is the collection's recipe.
+
+## 1. Start a rule
+
+**Write a rule** opens a blank one. **Describe it instead** (Pro and above) lets you say who your shoppers are in plain words — *"returning customers who buy candles, and first-timers from Instagram"* — and drafts the groups for you to read and edit. Either way you end up in the same editor, and nothing the AI drafted is published until you say so.
+
+## 2. Groups of shoppers
+
+A rule is a list of **groups**, checked top to bottom; the first group a shopper matches is the one whose order they see. Each group has:
+
+- **Conditions** that select it. They are **AND-ed** — every one has to be true for a shopper to match. The conditions available are **Purchase count**, **Days since last visit**, **Visit count**, **Cart size** and **Cart value**.
+- **Priorities** — the [twelve signals](/docs/personalization/the-twelve-signals), in the order that matters to this group. Weight is *share of influence*, not a probability, and a signal with no data on your store is marked rather than silently counted as zero.
+
+<Callout type="warning" title="Cart value doesn't work on the storefront yet">
+The condition list offers **Cart value**, but the storefront block hands QSortby the products in a cart without their prices — so on a live visit cart value always reads as 0, and a group gated on "cart value over $X" never matches. Anyone who would have landed there falls through to the group below. Use **Cart size** (number of items) until this is wired up. The [trace](/docs/personalization/why-this-order) does honour the cart value you type, which is why a group can match there and never on the storefront.
+</Callout>
+
+Anyone matching no group falls through to **Everyone else**, which is why that group is never empty and cannot be deleted. A brand-new visitor has no prior visit on record, so a condition on *Days since last visit* never matches them — they fall straight through, which is usually what you want.
+
+<Callout type="tip" title="Write the first-visit group first">
+Most of a store's collection traffic is people you have never seen before, and eight of the twelve signals work on a stranger. A group for first-time visitors weighted toward Top sellers, New arrivals and Session intent is a complete, useful rule — no login, no history, no quiz.
+</Callout>
+
+## 3. Read it before you publish
+
+Open **Why this order**. It runs the **real ranker** — the same function the storefront calls, not a browser copy of it — for one group, and prints the per-signal arithmetic behind every product's position. You can inspect a group that matches nobody yet, which is the one most worth checking and the one no real visitor could ever show you. See [Why this order](/docs/personalization/why-this-order).
+
+## 4. Publish
+
+**Publish** makes this rule the live one and unpublishes whatever was live before (that rule becomes a draft you can re-publish any time). From that moment the rule rewrites the slots a surface allows it — three of six on Best Sellers, for instance — and shoppers who match nothing see the collection's recipe order in those same places.
+
+New visitors pick up the new order straight away. A shopper who already has a feed built keeps their old order until it expires — the **Refresh interval** on the collection, one hour by default and up to 24. So don't judge a change by reloading your own browser: test it in a fresh profile, or see [Theme blocks](/docs/auto-sort/theme-blocks).
+
+<Callout type="note" title="Half see it, half don't — on purpose">
+When a rule is published alongside a running [experiment](/docs/results/experiments) on the same surface, half of matching shoppers see the new order and half keep the normal one, so the difference can be measured in revenue per visit rather than assumed. A visitor always stays in the same arm.
+</Callout>

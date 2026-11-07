@@ -1,0 +1,38 @@
+---
+title: "Why this order — and tracing a shopper through your rule"
+description: "The real ranker's order for one shopper group, with the arithmetic that produced it; and a made-up shopper with a history you can walk through the rule, so you can check a group no real visitor has reached yet."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+Personalization is a glass box: the rule is yours to read, and so is the order it produces. Two tools in the rule editor make that concrete, and both run the **real ranker** — the same function the storefront calls. Nothing is re-ranked in the browser, because a glass box showing the wrong insides is worse than no glass box.
+
+## Why this order
+
+Open it from the rule editor, pick a **group**, and the page shows the order that group would be served, product by product, with a **per-signal breakdown**: what each priority contributed to each product's score. A product leading because *Top sellers* carried it reads differently from one leading on *Session intent*, and the breakdown is where you see which.
+
+Three things about it are deliberate:
+
+- **You can inspect a group that matches nobody yet.** It is the group most worth checking — and the one no real visitor could ever show you.
+- **When the server sends no breakdown, none is drawn.** A wrong order gets noticed; an invented explanation gets believed.
+- **The shopper is invented, and printed on the page.** An answer about a made-up person is only honest if the person is shown.
+
+## Trace this shopper
+
+The rule editor's **Trace this shopper** panel is the same idea walked step by step. Fill in a few facts — purchase count, days since last visit, visits, cart size, cart value — and the trace shows which group those facts land in, condition by condition, and the top products that group would see.
+
+The made-up shopper also gets a **history built from their numbers**: products viewed, clicked, carted and bought, picked from your own catalogue. That history is what makes the trace useful. Without it every group previewed the same best-seller order, because *Recently viewed*, *Cart history* and *Repeat purchase* had nothing to work with; with it, a *Cart abandoner's* cart products rank first and a *Returning visitor's* order differs from a *New visitor's* the way the two formulas say it should.
+
+<Callout type="note" title="Where the history comes from">
+The products are picked from beyond the first page of your default order — the first page is what *Top sellers* already puts on top, so picking from it would make every group look the same again. The cart total shown is those products' real prices, not the number you typed; the facts you typed chose the group, the products have their own prices. **Try other products** rotates the pick. Nothing is written anywhere: the preview touches no cache and no visitor data.
+</Callout>
+
+A first visit with an empty cart has no history to build, so it gets the best-seller order — and the page says why, rather than pretending to personalize nothing.
+
+## See the full order
+
+**See the full order** opens the Why-this-order page for the same shopper, carrying the facts and the history across. Switching group there drops them, because a different group is a different person.
+
+<Callout type="tip" title="One thing to know about the trace">
+The trace ranks with the **saved** rule while the path walk follows the one you are editing — and it is labelled that way on screen. Save before you trust the products; the group it lands in is live as you type.
+</Callout>

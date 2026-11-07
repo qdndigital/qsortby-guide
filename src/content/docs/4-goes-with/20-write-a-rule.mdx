@@ -1,0 +1,67 @@
+---
+title: "Write a Goes-with rule"
+description: "The rule editor reads as sentences: IF a product matches these conditions, THEN group it by this field. The sections of a rule — which products go together, bring company to a product, never pair these, stop here, out of stock, order within a set — and what each one does."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+A Goes-with rule is a short list of sentences, each in three steps: **which products it covers**, **what they pair with**, and **how many / what next**. A closed rule shows its sentence; click it to edit. The sections below are the same cards the collection page shows when a rule is attached, so these settings read the same wherever you meet them.
+
+## Which products go together
+
+The heart of the rule. With none of these, nothing is grouped.
+
+Each line covers some products and names the field they **pair on**: products the line covers go in a **set** with each other when they share the value in that field. A product the line does not cover is never pulled in by it. *"Every product tagged `outfit`, grouped by `custom.look_id`"* makes one set per look; *"Every candle, grouped by scent family"* makes one set per family.
+
+- Add several lines when different parts of your catalogue pair differently — outfits by look, candles by scent family.
+- **Every product** covers the whole catalogue, so put that catch-all **last**. With two or more conditions on a line, **Products must match all / any of these** decides whether every condition or just one has to hold.
+- A product with **no value** in the field you group by joins no set from that line: two products that both lack a vendor are not a pair.
+- Lines run **top to bottom and their sets add up** — a product matching two lines belongs to both sets, unless a line says *Stop here*. When a product is in several sets, the places beside it in a sorted collection are filled from the higher line's set first; use ↑ and ↓ to set that priority.
+
+Two special pairings — **Similar products** and **Bought together** — do not form sets in a sorted collection. They pick partners for each product's Goes-with rail on its page, from the similarity scan and from your orders respectively.
+
+## Bring company to a product
+
+Picks **anchor** products and brings **partner** products to sit right after them in a sorted collection. Unlike a set, this has a direction: the anchor keeps its position, the partners move to it. Use it to give slow sellers a place beside your best sellers, or to keep an accessory next to the product it belongs with — without hand-picking which ones, because the conditions are read again on every sort.
+
+- Both sides are needed, and on each side every condition has to hold.
+- The best-ranked anchor takes its partners first. Partners are taken in the collection's ranking order, each goes to a single anchor, and an anchor is never another anchor's partner.
+- An anchor brings at most as many products as **Partners to pull up per product** allows, and its set-mates from *Which products go together* are counted first.
+- If a partner already ranks above its anchor, the two still end up together, at the higher of the two positions.
+- Only a sorted collection is changed — the Goes-with rail on a product page is not.
+
+*Example: the best-ranked product tagged `hero` keeps its place, and the two best-ranked accessories that have sold fewer than 5 units sit right after it. An accessory that reaches 5 units stops qualifying on the next sort, and another takes its place.*
+
+## Never pair these products
+
+A product matching **any one** of these conditions is never suggested on another product's page. Its own page still gets suggestions, and in a sorted collection it joins no set and keeps the position its own ranking gives it. For gift cards, pre-orders, samples — or every top in a *"Recommend bottoms"* rule, so a top is shown bottoms only.
+
+- The conditions are **OR-ed**, not AND-ed; upper and lower case do not matter.
+- No line under *Which products go together* can suggest a product on this list, and when another rule reuses this one, the list still applies.
+- It does **not** reach *Bring company to a product* — that section picks its anchors and partners with its own conditions.
+
+## After this rule — Stop here
+
+When a product matches a line's conditions, **Stop here** skips the lines below it for that product; the default is **Keep checking the rules below**. Use it when one kind of product should pair only one way — final-sale items only with other final-sale items — while a broader line below handles everything else.
+
+"Matches" means the conditions matched: a product that matches but has no value in the field this line groups by still stops here, and joins no set from it. A *Similar products* or *Bought together* line never stops the lines below it, and Stop here ends the sets, not the product-page suggestions. Not available on the last line — there is nothing after it to skip.
+
+## If a product in the set is out of stock
+
+Decides what shoppers see when some products of a set can be bought and others cannot — on a sorted collection page and in the Goes-with rail. A set whose products are all in stock, or all sold out, is not affected.
+
+| Option | What happens |
+| --- | --- |
+| **Keep the set together** | The sold-out product stays beside its anchor, above in-stock products ranked below it (still within *Partners to pull up per product*) |
+| **Show the set without it** | The anchor keeps its place with no partner; the sold-out product stays with the other sold-out products |
+| **Move the whole set down** | Anchor and partner move together, below every in-stock product |
+
+Choose by how shoppers buy: a look that only makes sense complete suits keeping together or moving down; sets that are just suggestions suit showing without. No option removes a product from your Shopify collection. The collection order changes at its next sort; the rail follows the setting too, and always lists in-stock partners first.
+
+## Order within a set
+
+Fixes the order of products **inside** each set. Where the set appears is still decided by the ranking; this only decides who stands where within it — top, then layer, then bottom, instead of by sales. A product takes the position of the first line it matches; products matching no line go after every matched product, in ranking order. A list you put in order by hand, under **Lists**, wins over these lines for the products in it. Only a sorted collection is changed; the rail keeps its own order.
+
+<Callout type="note" title="Changes land on the next sort">
+Saving a rule does not re-sort anything on the spot. Each collection pointing at it picks the change up on its own next sort — and **Refresh** on the rule shows you the difference first, writing nothing until you confirm. Products you added to a set by hand are kept unless you say otherwise.
+</Callout>

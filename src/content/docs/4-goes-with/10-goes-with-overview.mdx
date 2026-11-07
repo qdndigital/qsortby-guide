@@ -1,0 +1,39 @@
+---
+title: "Goes with — keep related products next to each other"
+description: "A Goes-with rule keeps related products adjacent after ranking: a candle ranked 2nd and its refill ranked 37th end up side by side, without changing which one ranks first. Written once, used by as many collections as you like."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+Ranking answers *what sells*. It does not know that the refill belongs beside the candle, or that the trousers complete the shirt — so a sort that is right about every product individually can still scatter a set across the page. **Goes with** fixes that: a rule keeps related products **adjacent after ranking**, without changing which one ranks first.
+
+A candle ranked 2nd and its refill ranked 37th end up next to each other, at the candle's position. The order the recipe decided is kept; the set is just gathered.
+
+## Where it lives, and what it reaches
+
+**Auto-sort → Goes with** lists your rules. A rule is **written once** and pointed at from as many collections as you like; editing it changes every collection pointing at it, and the table says how many. Switching a rule off on one collection changes nothing anywhere else.
+
+A rule reaches two places:
+
+- **A sorted collection's order**, where it gathers sets after the recipe has ranked.
+- **The Goes-with rail on a product page** — a [theme block](/docs/auto-sort/theme-blocks) that shows a product's partners. Some rule types reach only one of the two; each page below says which.
+
+Nothing in a rule ever changes what is **in** a collection. A Goes-with rule only moves products next to each other once the ranking has decided the order.
+
+## Start from a suggestion, or write your own
+
+The Goes-with tab offers **suggestions** drawn from your store — pairs that show up in the same orders, or products whose names and attributes say they belong together. Every suggestion says **how much it is worth trusting**: built from real orders, from a scan of your own catalogue, from names alone, or a guess. Take one, or write a rule from scratch; either way you end up in the same editor. See [Write a Goes-with rule](/docs/goes-with/write-a-rule).
+
+<Callout type="note" title="A rule built from orders never re-resolves on its own">
+That is deliberate. A rule you accepted from co-purchase data is a decision you made, and the app will not quietly change it under you when the orders shift. Instead, the **drift note** on the rule tells you when the orders behind it have gone quiet, and **Refresh** re-runs the detector and shows you the difference before anything is written.
+</Callout>
+
+## Plans
+
+Every plan can write Goes-with rules and apply them to a sorted collection's order. **Publishing** the pairs to your products as metafields — so your theme or another app can render them without calling QSortby, and so the Goes-with rail reads them — starts on **Starter**. See [Publish to a product metafield](/docs/goes-with/publish-to-metafields).
+
+## Glossary, briefly
+
+- **Set** — products a rule has grouped, which travel together in a sorted collection.
+- **Anchor / partner** — in a *Bring company to a product* rule, the anchor keeps its position and partners move to it.
+- **Padded** — a slot filled by a best seller because there was not enough co-purchase data to pair honestly. Always labelled, and never counted back as evidence that the pair was real.

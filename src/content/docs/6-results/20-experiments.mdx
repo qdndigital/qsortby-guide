@@ -1,0 +1,42 @@
+---
+title: "Experiments — prove a sort sells more"
+description: "An experiment splits your visitors between two rankings and measures which one sells more. Three comparison types, a minimum sample that stays on screen, and a verdict that is called directional, never proven."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+Influenced revenue tells you a surface was involved in sales. An **experiment** is how you find out whether it *made* sales: half your visitors see one ranking, half see another, and the test measures which arm bought more. A visitor always stays in the same arm, so a returning shopper is never shown two different stores.
+
+**Results → Experiments** lists what is running and what has finished. Free runs them without a cap; **Starter** runs one at a time; Pro and Growth are uncapped again (see [Plan limits](/docs/getting-started/plans-and-limits)).
+
+## What an experiment can compare
+
+Three comparison types, named after the question you actually have:
+
+| Type | The question | Example |
+| --- | --- | --- |
+| **Two recipes** | Does this recipe sell more than that one on this surface? | Best selling against Trending now |
+| **Two settings of one recipe** | Does the window matter? | A 7-day window against a 30-day one |
+| **Personalized vs plain** | Does the published personalization rule beat the recipe order? | For You against Best sellers, on the same slots |
+
+A fourth runs from the Intent tab rather than here: the **Intent AI on/off test**, which switches intent off for half your shoppers on For You and every offer that ranks by intent. It uses the same machinery and reports in the same place. See [Intent](/docs/results/intent).
+
+## Setting one up
+
+**New experiment** asks for the comparison type, the surface (a collection, the For You feed or the Best sellers row), the two arms, the **split**, and a **length**. The length is set before the test starts and the test **stops automatically** when it is reached; orders are counted until two days after the end, so a shopper exposed on the last day still has time to buy. Nothing on your storefront changes when a test ends: *the setting this test compared is changed where it lives* — on the collection or the rule — so the test can never flip your store on its own.
+
+<Callout type="warning" title="A running test is not measuring anything yet">
+Until both arms have reached the **minimum per arm** — 300 visitors — the page shows progress, not an answer, and says so. The minimum stays on screen whether or not you have reached it, so nobody adopts a winner from forty impressions.
+</Callout>
+
+## Reading the result
+
+Each arm reports **shoppers**, **bought** (placed at least one order, anywhere in your store), **conversion** (orders per visitor), **revenue per shopper**, and the storefront funnel behind them — impressions, clicks, click-through, add-to-cart rate. Shoppers are counted **once each**, in the arm they were assigned, however many times they were served.
+
+The verdict is a **two-proportion test** and needs **95%** before the page will call one arm ahead; below that, *the difference could be chance*, and it says so. Even above it the word is **directional**, never *proven* — a two-week test on one store is evidence, not a law — and when there is no clear difference the result says how large a difference the test *could* have seen, so "no effect" and "too small to see" are never confused.
+
+A **Came for** breakdown splits buyers by the intent they were read as, where Intent AI is on, so you can see whether a winning arm won with gift-buyers or with everyone.
+
+## Stopping and deleting
+
+**Stop** ends a test early and reads it as it stands — labelled as stopped, with whatever sample it reached. **Delete** removes a finished or never-started test from the list; a running one has to be stopped first. Finished tests stay listed with their verdict so a decision made in March can still be explained in June.

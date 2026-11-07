@@ -1,0 +1,51 @@
+---
+title: "Test mode & preview — look before anything goes live"
+description: "Preview is a dry run you look at once. Test mode is a state: QSortby keeps computing the order without publishing it, and can show it in your own theme through a temporary preview collection that deletes itself."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+Two tabs on a collection both sound like "look before you leap", and they differ on whether they are an **act** or a **state**.
+
+## Preview — a dry run
+
+Change the recipe, the window or any other setting on the **Setup** tab, then open **Preview**. QSortby computes the order those settings would produce and shows it side by side with what is live now: products added, removed and moved, with the counts at the top. Nothing is written. Close the tab and nothing has happened.
+
+Preview is also the quickest way to **compare two recipes** on the same collection: read the difference before you commit, and only then save.
+
+## Test mode — a state
+
+**Test results** is where test mode lives, and the tab is always present so you can discover it rather than having to know it exists. Switch test mode on and the collection keeps doing everything it would normally do — recomputing the order on its schedule, reacting to new orders — except the last step: **nothing is published to your real collection**. The banner says so on every tab: *Test mode — changes are not published*.
+
+What you get instead is a running report of what the order *would* have been, so a recipe you are unsure about can be watched for a week against real traffic before shoppers see it.
+
+<Callout type="note" title="Test runs count against a monthly allowance on Free">
+A Free store can run 50 test computations a month and keep 3 live previews at a time. Paid plans lift both — Starter to 25 previews, Pro and Growth without a cap on either.
+</Callout>
+
+## Preview in my theme — the temporary collection
+
+A table of products is one thing; the collection page in your own theme, with your own cards and filters, is another. **Preview in my theme** publishes the tested order to a **separate temporary collection** — titled `QSortby - <your title> - Test`, with the handle `qsortby-<your handle>-test` — and gives you its storefront link. The real collection is never touched.
+
+You choose how long it stays up, per collection:
+
+| Lifetime | What happens |
+| --- | --- |
+| **30 minutes** (default) | Deleted from Shopify half an hour after it was published |
+| **1 hour · 10 hours · 24 hours** | The same, on a longer clock |
+| **Until I delete it** | Stays until you press **Delete preview now**, or leave test mode |
+
+Changing the lifetime restarts the clock on a preview that is already up. While a preview is live, QSortby republishes it whenever the tested order changes, so what you see in your theme is always the current test result — and when the window ends, the collection is **deleted** from Shopify, not just hidden, so it never lingers in your admin. Leaving test mode deletes it too.
+
+<Callout type="tip" title="Share the link with someone who doesn't use the app">
+The preview collection is an ordinary storefront URL. Send it to a colleague or a client and they see exactly the tested order in the real theme — no app access needed, and nothing they can accidentally change.
+</Callout>
+
+## Two ways out of test mode
+
+The Test results tab ends with both:
+
+- **Publish this order** — the tested order becomes the live one. A snapshot of the current live order is saved first, as with any sort.
+- **Leave test mode without publishing** — the collection goes back to sorting live from its next scheduled run, the preview collection is deleted, and nothing you tested reaches the storefront.
+
+Either way, the settings you tested stay on the Setup tab; test mode only ever decided whether they were written.

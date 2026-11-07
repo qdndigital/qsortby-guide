@@ -1,0 +1,36 @@
+---
+title: "Snapshots & restore — undo is a feature"
+description: "Every sort saves the exact order it produced, including the order before QSortby touched the collection. Compare any two, and restore one to your live storefront in a sentence that says plainly what it does."
+updated: 2026-11-07
+---
+import Callout from '../../../components/Callout.astro';
+
+Every sort QSortby writes **saves the exact order it produced**, so any change can be undone or explained. The collection's **Snapshots** page — linked from the top of its Setup tab — is where they live.
+
+## What a snapshot holds
+
+The full product order at that moment, the recipe and window that produced it, when it was written, and whether it reached Shopify. The very first entry is special: **The order before QSortby** — the order the collection had before the app ever touched it. It is kept for as long as the collection is in QSortby, so a store that tries the app for a month and decides against it can put everything back exactly.
+
+How many are kept depends on your plan: 5 on Free, 50 on Starter, 200 on Pro and Growth. Older ones roll off the end; the *before QSortby* snapshot never does.
+
+## Compare
+
+Each row lists when the snapshot was **taken**, the **recipe** that produced it, and how far the order **moved** against the one before. Pick any two and the page shows the difference — **What changed** as a list of moves (which products climbed, fell, entered or left, and by how many places), or **Side by side** as the two full orders. It is the quickest way to answer "what did Tuesday's sort actually change".
+
+## Products that have moved on
+
+A restore puts back an **order, not a membership**. Products you have removed from the collection since are not brought back, and products you have added since are not hidden — they go to the end, because where you would want them is not something a restore can know. You are told both counts afterwards; a restore that quietly dropped nine products is one you would otherwise discover from your storefront.
+
+## Restore
+
+**Restore this order to your storefront?** does exactly what it says: the chosen order is written back to Shopify as the collection's live order, and the restore is recorded in the collection's history as *Restored from a snapshot*.
+
+<Callout type="warning" title="Restoring writes to your live storefront">
+Shoppers see the restored order within a few minutes. The dialog says so, and it also offers to **pause the schedule, so nothing re-sorts over this** — tick it if the point of restoring is to *hold* that order, because otherwise the next scheduled sort replaces it again.
+</Callout>
+
+Restoring is **switched off** while the collection is in [test mode](/docs/auto-sort/test-mode-and-preview), because in test mode QSortby writes nothing to Shopify. The page says so in a sentence — turn test mode off, or apply the test, then restore — rather than greying the button out silently.
+
+## Scheduled, but nothing is published
+
+A collection can be on a schedule with nothing yet written to Shopify — a brand-new one still filling, or one whose pushes are staged for approval. The Snapshots page says so in those words, so an empty list reads as "nothing has happened yet" rather than "something is missing".
