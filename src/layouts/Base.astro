@@ -7,6 +7,8 @@ import SearchDialog from '../components/SearchDialog.astro';
 const { title, description } = Astro.props as { title?: string; description?: string };
 const t = theme();
 const pageTitle = title ?? `${t.brand} ${site.guideLabel}`;
+// QSortby shows the website's full lockup (Q + lowercase wordmark, public/logo.svg) instead of mark + text.
+const lockup = site.preset === 'qsortby';
 const pageDescription = description ?? site.tagline;
 const vars = `--accent:${t.accent};--accent-ink:${t.accentInk};--accent-soft:${t.accentSoft};`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
@@ -33,6 +35,7 @@ const year = new Date().getFullYear();
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#ffffff" />
   </head>
   <body>
@@ -40,8 +43,10 @@ const year = new Date().getFullYear();
     <header class="site">
       <div class="wrap bar">
         <a href="/" class="brand" aria-label={`${t.brand} ${site.guideLabel} home`}>
-          <Fragment set:html={logo(28)} />
-          <span>{t.brand}</span><span class="tag">{site.guideLabel}</span>
+          {lockup
+            ? <img src="/logo.svg" class="lockup" width="133" height="32" alt={t.brand} />
+            : <><Fragment set:html={logo(28)} /><span>{t.brand}</span></>}
+          <span class="tag">{site.guideLabel}</span>
         </a>
         <nav class="hlinks" aria-label="Main">
           <Search />
@@ -67,8 +72,9 @@ const year = new Date().getFullYear();
     <footer class="sfoot">
       <div class="wrap sfoot-in">
         <div class="sfoot-brand">
-          <Fragment set:html={logo(22)} />
-          <span>{t.brand} — a Shopify app by QDN</span>
+          {lockup
+            ? <><img src="/logo.svg" class="lockup lockup-sm" width="108" height="26" alt={t.brand} /><span>— a Shopify app by QDN</span></>
+            : <><Fragment set:html={logo(22)} /><span>{t.brand} — a Shopify app by QDN</span></>}
         </div>
         <nav class="sfoot-links" aria-label="Footer">
           <a href={docsHome}>{site.guideLabel}</a>
@@ -82,5 +88,9 @@ const year = new Date().getFullYear();
       </div>
     </footer>
     <SearchDialog />
+    {/* QOne Desk support chat — same product as the QSortby website. Must stay a
+        classic inline script: the widget finds its config through
+        document.currentScript, which is null for a module or bundled script. */}
+    <script src="https://qdn.qone.work/widget.js" data-product="fp_ab49994270d17cd686485bfd" is:inline async></script>
   </body>
 </html>

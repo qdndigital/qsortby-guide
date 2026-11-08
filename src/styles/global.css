@@ -38,6 +38,8 @@
   header.site .bar { @apply flex items-center gap-4 h-full; }
   .brand { @apply flex items-center gap-2.5 font-bold text-[15px] text-ink tracking-tight2; }
   .brand .mk { @apply w-7 h-7 shrink-0; }
+  /* Website lockup: 32px tall so the Q matches the old 28px mark (the y descender adds the rest). */
+  .brand .lockup { @apply h-8 w-auto shrink-0; }
   .brand .tag { @apply font-mono text-label uppercase text-muted border border-line-2 rounded-md px-1.5 py-1 ml-1; }
   .hlinks { @apply hidden md:flex items-center gap-6 ml-auto text-sm font-medium text-ink-2; }
   .hlinks a:hover { @apply text-ink; }
@@ -337,6 +339,7 @@ a:focus-visible, button:focus-visible, .sidebar a:focus-visible { outline:2px so
 /* site footer */
 .sfoot { border-top:1px solid var(--line); background:var(--paper-2); margin-top:40px; }
 .sfoot-in { display:flex; flex-wrap:wrap; align-items:center; gap:14px 28px; padding-block:28px; }
+.sfoot-brand .lockup-sm { height:26px; width:auto; }
 .sfoot-brand { display:flex; align-items:center; gap:10px; font-weight:600; font-size:14px; }
 .sfoot-links { display:flex; flex-wrap:wrap; gap:8px 20px; font-size:14px; color:var(--ink-2); }
 .sfoot-links a:hover { color:var(--ink); text-decoration:underline; }
