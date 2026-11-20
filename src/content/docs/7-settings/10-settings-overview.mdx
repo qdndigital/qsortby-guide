@@ -1,7 +1,7 @@
 ---
 title: "Settings — how the app measures, connects and shares data"
 description: "Six tabs: Tracking, Product data & AI, Integrations, Storefront data, AI connections and Plan. Settings holds measurement and connections, not how your storefront is sorted — sorting lives in Auto-sort, offers in Upsell."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 import Video from '../../../components/Video.astro';
@@ -10,21 +10,19 @@ import Video from '../../../components/Video.astro';
 
 Sorting and offers live in **Auto-sort** and **Upsell**. **Settings** holds the rest: how the app **measures**, what it **connects** to, the data it hands your **theme**, and what you are **paying**. Six tabs, in that order.
 
-<Callout type="warning" title="Changing a measurement definition changes every figure in Results">
-What counts as a product view, the session gap, the cart window — change one and every number on Impact is counted the new way from then on. Figures from before the change were counted the old way, so comparisons across it are not like for like. The page says so before you save.
+<Callout type="warning" title="Changing what counts changes the figures built on it">
+The cart window and the view settings decide the **Added together** and **Viewed together** figures on each product's page, and the related-product lists built from them. Those are rebuilt from your events with whatever the settings are at the time, so a figure you noted before a change is not comparable with one after it.
 </Callout>
 
 ## Tracking
 
-Whether the app can see your storefront, and how it reads what it sees.
+How the app reads what it sees on your storefront. Whether it can see it at all is on **Home**, in the **Health** panel: **Storefront pixel** says in one word whether the theme app embed is receiving. If it reads *Not receiving*, nothing behaviour-based works; [Setup](/docs/getting-started/setup) step 1 is the fix. Auto-sort still runs; measurement does not — sales-based recipes rank from your orders regardless. The same panel's **Store data** line opens **Reading your store**, the import: how far back your orders have been read, whether it is still running, and where it stopped if it did.
 
-**Reading your store** — the import: how far back your orders have been read, whether it is still running, and where it stopped if it did. Until it finishes, short ranking windows are thin and Home says so.
-
-**The storefront pixel** — one word on whether the theme app embed is receiving events, with the time of the last one. If it reads *not receiving*, nothing behaviour-based works; [Setup](/docs/getting-started/setup) step 1 is the fix. **Auto-sort still runs; measurement does not** — sales-based recipes rank from your orders regardless.
-
-**What counts as a product view** — a visit shorter than the **minimum time on page** is discarded (raise it for considered purchases, lower it for things people recognise on sight; 0 turns the time test off), and by default the shopper also has to **scroll or move the pointer**, because a tab left open in a background window is otherwise the most attentive view in your store. **Split browsing sessions after** sets the gap beyond which two products no longer count as viewed together.
+**What counts as a view** — a visit shorter than the **minimum time on page** is discarded (raise it for considered purchases, lower it for things people recognise on sight; 0 turns the time test off), and by default the shopper also has to **scroll or move the pointer**, because a tab left open in a background window is otherwise the most attentive view in your store. **Split browsing sessions after** sets the gap beyond which two products no longer count as viewed together.
 
 **Shared cart window** — **split carts after** a gap of so many minutes, so two products count as added together only when they were added in one go; and **ignore items removed within** a short time, because an item taken back out that quickly was a mis-tap, not a decision.
+
+**Attribution prefix** — the word QSortby's order tags and hidden cart attributes are built from (`qsortby` by default, so orders are tagged `qsortby-influenced`). Lowercase letters, numbers and dashes, up to 20; blank resets. It applies to new orders from then on.
 
 **Web Pixel** — a repair button, not a setting. It re-registers QSortby's Web Pixel in your shop's Customer Events sandbox, which is what sees checkout. Run it if purchase events have stopped flowing; sales-based ranking keeps working from your order webhooks meanwhile, but conversion signals go quiet.
 
@@ -38,7 +36,7 @@ Everything that describes your catalogue to the app.
 
 **Classification dimensions** — the vocabulary QSortby groups products by (what you call it, what kind of grouping, the values to choose from, the Shopify metafield behind it). The AI proposes a set for your industry; you edit it. Fields that wait on a human stay empty in every shop, so…
 
-**Fill product values with AI** — fills a value on each product for you, from its title, description and tags, instead of leaving it to you one product at a time. The page marks values you have edited by hand, so a re-run never overwrites them.
+**Fill product values with AI** — fills a value on each product for you, from its title, description and tags, instead of leaving it to you one product at a time. When some products already have a value on Shopify, it asks first: **Keep my values** fills only what is empty; **Replace with AI values** overwrites them.
 
 **Intent keywords** — the words that tag each product with the intent it suits, matched against titles, tags and types. Read the industry defaults against your own product names and remove any word that means something else in your catalogue. Confirming saves the words; it does not re-read your catalogue — products already tagged keep their tags until you run **Generate embeddings**.
 
@@ -52,9 +50,7 @@ Accounts the app connects **to**.
 
 **Review source** — which review app's ratings feed *Top rated* and the *Hide poorly rated products* filter. QSortby detects whichever of several review-metafield shapes is richest (Judge.me, Fera, REVIEWS.io, Stamped, and others), and you can pin one. That matters when you switch review apps: uninstalling one does not delete its metafields, so the dead app's frozen numbers can outrank the live one and your ratings stop moving.
 
-**Google Analytics** — a GA4 property to receive QSortby's events, so a surface's clicks show up beside the rest of your analytics.
-
-**Attribution prefix** — the word QSortby's hidden order attributes are built from (`_qsortby_…` by default). Lowercase letters, numbers and dashes, up to 20; blank resets. Change it only if another app writes the same keys. Attribution reads them back whatever the prefix.
+**Google Analytics** — connect a GA4 property so QSortby can read sessions, conversion rate and revenue as Google measured them: a second opinion from a source with no stake in its numbers. The Attribution page that showed them side by side now opens Results → Impact, which does not show Google's figures.
 
 ## Storefront data
 
@@ -66,4 +62,4 @@ Let Claude or ChatGPT answer questions about your QSortby data — and, where yo
 
 ## Plan
 
-The four plans with what each grants, generated from the grants themselves so the bullets cannot drift from what the app enforces; your current plan with the price your subscription actually carries; the days left on either trial; and **What happens if you downgrade**, spelled out. See [Your first 10 days](/docs/getting-started/reverse-trial) and [Plan limits](/docs/getting-started/plans-and-limits).
+The four plans with what each grants, generated from the grants themselves so the bullets cannot drift from what the app enforces; your current plan with the price your subscription actually carries; the days left on either trial; a **Cancel & move to Free** button; and a short FAQ on changing plans and what happens after the trial. See [Your first 10 days](/docs/getting-started/reverse-trial) and [Plan limits](/docs/getting-started/plans-and-limits).

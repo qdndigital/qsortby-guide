@@ -1,9 +1,9 @@
 ---
 title: "How Best-selling ranking works"
 description: "The default signal: a plain sum of units ordered in the window — no rate, no decay."
-updated: 2026-08-22
+updated: 2026-11-20
 ---
-**Best selling** (the default) ranks by a plain **sum of units ordered** in the window — highest first. It’s not a per-day rate and it isn’t time-decayed. Sold-out products stay in the collection but are pushed to the bottom.
+**Best selling** (the default) ranks by a plain **sum of units ordered** in the window — highest first. It’s not a per-day rate and it isn’t time-decayed. By default, sold-out products stay in the collection but are pushed to the bottom; the collection’s **Sold-out products** setting can instead keep them in their ranked position or, on a collection QSortby fills, hide them.
 
 ## 1. The collection, unranked
 
@@ -15,7 +15,7 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-best-selling/concept-ranking-best-selling-step-02.png)
 
-The engine sums each product’s ordered quantity across the window and sorts by it. It’s the most literal signal — raw sales volume. (Sold-out items aren’t removed; they’re re-bucketed to the end so live stock always leads. They do still occupy one of your **Max products** slots, so raise the cap if sold-outs are crowding out live stock.)
+The engine sums each product’s ordered quantity across the window and sorts by it. It’s the most literal signal — raw sales volume. On the Free plan a window shorter than 7 days is measured over 7. (With the default sold-out setting, sold-out items aren’t removed; they’re re-bucketed to the end so live stock always leads. They do still occupy one of your **Max products** slots, so raise the cap if sold-outs are crowding out live stock.)
 
 ## 3. The front row gets discovered
 

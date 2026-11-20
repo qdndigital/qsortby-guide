@@ -1,23 +1,23 @@
 ---
 title: "Manage your collections"
-description: "Read collection statuses at a glance, filter by source or state, apply one recipe to a batch of collections, bring in Shopify collections, and pause or resume auto-sorting."
-updated: 2026-11-07
+description: "Read collection statuses at a glance, filter by status or source, apply one recipe to a batch of collections, bring in Shopify collections, and pause or resume auto-sorting."
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 
-**Auto-sort → Collections** is mission control. Every collection shows a status, its sort rule, its schedule, and when it last sorted — so you can see what's working and step in when needed.
+**Auto-sort → Collections** is mission control. Every collection shows its recipe, how often it re-sorts, what it reached and earned, and a status — so you can see what's working and step in when needed.
 
 ## 1. Read statuses at a glance
 
 ![Read statuses at a glance](/assets/manage-collections/collections-manage-step-01.png)
 
-The tiles up top count your collections in total and by state: **Live** (actively sorting), **Needs setup** (no rule chosen yet), and **Paused** (a rule is set, automatic updates are off). In the table, each row shows the same status plus its **Sort Rule**, **Schedule** (Real-time / Hourly / Daily / Manual), and **Last sorted** time.
+Each row shows its **Surface**, **Recipe**, **Re-sorts** (*on order*, *every 1h*, *every 6h*, *every day*, *manual*, or *On changes* for a sold-out rule waiting on stock), **Reaches**, **Earning** and **Status**. A live row's status says when it last sorted — *Live · 12m ago*. The other states include **Needs setup** (nothing runs here yet), **Paused** (a recipe is set, automatic updates are off), **Test mode**, **Over plan limit**, **No slots left**, **Archived** and **Deleted in Shopify**.
 
 ## 2. Filter by source
 
 ![Filter by source](/assets/manage-collections/collections-manage-step-02.png)
 
-The tabs filter the list: **All**, **From Shopify** (collections you imported), **From QSortby** (created here), and **Personalize collections** (per-visitor For You feeds). Use the **Status** filter to narrow by Live / Paused / Needs setup / Archived.
+Two filters sit above the list: **Source** — **Any source**, **From Shopify** (collections you imported) or **From QSortby** (created here) — and **Status**, to narrow by any of the states above. **Search** finds a collection by name.
 
 ## 3. Apply one recipe to several collections
 
@@ -29,8 +29,8 @@ Schedules, product caps and Goes-with rules are left alone; only the recipe chan
 
 ![Import Shopify collections](/assets/manage-collections/collections-manage-step-03.png)
 
-Collections you already have in Shopify are listed as soon as the install import finishes; **Sync all from Shopify** refreshes the list if you've created new ones since. Auto-sorting a collection you already have only ever **reorders**: the app never adds or removes products, because you own the membership. The products your rule scores rise to the top, products with no score keep their current relative order below them, and anything sold out, draft or archived sinks to the bottom. To pause or resume a collection, open it and use **Pause smart sort** / **Resume smart sort** on its detail page.
+Collections you already have in Shopify are listed as soon as the install import finishes; **Sync collections** refreshes the list if you've created new ones since. Auto-sorting a collection you already have only ever **reorders**: the app never adds or removes products, because you own the membership. The products your rule scores rise to the top, products with no score keep their current relative order below them, and anything sold out, draft or archived sinks to the bottom. To pause or resume a collection, open it and use **Pause smart sort** / **Resume smart sort** on its detail page.
 
 <Callout type="note" title="Keeping a product out of every collection">
-**Settings → Excluded products** keeps a product out of every app-managed collection; a collection's own excluded list keeps it out of just that one. Exclusions beat ranking — an excluded product never appears, however well it scores, and it's dropped from top-up filler too.
+**Excluded products** (Settings → Product data & AI) keeps a product out of every app-managed collection; a collection's own excluded list keeps it out of just that one. Exclusions beat ranking — an excluded product never appears, however well it scores, and it's dropped from top-up filler too.
 </Callout>

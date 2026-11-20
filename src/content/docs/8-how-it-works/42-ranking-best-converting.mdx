@@ -1,7 +1,7 @@
 ---
 title: "How Best-converting ranking works"
 description: "Ranks by closing power — purchases ÷ impressions — so a niche product that sells to almost everyone who sees it can lead a far more popular one."
-updated: 2026-08-22
+updated: 2026-11-20
 ---
 **Best converting** ranks by **conversion rate** — purchases ÷ impressions. It rewards products that close rather than products that get looked at, so a niche item bought by nearly everyone who sees it can out-rank a crowd favorite. Any product whose conversion rate works out to zero is dropped — that includes a heavily-viewed product nobody has bought.
 
@@ -15,7 +15,7 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-best-converting/concept-ranking-best-converting-step-02.png)
 
-The engine divides each product’s purchases by its impressions over the window — a raw rate with no smoothing, so a product seen 40 times and bought 4 beats one seen 4,000 times and bought 200. “Purchases” counts checkouts containing the product rather than units. Engagement signals measure in whole days, so an hours-based window counts as one day, and a **Period** or **Snapshot** window falls back to the last 30 days.
+The engine divides each product’s purchases by its impressions over the window, pulls that rate toward the average of the products being ranked (the average counts as 20 views) and orders by the cautious low end of the estimate — so a product needs enough views behind its rate to lead, and one lucky sale in a handful of views can’t jump the queue. Membership uses the plain rate, so a product with no purchases or no impressions is dropped. “Purchases” is units sold, from the daily sales rollup, counted from every order, while impressions only come from the cards the pixel counts (see **Most impressions**). Engagement signals measure in whole days, so an hours-based window rounds up to whole days, and a **Period** or **Snapshot** window falls back to the last 30 days.
 
 ## 3. The front row gets discovered
 

@@ -1,7 +1,7 @@
 ---
 title: "Display rules"
 description: "Reusable AND/OR conditions that decide when an upsell shows — cart over $50, contains something from a collection, carries a tag, comes from a vendor."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 import Video from '../../../components/Video.astro';
@@ -12,7 +12,7 @@ import Video from '../../../components/Video.astro';
 
 A rule is a reusable condition you build once and attach to an upsell. An upsell with no rule shows unconditionally; attaching one turns it into "show this **only when**…".
 
-Rules live in the **Display rules** section of the Upsell page, and a rule reads as a sentence — IF / AND / THEN. **Check who matches right now** before you attach one; a rule reaches the cart drawer and the popup. Included from **Pro**. (Every new install runs on the Growth feature set for its first 10 days — see [Your first 10 days](/docs/getting-started/reverse-trial).)
+Rules live in the **Display rules** section of the Upsell page, and a rule reads as a sentence — IF / AND / THEN. Check its **Who matches right now** panel — what share of your recent orders the rule would have matched — before you attach one; a rule reaches the cart drawer and the popup, and nothing else. Included from **Pro**. (Every new install runs on the Growth feature set for its first 10 days — see [Your first 10 days](/docs/getting-started/reverse-trial).)
 
 ## Building one
 
@@ -32,13 +32,13 @@ Reading tags means the storefront has to fetch each cart product's tags. QSortby
 
 Open the upsell, find **Rule**, and pick one. **One rule per upsell** — a rule carries its own trigger and conditions, so two of them on one widget would leave no defensible answer to "when does this fire?". If you need more logic, add another condition group to the rule itself.
 
-The same rule can gate **several** upsells, which is the direction that's actually useful: define "high-value cart" once and use it in the drawer, the popup, and the thank-you page.
+The same rule can gate **several** upsells, which is the direction that's actually useful: define "high-value cart" once and use it on several cart drawer offers and popups. On a popup the rule also sets the trigger, replacing the popup's own.
 
 ## Draft and published
 
 A rule has to be **Published** to gate anything. Only published rules appear in the picker.
 
-If you unpublish a rule that's already attached, the upsell it was gating **stays gated** — it doesn't quietly open up to everyone. The editor flags the situation so you can publish the rule again or pick a different one. Silently widening who sees an offer would be the worse failure of the two.
+If you unpublish a rule that's already attached, the upsell it was gating **stays gated** — it doesn't quietly open up to everyone; it shows to no one until the rule is published again or detached. The editor flags the situation so you can publish the rule again or pick a different one. Silently widening who sees an offer would be the worse failure of the two.
 
 ## After a plan change
 
