@@ -1,7 +1,7 @@
 ---
 title: "Write a Goes-with rule"
 description: "The rule editor reads as sentences: IF a product matches these conditions, THEN group it by this field. The sections of a rule — which products go together, bring company to a product, never pair these, stop here, out of stock, order within a set — and what each one does."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 
@@ -19,6 +19,8 @@ Each line covers some products and names the field they **pair on**: products th
 - Lines run **top to bottom and their sets add up** — a product matching two lines belongs to both sets, unless a line says *Stop here*. When a product is in several sets, the places beside it in a sorted collection are filled from the higher line's set first; use ↑ and ↓ to set that priority.
 
 Two special pairings — **Similar products** and **Bought together** — do not form sets in a sorted collection. They pick partners for each product's Goes-with rail on its page, from the similarity scan and from your orders respectively.
+
+**Bought together** is the one line that changes without you: it re-reads which products your shoppers buy together and updates a product's partners on its own. A pair needs 5 or more orders in the last 90 days to be shown at all. A partner keeps its place for at least a week, and after that a new list takes over only when it is at least 25% ahead of the current one. A partner that stops qualifying — archived, sold out, or below 5 orders — is replaced straight away. If you would rather decide yourself, use **My own lists**.
 
 ## Bring company to a product
 

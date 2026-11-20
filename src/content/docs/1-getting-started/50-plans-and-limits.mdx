@@ -1,7 +1,7 @@
 ---
 title: "Plan limits — what each tier actually caps"
 description: "The enforced numbers behind the four plans: managed collections, the ranking-window floor, personalization rules, how many of each upsell you can run, and which extras — Goes-with publishing, storefront data, AI connections — each tier carries."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 
@@ -28,6 +28,7 @@ Every figure here is the app's own default for that plan. Prices live on the [pr
 | In-checkout offers (Shopify Plus) | — | — | — | Unlimited |
 | Display rules (AND/OR) | — | — | ✓ | ✓ |
 | A/B experiments running at once | Unlimited | 1 | Unlimited | Unlimited |
+| Results — Impact & Visitors | — | — | ✓ | ✓ |
 | Intent AI | — | — | Shadow (reads, reports) | Applied live |
 | Storefront data — related-products API & metafields | — | — | ✓ | ✓ |
 | AI connections (Claude / ChatGPT over MCP) | — | — | ✓ | ✓ |
@@ -38,19 +39,19 @@ Every figure here is the app's own default for that plan. Prices live on the [pr
 
 **Goes-with rules are free to write, paid to publish.** Every plan can write Goes-with rules and apply them to a sorted collection's order. Writing the pairs onto your products as metafields — so your theme or another app can read them — starts on Starter. See [Publish to a product metafield](/docs/goes-with/publish-to-metafields).
 
-**A/B testing is on Free with no cap, and on Starter it is one at a time.** That is not a typo: Free carries the uncapped experiments it has always had, Starter adds personalization and more collections but runs one experiment at a time, and Pro lifts the cap again. If you are on Starter and the **New experiment** button is disabled, a test is already running — finish or stop it first.
+**A/B testing is on Free with no cap, and on Starter it is one at a time.** That is not a typo: Free carries the uncapped experiments it has always had, Starter adds personalization and more collections but runs one experiment at a time, and Pro lifts the cap again. If you are on Starter and the **New experiment** page says your plan runs one at a time, a test is already running — finish or stop it first.
 
 ## What happens when you hit a cap
 
 Nothing is deleted, and nothing is hidden. The pattern is the same everywhere in the app:
 
-- **Collections** beyond the cap stay in your list and stop updating; the order already on your storefront stays. Pause or remove one and the next resumes on its normal schedule.
-- **Upsell offers** beyond the cap stay configured and stop rendering, marked **Over plan limit**. Where a type is capped by count, the ones highest in your priority order are the ones that keep serving — so the order you set decides what survives a downgrade. See [Upsell offers](/docs/upsell/upsell-overview).
+- **Collections** beyond the cap keep running for a 3-day grace period while Auto-sort asks you to choose which to keep (if you don't, the oldest are kept). The rest stay in your list and stop updating; the order already on your storefront stays. A paused collection never restarts on its own — not on an upgrade, not when a slot frees — so you pick what comes back with **Choose what to resume**.
+- **Upsell offers** beyond the cap stay configured and stop rendering. Where a type is capped by count, the ones highest in your priority order are the ones that keep serving — so the order you set decides what survives a downgrade. See [Upsell offers](/docs/upsell/upsell-overview).
 - **Display rules** already attached to an offer keep being evaluated. You just cannot create a new one or attach one that is not already attached; QSortby would rather leave a gate in place than quietly widen who sees an offer.
-- **Tabs** for a tier you are not on — Intent in Results, AI connections in Settings — stay where they are and show what the tier would add rather than disappearing.
+- **Tabs** for a tier you are not on — Impact, Visitors and Intent in Results, AI connections in Settings — stay where they are and show what the tier would add rather than disappearing.
 - **One exception:** the related-product metafields are deleted from your products when the plan no longer includes them, so your theme never renders a list that has stopped updating. See [Storefront data](/docs/settings/storefront-data).
 
-Starting a paid plan restores everything exactly as it was.
+Starting a paid plan restores everything exactly as it was, except a paused collection, which comes back when you resume it.
 
 ## Before you pick a tier
 

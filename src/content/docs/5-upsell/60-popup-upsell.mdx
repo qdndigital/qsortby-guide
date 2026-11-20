@@ -1,7 +1,7 @@
 ---
 title: "Popup upsell"
 description: "An offer that appears at a moment you choose — after an add to cart, on exit intent, once the cart is near your free-shipping threshold, or after a delay or scroll."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 import Video from '../../../components/Video.astro';
@@ -18,8 +18,10 @@ Four of them, one per popup:
 
 - **After add to cart** — fires just after a shopper adds something. The most natural moment: they've committed, and you're suggesting a companion.
 - **On exit intent** — fires when the pointer heads for the browser chrome. Desktop only by nature.
-- **When close to free shipping** — fires once the cart comes within reach of the threshold you set here. Pairs naturally with the [shipping bar](/docs/upsell/free-shipping-bar).
+- **When close to free shipping** — fires after an add to cart that leaves the cart at least halfway to the threshold you set here, but still under it. Like the bar, it only fires when the cart is in your store's currency and the shopper is in your store's country. Pairs naturally with the [shipping bar](/docs/upsell/free-shipping-bar).
 - **After a delay or scroll depth** — one trigger with two ways to arm it. Set a delay in seconds, a scroll percentage, or both; whichever happens first fires the popup.
+
+Attach a published [display rule](/docs/upsell/display-rules) and the **rule's** trigger is used instead: the trigger picker is replaced by *"Set by the rule …"*. Set **Rule** to *None* to pick a trigger here again.
 
 ## Keep it from becoming noise
 
@@ -36,7 +38,7 @@ Rules are opt-in. A popup with none attached fires for every shopper who hits it
 
 **Layout** is a centred **modal** or a corner **slide-in**; **size** sets the panel width. Then the usual grid or slider, columns, card style, and heading — or point it at one of your theme's product snippets so the cards match your storefront exactly.
 
-The **Look** section decides the frame around those cards, so a popup can read as part of your store without code: heading alignment (left or centred) and font (the popup's own, or your theme's heading font), a line under the heading, corners (square, soft, round), how dark the page behind a modal goes, which corner a slide-in sits in, arrows and page dots on a modal slider, and the button — outline or filled, its colour and its text. A **size picker** appears under each product that has variants, so a shopper can add the right one without leaving the popup. The cards themselves are still the theme's when you pick *Card style: theme*; nothing here styles a card.
+The **Look** section decides the frame around those cards, so a popup can read as part of your store without code: heading alignment (left or centred) and font (the popup's own, or your theme's heading font), a line under the heading, corners (square, soft, round), how dark the page behind a modal goes, which corner a slide-in sits in, arrows and page dots on a modal slider, and the button — outline or filled, its colour, its text, and whether that text is in capitals. App cards carry a **size picker** under each product that has variants, so a shopper can add the right one without leaving the popup. Theme cards are still the theme's when you pick *Card style: theme* — nothing here styles a card — but one option, off by default, adds a size picker and an add-to-cart button under each theme card; leave it off if your theme's card already has a quick-add, or the card shows two.
 
 ## What it suggests
 

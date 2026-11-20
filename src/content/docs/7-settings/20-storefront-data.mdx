@@ -1,7 +1,7 @@
 ---
 title: "Storefront data — related products for your theme"
 description: "Two ways to get each product's related lists into your own theme: a JSON API your theme's JavaScript calls, and metafields written onto every product for Liquid. Bought, added and viewed together, similar, and goes-with."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 
@@ -35,9 +35,9 @@ window.fetch('/apps/qsortby/v1/related?product_id=' + productId + '&type=bought&
   })
 ```
 
-`type` is `bought`, `added`, `viewed`, `similar` or `goes_with`. **Price is not included** — read `/products/<handle>.js`, which Shopify serves in the shopper's own currency. `/apps/qsortby` is the App Proxy path; if you have renamed it in Shopify, the card shows yours.
+`type` is `bought`, `added`, `viewed`, `similar` or `goes_with`. **Price is not included** — read `/products/<handle>.js`, which Shopify serves in the shopper's own currency. `/apps/qsortby` is the App Proxy path; if you have renamed it in Shopify, use your path in its place.
 
-The answer carries a reason when a list is empty: `no_data` (nothing observed yet), `not_built_yet` (similar, before the first nightly pass), `not_in_plan` (goes-with, when Goes-with publishing is off), `unknown_product`. With the switch off, or on a plan without the feature, every call answers **403** before anything else — your theme should treat that as "render nothing", the way QSortby's own blocks do.
+The answer carries a reason when a list is empty: `no_data` (nothing observed yet), `not_built_yet` (similar, before the first nightly pass), `not_in_plan` (goes-with, when your plan does not include publishing Goes-with), `unknown_product`. With the switch off, or on a plan without the feature, every call answers **403** before anything else — your theme should treat that as "render nothing", the way QSortby's own blocks do.
 
 ## Related-product metafields
 
@@ -45,10 +45,10 @@ The answer carries a reason when a list is empty: `no_data` (nothing observed ye
 
 `qsortby.related_bought` · `qsortby.related_added` · `qsortby.related_viewed` · `qsortby.related_similar` · `qsortby.related_goes_with`
 
-A check runs every **n minutes** — you set n, from 5 minutes to once a day — and writes to Shopify **only what changed**. A check that finds nothing new writes nothing. The status line says where it is: *On — the first check starts within a minute*, then the time of the last check and how many values it wrote. The card tells you the cost in Shopify writes before you switch it on; a large catalogue's first run takes a while and is paced to Shopify's rate limit.
+A check runs every **n minutes** — you set n, from 5 minutes to once a day — and writes to Shopify **only what changed**. A check that finds nothing new writes nothing. The status line says where it is: *On — the first check starts within a minute* (or *waiting for QSortby to start writing on this store*, while it is still being rolled out), then the time of the last check and how many values it updated. The card warns you before you switch it on that it writes to every product in your store; a large catalogue's first run takes a while and is paced to Shopify's rate limit.
 
 <Callout type="warning" title="Switching it off deletes what it wrote">
-So does a plan that stops including it. Your theme never renders a list that has stopped updating. The goes-with list also needs **Publish to a product metafield** switched on in Goes with — without it, `related_goes_with` is simply not written.
+So does a plan that stops including it. Your theme never renders a list that has stopped updating. The goes-with list also needs a plan that publishes Goes-with and at least one Goes-with rule switched on — without them, `related_goes_with` is simply not written.
 </Callout>
 
 ## Which one to use

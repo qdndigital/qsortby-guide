@@ -1,7 +1,7 @@
 ---
 title: "The Products tab — find what a collection should be sorted by"
-description: "Every product QSortby tracks, with the numbers it ranks by. Best seller and climbing this week are different questions; this table is where you tell them apart before committing a collection to one."
-updated: 2026-11-07
+description: "Every product QSortby tracks, with the numbers it ranks by. Best seller and climbing this week are different questions; this table is where you work out which one a collection should answer before committing it to a recipe."
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 import Video from '../../../components/Video.astro';
@@ -10,19 +10,18 @@ import Video from '../../../components/Video.astro';
 
 **Auto-sort → Products** is your catalogue with live behaviour attached: every product QSortby tracks, and beside each one the numbers the recipes rank by. It is not a report — Results is for that. It is where you work out **what a collection should be sorted by**, before you commit it to a recipe.
 
-## Two questions the same table answers
+## Two questions, two recipes
 
-A product holding at **168 units a month** is a best seller. A product that went **from 4 to 11 units this week** is trending. Both are worth showing, and they need different recipes. Pick a criterion and a window at the top of the table and it re-ranks to that question:
+A product holding at **168 units a month** is a best seller. A product that went **from 4 to 11 units this week** is trending. Both are worth showing, and they need different recipes. Pick a **Criteria** and a window at the top of the table and it re-ranks to that question:
 
-- **Best selling** over 30 days shows you the steady earners.
-- **Trending** over 7 days shows you the climbers — rate of change, not total.
-- **Most impressions · Most clicks · Highest CTR · Most added to cart · Longest dwell · Best converting** show what shoppers *did* with a product, from the storefront pixel.
+- **Best selling** over 30 days shows you the steady earners; a 7-day window shows what is selling now. The table has no Trending criterion — rate of change is what the **Trending now** recipe ranks by, on a collection.
+- **Most impressions · Most clicks · Highest CTR · Most added to cart · Longest dwell** show what shoppers *did* with a product, from the storefront pixel.
 - **Top rated** ranks on reviews, where a review app QSortby can read is installed.
 
 Each column header explains what it measures on hover. **Sold** comes from your real orders; the engagement columns come from the pixel, so they are empty until the theme app embed is on and shoppers have moved through the store.
 
 <Callout type="note" title="A short window on a new shop is thin">
-The numbers come from imported orders, so a 7-day window on a shop that installed yesterday has seven days of data at most, however old the shop is. **Reading your store** on Settings → Tracking says how far back the import reached; until it has finished, prefer a longer window.
+The numbers come from imported orders, so a 7-day window on a shop that installed yesterday has seven days of data at most, however old the shop is. **Reading your store**, a button at the top of this tab, says how far back the import reached; until it has finished, prefer a longer window.
 </Callout>
 
 ## Applying the answer is a separate act
@@ -36,7 +35,7 @@ The table changes nothing on your storefront. Once you can see which question a 
 
 ## Filters and saved views
 
-**+ Add filter** narrows the table by status, category, price and inventory; **Search** finds a product by name. A filter-and-sort combination can be kept as a named **view** tab — "Low stock, selling fast" is a useful one — so a question you ask every Monday is one click.
+**Status** and **Category** narrow the table; **Search** finds a product by title. A filter-and-sort combination can be kept as a named **view** (**Save filter as view**), and the view menu beside the filters — **All** until you pick one — switches between them, so a question you ask every Monday is one click.
 
 ## Open a product
 

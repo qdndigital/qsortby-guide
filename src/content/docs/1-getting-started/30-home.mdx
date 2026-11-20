@@ -1,7 +1,7 @@
 ---
 title: "Home — is QSortby making money?"
 description: "Home answers one question with one number: influenced revenue. Then what is running, what needs attention, and what happened recently."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 import Video from '../../../components/Video.astro';
@@ -14,7 +14,7 @@ import Video from '../../../components/Video.astro';
 
 Influenced revenue is **last-touch attribution**. The tag is written when a shopper opens a product from a surface QSortby ordered, it expires after thirty minutes, and an order placed inside that window counts. An order placed the next day counts for nothing. An upsell is credited only with the items a shopper added from it, never with the whole order around them.
 
-It measures **influence, not proven cause** — a shopper who would have bought anyway is counted the same as one who would not. The app never uses the word "caused", and neither does this guide. Treat it as the upper bound of what the sorting touched; the lower bound is what an [experiment](/docs/results/experiments) can tell you.
+It measures **influence, not proven cause** — a shopper who would have bought anyway is counted the same as one who would not. The app never uses the word "caused", and neither does this guide. Treat it as the upper bound of what the sorting touched. For the For You and Best Sellers blocks, and for Intent AI, an [experiment](/docs/results/experiments) can tell you more; a collection's own order is not split-tested — check it with test mode and its snapshots.
 
 <Callout type="tip" title="A smaller honest number beats a bigger one">
 Most apps in this category report last-touch revenue without saying so. Ours is labelled, so you can weigh it — and compare like with like when you evaluate another app.
@@ -28,7 +28,7 @@ If the embed stops reporting, Home says so at the top — *Your storefront pixel
 
 ## Running now
 
-What QSortby is doing for your store at this moment: each collection it keeps sorted, the recipe it runs, and how far the order moved on its last sort. Rules that change the order for some shoppers — the published personalization rule, the Goes-with rules that are on — are listed beside the surfaces they modify. Each row is a link to the thing itself.
+What QSortby is doing for your store at this moment: the collections it keeps sorted (up to four, the highest-earning first), the recipe each runs — with the sold-out and Goes-with rules that modify it named in the same line — its status, and what it earned. The published personalization rule is listed under the personalized collection it changes. Each row is a link to the thing itself.
 
 ## Needs attention
 
@@ -41,8 +41,8 @@ A collection frozen by a plan cap is not listed here; it has its own banner on A
 
 ## Intent AI, tested
 
-When [Intent AI](/docs/results/intent) is on and has been running its on/off test, Home shows the measured lift beside the running read — with the sample size, so a difference from forty visits is never dressed up as a result.
+When an [Intent AI](/docs/results/intent) on/off test has finished with a result, Home shows it for 60 days, in the test's own words — with the number of shoppers and the dates, so a difference from forty visits is never dressed up as a result. A test that is still running shows nothing here.
 
 ## Recent activity
 
-The last three sorts, with how long ago each landed. It is the quickest answer to "did anything change this morning"; the long answer is each collection's [Snapshots](/docs/auto-sort/snapshots-and-restore) page.
+Three of your sorted collections, the highest-earning first, with how long ago each last sorted. It is a quick check that sorting is still landing; the full history is each collection's [Snapshots](/docs/auto-sort/snapshots-and-restore) page.

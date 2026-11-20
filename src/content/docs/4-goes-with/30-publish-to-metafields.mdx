@@ -1,7 +1,7 @@
 ---
 title: "Publish Goes-with sets to a product metafield"
 description: "Write each rule's sets onto your products in Shopify — qsortby.pairwith plus a product list per rule — so your theme can render them in Liquid without calling QSortby. Off until you turn it on; switching it off removes what it wrote."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 
@@ -28,4 +28,4 @@ The switch is off until you turn it on, and switching it back off clears every v
 
 - **QSortby's own Goes-with theme block** reads this metafield first, and asks the app only until it has been written — so publishing also makes the rail faster.
 - **Your theme**, when it draws its own "Complete the look" section in Liquid.
-- **Settings → Storefront data**, which can also write a product's top ten *goes-with* partners into `qsortby.related_goes_with` alongside bought-, added- and viewed-together and similar lists. That feature needs this publish switch on for the goes-with list to be filled. See [Storefront data](/docs/settings/storefront-data).
+- **Settings → Storefront data** (Pro and Growth), a separate feature that can also write a product's top ten *goes-with* partners into `qsortby.related_goes_with` alongside bought-, added- and viewed-together and similar lists. It does not need this publish switch: the goes-with list is filled on any plan that can show Goes-with on the storefront, once at least one Goes-with rule is switched on. See [Storefront data](/docs/settings/storefront-data).

@@ -1,7 +1,7 @@
 ---
 title: "Intent — what shoppers came for"
 description: "What shoppers came for in the range you pick — buying a gift, replacing something, close to buying, browsing, treating themselves — how each kind behaves, what is trending with each, when each peaks, and what Intent AI is actually doing for your store."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 
@@ -13,11 +13,11 @@ Full on **Growth**. **Pro** sees the *what shoppers came for* reading — the la
 
 The share of visits in the range read as each of the five intents, with the count of **visits read** against visits in total. A visit is a 30-minute run of behaviour, and it is read **once its behaviour points clearly at one intent** — so a short visit, or one that stays ambiguous, is *not read yet* and shown in grey rather than forced into a bucket. If 90% of your read traffic lands in one intent, your [intent keywords](/docs/settings/settings-overview) are probably too generic for your catalogue.
 
-Under it, how each kind of shopper behaves: visits, product views, carts, purchases and revenue per intent. This is the table that tells you whether *Close to buying* is really closing, and how much a *Browsing* visit is worth to you.
+On Growth it is one table with how each kind of shopper behaves beside its share: visits, product views, carts, purchases and revenue per intent, with visits by day underneath, coloured by intent. This is the table that tells you whether *Close to buying* is really closing, and how much a *Browsing* visit is worth to you.
 
 ## Do the tags match what shoppers buy?
 
-An order is evidence about the reading. A visit read as *Buying a gift* that ended in a gift-set order agrees; one that ended in a restock does not. Where enough checked visits exist — at least thirty — this card says how often the reading agreed with what the order showed, per intent. *Treating themselves* is read mostly from price and is deliberately left out of the headline number; it is a weak proxy, and the page says so.
+Per intent, how often its shoppers bought a product tagged for that intent, against everyone else, and how many times as often. It is shown from 30 purchases on each side, and it describes what those shoppers bought, not what Intent AI caused — part of a match is built in, because a visit is read as gift buying partly from opening a gift page.
 
 ## Trending with each intent
 
@@ -25,17 +25,22 @@ Which products are rising with each kind of shopper: what gift-buyers are moving
 
 ## When it peaks
 
-Visits by day across the range and by hour of day, coloured by intent, in **your store's own time zone**. A store whose gift-buying clusters on weekday lunchtimes and whose browsing clusters on Sunday evenings has two audiences, and that is worth knowing before you write copy or schedule a popup.
+Visits by the hour they started — as an hour-by-weekday grid once the range covers a week, as hourly bars before that — for all visits or one intent you pick, in **your store's own time zone**. A short **summary** under it says what the peak is. A store whose gift-buying clusters on weekday lunchtimes and whose browsing clusters on Sunday evenings has two audiences, and that is worth knowing before you write copy or schedule a popup.
 
 ## What Intent AI is doing
 
-The honest status card, per intent:
+The honest status card:
 
-- **How products are chosen** — *By rules: a product's intent tags against the shopper's intent* until a model has earned its place. When learned picks are on for an intent, it says so, and says what the check showed: that before going live the model beat the tags at putting what shoppers went on to click first, on visits it had not seen, by how much, and how sure that is. A model in training says it is in training and does not rank yet.
-- **For You serves** — whether intent reaches your storefront at all. It does so through a Personalized collection with *Rank by intent* on; the card tells you when there isn't one, or when there is but the switch is off.
-- **Measured lift** — the result of the **on/off test**, or *Not measured yet*. The test switches intent off for half your shoppers on For You and every offer that ranks by intent, for a length you set, and reports how much more (or less) often the intent group bought, with a range. See [Experiments](/docs/results/experiments).
+- **Mode** — *Live* when intent is applied to your storefront, *Shadow* when it is only read.
+- **Visits read**, and **Products with intent tags** — how many active products carry one; an untagged product scores no intent at all.
+- **Collections** — whether intent reaches your collections. It does so through a personalize collection with *Rank by intent* on; the card tells you when there isn't one, or when there is but the switch is off.
+- **How products are chosen** — *By rules: a product's intent tags against the shopper's intent* until a model ranks. A model in training says it does not rank yet; once the trainer has checked it, the card says by how much it ranked what shoppers went on to click, add or buy better or worse than the tag match, on visits it had not learned from, with its range — measured on past visits, not in sales.
+- **Learned picks** — per intent, whether the products QSortby learned each intent's shoppers buy beat your top 10 best sellers on recent orders. Picks are used only with at least 30 buying visits, four weeks of visits, and a win on three nights in a row; the badge reads *Ready* until your storefront actually uses them, and *On* when it does.
+- **Checked against orders** — an order is evidence about the reading. A visit read as *Buying a gift* that ended in a gift order agrees; one that ended in a repeat buy does not. Once at least thirty such buying visits exist in the last 30 days, it says how often the reading agreed with what the order showed. *Treating themselves* is read mostly from price and is left out of that number; it is a weak proxy.
+- **For You serves** — how many first-page For You serves ranked with the shopper's intent.
+- **Measured lift** — the result of the **on/off test**, or *Not measured yet*. The test switches intent off for one group of shoppers on For You and every upsell that ranks by intent, runs a length worked out for you (two to six weeks), and reports how much more (or less) often the intent group bought, with a range. See [Experiments](/docs/results/experiments).
 
-Each section carries a short **AI summary** of what it is showing — a starting read, not a verdict.
+An **AI summary** at the top of the page is a starting read of these figures, not a verdict; where AI summaries are not available it is one plain sentence from the same figures.
 
 <Callout type="note" title="It counts visits, not shoppers">
 A shopper who comes three times in a week appears three times, possibly read three different ways. That is deliberate: intent is a property of a visit, not of a person — the same person is a gift-buyer in December and a restocker in January.

@@ -1,11 +1,11 @@
 ---
-title: "How Top-grossing ranking works"
+title: "How Top-revenue ranking works"
 description: "Ranks by money, not units — summed revenue from the daily sales rollup, so a pricier item can out-rank a higher-volume cheaper one."
-updated: 2026-08-22
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 
-**Top grossing** ranks by **revenue**, not unit count. It reads the daily sales rollup and sums each product’s recorded revenue over the window, so a high-margin, lower-volume item can beat a cheap best-seller. Use it to lead with the products that actually drive your GMV.
+**Top revenue** ranks by **revenue**, not unit count. It reads the daily sales rollup and sums each product’s recorded revenue over the window, so a higher-priced, lower-volume item can beat a cheap best-seller. Use it to lead with the products that actually drive your GMV.
 
 ## 1. The collection, unranked
 
@@ -17,10 +17,10 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-revenue/concept-ranking-revenue-step-02.png)
 
-The engine sums each product’s recorded revenue across the window. A $168 jacket selling 71 units out-earns a $28 tee selling 142 — so unit-count leaders don’t always top the revenue ranking. Products with no recorded revenue in the window are dropped. The window snaps to whole days in UTC here, so “last 7 days” means today plus the six days before it, and an hours-based window counts as a single day.
+The engine sums each product’s recorded revenue across the window. A $168 jacket selling 71 units out-earns a $28 tee selling 142 — so unit-count leaders don’t always top the revenue ranking. Products with no recorded revenue in the window are dropped. The window snaps to whole days in UTC here, so “last 7 days” means today plus the six days before it, and an hours-based window rounds up to whole days.
 
-<Callout type="warning" title="Revenue comes from the rollup, not your order lines">
-Top grossing reads the daily sales rollup rather than your raw order lines, and today that rollup is only populated on demo data — on a live store it records no revenue. Until that changes, a Top-grossing collection finds nothing to rank and fills itself entirely from the fallback order described below. If ranking by money is the point right now, **Best selling** on a short window is the closer signal.
+<Callout type="note" title="Revenue is counted before refunds">
+Top revenue reads the daily sales rollup rather than your raw order lines. Every order fills it — live orders as they arrive, and past orders when you import your order history — at each line’s price × quantity. Refunds aren’t subtracted, so a refunded order still counts.
 </Callout>
 
 ## 3. The front row gets discovered
