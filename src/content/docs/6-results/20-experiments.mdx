@@ -1,42 +1,43 @@
 ---
 title: "Experiments — prove a sort sells more"
-description: "An experiment splits your visitors between two rankings and measures which one sells more. Three comparison types, a minimum sample that stays on screen, and a verdict that is called directional, never proven."
-updated: 2026-11-07
+description: "An experiment splits your shoppers between two rankings and measures which group buys more often. Four comparison types, a length worked out for you, and a verdict read once, at the end, never before."
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 
-Influenced revenue tells you a surface was involved in sales. An **experiment** is how you find out whether it *made* sales: half your visitors see one ranking, half see another, and the test measures which arm bought more. A visitor always stays in the same arm, so a returning shopper is never shown two different stores.
+Influenced revenue tells you a surface was involved in sales. An **experiment** is how you find out whether it *made* sales: one group of shoppers sees one ranking, the other group sees another, and the test measures which group bought more. A visitor always stays in the same arm, so a returning shopper is never shown two different stores.
 
 **Results → Experiments** lists what is running and what has finished. Free runs them without a cap; **Starter** runs one at a time; Pro and Growth are uncapped again (see [Plan limits](/docs/getting-started/plans-and-limits)).
 
 ## What an experiment can compare
 
-Three comparison types, named after the question you actually have:
+Four comparison types, named after the question you actually have. An experiment runs on the **For You feed** or the **Best Sellers** row — a collection's own order is not A/B tested — and each surface runs one experiment at a time.
 
-| Type | The question | Example |
-| --- | --- | --- |
-| **Two recipes** | Does this recipe sell more than that one on this surface? | Best selling against Trending now |
-| **Two settings of one recipe** | Does the window matter? | A 7-day window against a 30-day one |
-| **Personalized vs plain** | Does the published personalization rule beat the recipe order? | For You against Best sellers, on the same slots |
+| Type | Surface | The question | Example |
+| --- | --- | --- | --- |
+| **Personalized vs plain** | For You | Does personalization earn its place? | For You against plain best sellers |
+| **Two recipes** | For You | Does this personalize logic sell more than that one? | Two saved logics head to head |
+| **Intent on vs off** | For You | What does Intent AI earn? | Intent switched off for one group |
+| **Two settings of one recipe** | Best Sellers | Does the window matter? | A 7-day window against a 30-day one |
 
-A fourth runs from the Intent tab rather than here: the **Intent AI on/off test**, which switches intent off for half your shoppers on For You and every offer that ranks by intent. It uses the same machinery and reports in the same place. See [Intent](/docs/results/intent).
+The **Intent on vs off** test switches intent off for one group on For You and on every upsell that ranks by intent; the [Intent](/docs/results/intent) tab links straight to it and shows its result.
 
 ## Setting one up
 
-**New experiment** asks for the comparison type, the surface (a collection, the For You feed or the Best sellers row), the two arms, the **split**, and a **length**. The length is set before the test starts and the test **stops automatically** when it is reached; orders are counted until two days after the end, so a shopper exposed on the last day still has time to buy. Nothing on your storefront changes when a test ends: *the setting this test compared is changed where it lives* — on the collection or the rule — so the test can never flip your store on its own.
+**New experiment** asks for a name, the surface (the For You feed or the Best Sellers row), what competes, and the **split** (50/50, 75/25 or 90/10). The **length** is worked out for you before you start: whole weeks, two to six, long enough to detect a 10% change in how many shoppers buy at your traffic (four weeks when there is no traffic to estimate from yet), and the screen says what a test that long can detect. The test **stops automatically** at the end of that length; orders are counted until two days after the end, so a shopper exposed on the last day still has time to buy. Nothing on your storefront changes when a test ends: *the setting this test compared is changed where it lives* — on the collection or the rule — so the test can never flip your store on its own.
 
-<Callout type="warning" title="A running test is not measuring anything yet">
-Until both arms have reached the **minimum per arm** — 300 visitors — the page shows progress, not an answer, and says so. The minimum stays on screen whether or not you have reached it, so nobody adopts a winner from forty impressions.
+<Callout type="warning" title="No verdict until the test ends">
+While a test runs, the page shows progress — day, shoppers so far, and the date the result is due — never which group is ahead, so an early lucky streak cannot read as a win. At the end, a comparison needs at least **200 shoppers and 10 buyers in each group**; below that the result says *Not enough shoppers to compare*.
 </Callout>
 
 ## Reading the result
 
-Each arm reports **shoppers**, **bought** (placed at least one order, anywhere in your store), **conversion** (orders per visitor), **revenue per shopper**, and the storefront funnel behind them — impressions, clicks, click-through, add-to-cart rate. Shoppers are counted **once each**, in the arm they were assigned, however many times they were served.
+Each group reports **shoppers**, **bought** (placed at least one order, anywhere in your store), an early signal (**clicked a product here**, or for the intent test **clicked or added a suggestion**), **revenue per shopper** and **revenue**. Shoppers are counted **once each**, in the group they were assigned, however many times they were served — only those who allowed analytics, from the first serve the test changed.
 
-The verdict is a **two-proportion test** and needs **95%** before the page will call one arm ahead; below that, *the difference could be chance*, and it says so. Even above it the word is **directional**, never *proven* — a two-week test on one store is evidence, not a law — and when there is no clear difference the result says how large a difference the test *could* have seen, so "no effect" and "too small to see" are never confused.
+The verdict is the **share of shoppers who bought**, tested once at the end at the 5% level (95%). When one group is ahead, the result says how much more or less often its shoppers bought, with its range; it never says *proven*. When there is no clear difference the result says how large a difference the test *could* have seen, so "no effect" and "too small to see" are never confused. Revenue is shown beside the verdict, not tested against it. If the groups are further from the split you chose than chance allows, the result says *the split is off* and gives no verdict.
 
-A **Came for** breakdown splits buyers by the intent they were read as, where Intent AI is on, so you can see whether a winning arm won with gift-buyers or with everyone.
+An **intent on vs off** test adds a **By what they came for** table: shoppers and buyers in each group by the intent they were read as at their first serve. It is directional only — the verdict is the whole test's — and under 100 shoppers a group shows a count, not a share.
 
 ## Stopping and deleting
 
-**Stop** ends a test early and reads it as it stands — labelled as stopped, with whatever sample it reached. **Delete** removes a finished or never-started test from the list; a running one has to be stopped first. Finished tests stay listed with their verdict so a decision made in March can still be explained in June.
+**Stop** ends a test early and reads it as it stands — labelled as stopped, with whatever sample it reached. A test also stops itself early (*Stopped early*) if one group is clearly behind on buyers, checked only after 7 days and 1,000 shoppers in each group. **Delete** removes a test and its result, after a confirmation; deleting a running test stops the split, and which group each shopper was in is deleted with it, so it cannot be undone. Finished tests stay listed with their verdict so a decision made in March can still be explained in June.

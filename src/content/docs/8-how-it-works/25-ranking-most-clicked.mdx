@@ -1,7 +1,7 @@
 ---
 title: "How Most-clicked ranking works"
 description: "Ranks by pull — the sum of clicks through to the product page in the window — the first deliberate step a shopper takes past a grid tile."
-updated: 2026-08-22
+updated: 2026-11-20
 ---
 **Most clicked to PDP** ranks by the **sum of clicks** through to the product page in the window. A click is the first thing a shopper *chooses* to do — it says the tile earned the trip. Unlike CTR, this is volume, not efficiency: a widely-clicked product leads even if plenty of people scrolled past it. Products with no clicks in the window are left out.
 
@@ -15,7 +15,7 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-most-clicked/concept-ranking-most-clicked-step-02.png)
 
-The engine sums each product’s product-page clicks from the storefront pixel over the window and sorts descending. It sits one step past **Most impressions** and one step short of **Most added to cart** — good when you want the tiles shoppers actually open at the front, without letting a low-traffic product with a freak rate jump the queue. Engagement signals measure in whole days, so an hours-based window counts as one day, and a **Period** or **Snapshot** window falls back to the last 30 days.
+The engine sums each product’s product-page clicks from the storefront pixel over the window and sorts descending. It sits one step past **Most impressions** and one step short of **Most added to cart** — good when you want the tiles shoppers actually open at the front, without letting a low-traffic product with a freak rate jump the queue. Engagement signals measure in whole days, so an hours-based window rounds up to whole days, and a **Period** or **Snapshot** window falls back to the last 30 days.
 
 ## 3. The front row gets discovered
 

@@ -1,7 +1,7 @@
 ---
 title: "Glossary — every term, in the app's own words"
 description: "Surface, recipe, velocity, trend, slot, audience, Goes with, influenced revenue, padded, snapshot, intent — defined in the same words the interface uses, because a glossary that renames things is worse than none."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 
 Every term the app uses, in the app's own words. If a word here disagrees with a screen, the screen is wrong and we want to know.
@@ -9,16 +9,16 @@ Every term the app uses, in the app's own words. If a word here disagrees with a
 | Term | Meaning |
 | --- | --- |
 | **Surface** | Any place on your storefront whose order QSortby decides — a collection page, or a theme block. |
-| **Recipe** | A ranking formula with a name. It decides order only — never prices, products or collection membership. Six are offered; eleven **criteria** sit behind them. |
-| **Criteria** | The eleven things a collection can be ranked by — best selling, top revenue, most profitable, customer favorites, trending, selling fast, newest, top rated, engagement, personalize, your own formula. |
-| **Window** | The period a recipe counts. Rolling (the last N days or hours), period (a fixed calendar span) or snapshot (frozen at a moment). Five criteria ignore it, and the app says which. |
+| **Recipe** | A ranking formula with a name. It decides order only — never prices, products or collection membership. Six are offered; twelve **criteria** sit behind them. |
+| **Criteria** | The twelve things a collection can be ranked by — best selling, top revenue, most profitable, customer favorites, trending, trending now, selling fast, newest, top rated, engagement, personalize, your own formula. |
+| **Window** | The period a recipe counts. Rolling (the last N days or hours), period (a fixed calendar span) or snapshot (frozen at a moment). Four criteria ignore it, and the app says which. |
 | **Velocity** | Units sold in the chosen window. This is what "best seller" means here. |
 | **Trend** | Rate of change in sales, not the total. |
 | **Sales floor** | What stops a jump from one unit to three winning Trending now or Profit first: a product well below the best seller's sales keeps its rank but has its score damped. |
 | **Snapshot** | The exact order produced by one sort, kept so it can be restored or explained. The first one is the order before QSortby. |
 | **Test mode** | A state in which a collection keeps computing its order on schedule and publishes nothing to the real collection. |
 | **Preview collection** | The temporary `QSortby - … - Test` collection test mode can publish, so you see the tested order in your own theme. It deletes itself. |
-| **Slot** | A position on a surface that personalization is allowed to rewrite. |
+| **Slot** | A position in a feed row; the For You and Best Sellers blocks report clicks and add-to-carts per slot. Personalization rewrites a surface's whole order, never some slots of it. |
 | **Rule** (personalization) | Groups of shoppers, each with its own order of priorities. Exactly one is published at a time. |
 | **Group** | A set of shoppers selected by AND-ed conditions. Anyone matching no group falls through to *Everyone else*. |
 | **Audience** | A group of shoppers computed from your store's own behaviour. |
@@ -33,10 +33,10 @@ Every term the app uses, in the app's own words. If a word here disagrees with a
 | **Display rule** | An IF / AND / THEN condition that narrows who sees an offer. It never widens: an offer with no rule is seen by everyone. |
 | **Anchor** (upsell) | A CSS selector and position telling an offer or bar where to attach on a theme QSortby does not know. |
 | **Influenced revenue** | Orders containing a product QSortby served in that session. Last-touch, thirty-minute window. Influence, not proven cause. |
-| **Directional** | What an experiment's verdict is called, even at 95%. Never "proven". |
+| **Directional** | A reading the app does not treat as a final verdict — for example an intent test split by what shoppers came for, or a test created before experiments counted shoppers. Never "proven". |
 | **Arm** | One side of an experiment. A visitor always stays in the same arm. |
 | **Intent** | The one thing the app infers about a shopper: what they came for — treating themselves, replacing something, buying a gift, browsing, close to buying. Read from how the visit behaves. |
 | **Intent AI** | The layer that reads intent and, where applied, nudges orders and offers toward products tagged for it. Shadow on Pro (reads, reports), applied on Growth. |
 | **Reverse trial** | The 10 days after install on which every store runs on the Growth feature set, before settling onto Free. Separate from the 7-day trial on the first paid plan. |
 | **Theme app embed** | The switch in your theme editor that lets QSortby see your storefront and render its blocks and offers. Everything behaviour-based depends on it. |
-| **Reading your store** | The order and product import that runs by itself after install, and the Tracking card that reports how far it has reached. |
+| **Reading your store** | The order and product import that runs by itself after install, and the screen that reports how far it has reached — opened from *Store data* in Home's Health panel. |

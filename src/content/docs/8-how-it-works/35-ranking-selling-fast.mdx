@@ -1,7 +1,7 @@
 ---
 title: "How Selling-fast ranking works"
 description: "Ranks by urgency — inventory divided by sales rate = days of stock left, lowest first."
-updated: 2026-08-22
+updated: 2026-11-20
 ---
 **Selling fast** ranks by **scarcity**: how many days of stock are left at the current sales rate. It divides on-hand inventory by the average daily sales rate — the *lowest* result (closest to selling out) ranks first. Great for creating urgency and clearing hot stock. Products that have already sold out, or that had no sales in the window, are left out entirely — there’s no “days left” to compute for either.
 
@@ -15,10 +15,10 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-selling-fast/concept-ranking-selling-fast-step-02.png)
 
-For each product the engine computes **inventory ÷ (purchases ÷ window days)** — the days of stock remaining, where “purchases” counts checkouts containing the product rather than units. Unlike every other signal, **lower ranks higher** here: the product nearest to selling out leads the collection, so shoppers see it while it lasts. The window snaps to whole days in UTC, so an hours-based window counts as a single day.
+For each product the engine computes **inventory ÷ (purchases ÷ window days)** — the days of stock remaining, where “purchases” is units sold, from the daily sales rollup. Unlike every other signal, **lower ranks higher** here: the product nearest to selling out leads the collection, so shoppers see it while it lasts. The window snaps to whole days in UTC, so an hours-based window rounds up to whole days.
 
 ## 3. The front row gets discovered
 
 ![The front row gets discovered](/assets/ranking-selling-fast/concept-ranking-selling-fast-step-03.png)
 
-The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first. Because sold-out items drop out here rather than sinking to the bottom, a collection on this rule can come back short — the leftover slots are filled from its current order, below every product with real days-of-stock.
+The strongest products now fill the front row — the slots that get the most views and clicks. That’s the payoff: ranking turns your best products into the ones shoppers see first. Because sold-out items drop out here rather than sinking to the bottom, a collection on this rule can come back short. The app then re-runs the rule over all-time sales, and only after that fills any slots still empty from the collection’s current order, below every product with real days-of-stock.

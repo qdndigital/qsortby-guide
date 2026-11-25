@@ -1,7 +1,7 @@
 ---
 title: "Set up QSortby — two steps"
 description: "Setup is two jobs: switch QSortby on in your theme, then auto-sort one collection you already have. It ends when the order on your storefront has actually changed."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 import Video from '../../../components/Video.astro';
@@ -16,9 +16,9 @@ Importing your orders and products is **not a step**. It starts on its own after
 
 ## Step 1 · Switch QSortby on in your theme
 
-QSortby reads your storefront through a **theme app embed**. Open your theme editor, find **QSortby** under *App embeds*, switch it on and save. Setup checks every fifteen seconds whether the embed has come alive — you are switching it on in another tab, so there is nothing to click back here — and marks the step done the moment it sees events arrive.
+QSortby reads your storefront through a **theme app embed**. Open your theme editor, find QSortby's embed under *App embeds* — it is listed as **Algorithm - Pixel** — switch it on and save. Setup checks every fifteen seconds whether the embed is on — you are switching it on in another tab, so there is nothing to click back here — and marks the step done as soon as your theme shows it switched on.
 
-Without the embed, nothing downstream works: no views, no clicks, no cart adds, and the storefront blocks have nothing to render. If the numbers in the app are empty a week from now, this is the first thing to check (**Settings → Tracking** says in one word whether the pixel is receiving).
+Without the embed, nothing downstream works: no views, no clicks, no cart adds, and the storefront blocks have nothing to render. If the numbers in the app are empty a week from now, this is the first thing to check (the **Health** panel on **Home** says in one word whether the storefront pixel is receiving).
 
 <Callout type="note" title="A consent banner changes what arrives">
 The embed honours your store's customer-privacy settings. Until a shopper grants **analytics** consent, QSortby records only that a visit happened — no views, clicks or cart events — so those shoppers contribute nothing to behaviour-based ranking and see the same order as everyone else. If the events line looks low for your traffic, check what share of visitors accepts analytics before assuming the embed is broken. Sales-based recipes are unaffected: they rank from your orders, not the pixel.
@@ -26,7 +26,7 @@ The embed honours your store's customer-privacy settings. Until a shopper grants
 
 ## Step 2 · Sort one collection
 
-Pick **one collection you already have** from the dropdown (the twenty-five largest are offered; the full list is on Auto-sort), choose one of three recipes, and press **Sort it**. QSortby saves a snapshot of the current order first, writes the new order to Shopify, and sets the collection to **Manual** sort so the order survives.
+Pick **one collection you already have** from the dropdown (the first twenty-five, alphabetically, are offered; the full list is on Auto-sort), choose one of three recipes, and press **Sort it now**. QSortby saves a snapshot of the current order first, writes the new order to Shopify, and sets the collection to **Manual** sort so the order survives.
 
 The three recipes offered here are the three that need the least explanation:
 

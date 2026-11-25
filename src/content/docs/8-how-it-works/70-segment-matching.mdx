@@ -1,7 +1,7 @@
 ---
 title: "How segment matching picks each shopper's order"
 description: "Step by step: how a personalization rule routes each shopper — checked top to bottom, first matching group wins, and that group's scoring recipe is what they see."
-updated: 2026-08-22
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 import Video from '../../../components/Video.astro';
@@ -22,7 +22,7 @@ Three groups: **VIP shoppers** (2+ past purchases), **First-time visitors** (0 p
 
 This returning shopper has **3 past purchases**, recently viewed running shoes, and came from an email link. Each visitor is tested against every group's audience, beginning with the first.
 
-An audience reads a small set of numbers about the visitor, not their whole history: **purchase count**, **days since last visit**, **visit count** and **cart size**. Everything else about them — what they browsed, where they came from — belongs to the scoring recipe, not the audience. A brand-new visitor has no prior visit on record, so a condition on *days since last visit* never matches for them and they fall through to the next group.
+An audience reads a small set of numbers about the visitor, not their whole history: **purchase count**, **days since last visit**, **visit count** and **cart size**. Which products they browsed or put in their cart belongs to the scoring recipe, not the audience — and where they came from is read by neither. A brand-new visitor has no prior visit on record, so a condition on *days since last visit* never matches for them and they fall through to the next group.
 
 <Callout type="warning" title="Cart value doesn't work yet">
 **Cart value** is offered as a condition but can't match today: the storefront block sends QSortby the products in a cart without their prices, so cart value always reads as 0. A group gated on "cart value over $X" is never entered, and its visitors fall through to the group below. Use **cart size** until this is wired up.

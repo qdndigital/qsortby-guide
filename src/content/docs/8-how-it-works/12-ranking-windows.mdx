@@ -1,11 +1,11 @@
 ---
 title: "Framing the stats — rolling, period & snapshot windows"
 description: "Most ranking signals are measured over a time window — and the mode you pick changes which orders and events count."
-updated: 2026-08-22
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 
-Before ranking can score a product, it has to decide **which slice of time to measure** — the *window*. Most signals (best-selling, trending, CTR…) are computed over this window, and the mode you pick changes which orders and events count. There are three modes, set on a collection's Setup tab under **Use sales from**. Two rules skip the window entirely: **Most profitable** reads a catalog attribute, and **Customer favorites** always looks back a year — neither shows a window picker.
+Before ranking can score a product, it has to decide **which slice of time to measure** — the *window*. Most signals (best-selling, trending, CTR…) are computed over this window, and the mode you pick changes which orders and events count. There are three modes, set on a collection's Setup tab under **Use sales from** (**Use activity from** on an engagement rule, **Count launches from** on Newest). Two rules skip the window entirely: **Most profitable** reads a catalog attribute, and **Customer favorites** always looks back a year — neither shows a window picker.
 
 <Callout type="warning" title="Only Best selling honours Period and Snapshot">
 **Best selling** is measured over exactly the window you pick, in every mode. The other signals honour **Rolling**, but under **Period** and **Snapshot** they fall back to a rolling 30 days — and in those two modes they only consider products that actually sold inside the pinned range. If you need a signal other than Best selling measured over a fixed period, stay on **Rolling**.
@@ -15,7 +15,7 @@ Before ranking can score a product, it has to decide **which slice of time to me
 
 ![Rolling — a window that slides with the clock](/assets/ranking-windows/concept-ranking-windows-step-01.png)
 
-**Rolling** always ends at *now* and reaches back N hours or days. Because “now” moves, the whole window slides forward continuously — an order from 8 days ago that counted yesterday quietly drops out today. It's the freshest possible view, ideal for fast-moving catalogs where you want the ranking to reflect the last few days at all times. That's exact for Best selling; **Top grossing**, **Trending** and **Selling fast** read a daily rollup, so their window snaps to whole days in UTC — “last 7 days” means today plus the six days before it, the edge moves once a day at UTC midnight, and an hours-based window rounds up to a single day.
+**Rolling** always ends at *now* and reaches back N hours or days. Because “now” moves, the whole window slides forward continuously — an order from 8 days ago that counted yesterday quietly drops out today. It's the freshest possible view, ideal for fast-moving catalogs where you want the ranking to reflect the last few days at all times. That's exact for Best selling (on the Free plan, a Best selling window shorter than 7 days is measured over 7); **Top revenue**, **Trending**, **Trending now** and **Selling fast** read a daily rollup, so their window snaps to whole days in UTC — “last 7 days” means today plus the six days before it, the edge moves once a day at UTC midnight, and an hours-based window rounds up to whole days (36 hours counts as 2).
 
 ## 2. Period — the last completed calendar unit
 

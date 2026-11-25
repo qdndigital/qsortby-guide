@@ -1,9 +1,9 @@
 ---
 title: "How Most-impressions ranking works"
 description: "Ranks by raw reach — the sum of impressions in the window — so the most-seen products lead, which grows awareness even when they aren’t the best converters."
-updated: 2026-08-22
+updated: 2026-11-20
 ---
-**Most impressions** ranks by raw reach — the **sum of impressions** in the window. It’s an awareness signal: most-seen first, regardless of how well they convert. Products with no impressions in the window are left out.
+**Most impressions** ranks by raw reach — the **sum of impressions** in the window. It’s an awareness signal: most-seen first, regardless of how well they convert. Products with no impressions in the window are left out. Only product cards carrying a product id (`data-product-id`) are counted — QSortby’s own blocks carry one, many theme grids don’t — and cards in the For You block are never counted, on purpose, so the personalized feed can’t inflate its own picks.
 
 ## 1. The collection, unranked
 
@@ -15,7 +15,7 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-most-impressions/concept-ranking-most-impressions-step-02.png)
 
-The engine sums each product’s impressions from the storefront pixel over the window. A product that converts brilliantly but is rarely seen still ranks below a widely-viewed one — reach, not conversion, sets this order. Engagement signals measure in whole days, so an hours-based window counts as one day, and a **Period** or **Snapshot** window falls back to the last 30 days.
+The engine sums each product’s impressions from the storefront pixel over the window. A product that converts brilliantly but is rarely seen still ranks below a widely-viewed one — reach, not conversion, sets this order. Engagement signals measure in whole days, so an hours-based window rounds up to whole days, and a **Period** or **Snapshot** window falls back to the last 30 days.
 
 ## 3. The front row gets discovered
 

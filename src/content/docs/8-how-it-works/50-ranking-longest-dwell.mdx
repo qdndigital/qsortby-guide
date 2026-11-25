@@ -1,8 +1,10 @@
 ---
 title: "How Longest-dwell ranking works"
 description: "Ranks by attention — average time on the product page = total dwell ÷ the views that actually timed it — surfacing considered items people study before deciding."
-updated: 2026-08-22
+updated: 2026-11-20
 ---
+import Callout from '../../../components/Callout.astro';
+
 **Longest dwell** ranks by **average time on the product page** — total dwell divided by the number of views that actually reported a dwell time. Long dwell means shoppers are studying it: a considered purchase. It surfaces the items that hold interest. Products with no timed views are dropped.
 
 ## 1. The collection, unranked
@@ -15,7 +17,11 @@ A normal collection page. The order is whatever the catalog lists — the best p
 
 ![The ranking engine scores it](/assets/ranking-longest-dwell/concept-ranking-longest-dwell-step-02.png)
 
-The engine divides each product’s total dwell time by the number of views that reported one — views the pixel never timed don’t dilute the average, and a single view counts for at most 10 minutes. A product seen by thousands but skimmed in seconds ranks below one that fewer shoppers study for longer — attention, not traffic. Engagement signals measure in whole days, so an hours-based window counts as one day, and a **Period** or **Snapshot** window falls back to the last 30 days.
+The engine divides each product’s total dwell time by the number of views that reported one — views the pixel never timed don’t dilute the average, and a single view counts for at most 10 minutes. It then pulls that average toward the average of the products being ranked (the average counts as 20 timed views) and orders by the result, so one long view can’t carry a product to the top. A product seen by thousands but skimmed in seconds ranks below one that fewer shoppers study for longer — attention, not traffic. Engagement signals measure in whole days, so an hours-based window rounds up to whole days, and a **Period** or **Snapshot** window falls back to the last 30 days.
+
+<Callout type="warning" title="No dwell time is recorded today">
+This rule reads a dwell time carried on product impressions, and the storefront pixel doesn’t send one there — it times product-page visits on a separate event this rule doesn’t read. Until that changes, a Longest-dwell collection finds nothing to rank and fills itself entirely from the fallback order described below.
+</Callout>
 
 ## 3. The front row gets discovered
 

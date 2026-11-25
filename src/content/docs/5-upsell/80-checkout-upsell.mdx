@@ -1,7 +1,7 @@
 ---
 title: "In-checkout upsell"
 description: "An offer inside checkout itself, before payment, so an accepted item joins the same order instead of starting a new one. Shopify Plus only."
-updated: 2026-08-22
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 import Video from '../../../components/Video.astro';
@@ -22,9 +22,9 @@ The QSortby checkout extension has to be added to your checkout in the Shopify *
 
 ## Settings
 
-- **Rank by / window** — automatic only. Checkout has no hand-picked mode.
-- **How many to rank** — up to 4.
-- **How many to show** — 1 to 3, **defaulting to 1**.
+- **Rank by / window** — best sellers, trending, most profitable, top revenue or newest. Automatic only: checkout has no hand-picked mode.
+- **Products to consider** — up to 4, default 2.
+- **Offers to show** — 1 to 3, **defaulting to 1**.
 - **Heading** — defaults to *"Add to your order"*.
 
 ## Why the default is one offer
@@ -37,4 +37,4 @@ The same reasoning caps the rank list at four rather than ten: the extras exist 
 
 Anything already in the checkout. Offering a shopper something they're in the middle of buying is the one thing this surface must not do.
 
-One checkout upsell serves at a time; if you create several, the first switched-on one is used.
+One checkout upsell serves at a time; if you create several, setting one live pauses the others. It renders inside Shopify checkout, not your theme, so it can't be tested on a preview theme — preview it from Shopify's checkout editor.

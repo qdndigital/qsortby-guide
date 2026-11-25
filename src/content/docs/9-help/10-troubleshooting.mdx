@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting — the four things that go wrong most often"
 description: "Numbers all empty, a surface showing 0 views, an order that looks unchanged, a recipe that does nothing — the four failures support actually receives, what each one means, and the fix."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 
@@ -9,9 +9,9 @@ These are not a generic FAQ. They are the four things that have actually gone wr
 
 ## The numbers are all empty
 
-**The theme app embed is probably off.** Every behaviour figure — views, clicks, cart adds, the engagement recipes, the Visitors tab, Intent — comes through the embed, and without it the app sees orders and nothing else. **Settings → Tracking** says in one word whether the pixel is receiving, with the time of the last event.
+**The theme app embed is probably off.** Every behaviour figure — views, clicks, cart adds, the engagement recipes, the Visitors tab, Intent — comes through the embed, and without it the app sees orders and nothing else. The **Health** panel on **Home** says in one word whether the storefront pixel is receiving, and if it stops, a banner at the top of Home says how long ago.
 
-Fix: theme editor → App embeds → switch **QSortby** on → save. Setup checks every fifteen seconds and marks step 1 done when events arrive. If the embed is on and the numbers are still thin, check what share of your visitors grants **analytics** consent — until they do, the embed records only that a visit happened.
+Fix: theme editor → App embeds → switch QSortby's embed, **Algorithm - Pixel**, on → save. Setup checks every fifteen seconds and marks step 1 done as soon as your theme shows it on. If the embed is on and the numbers are still thin, check what share of your visitors grants **analytics** consent — until they do, the embed records only that a visit happened.
 
 Sales-based recipes are unaffected either way: Best selling, Trending now, Profit first and the rest rank from your orders, which arrive through webhooks whether or not the embed is on.
 
@@ -19,7 +19,7 @@ Sales-based recipes are unaffected either way: Best selling, Trending now, Profi
 
 **It is configured but has nowhere to render.** A sorted collection page needs no placement — Shopify renders it. But a **For You**, **Best sellers**, **Goes with** or **Frequently bought together** row is a theme block, and a block you configured in the app but never placed in the theme editor is a surface with no screen.
 
-Fix: **Auto-sort → Theme blocks** shows which of the four are placed and where. Open your theme editor and check the block is actually on the template you expect — the product template for Goes with and FBT, the home page or collection template for the two feeds. An upsell offer with 0 views on a theme QSortby does not know usually wants an **anchor**: a selector in the offer's *Where it shows* section telling it what to attach to.
+Fix: **Auto-sort → Personalization** (for the For You block) and the **Frequently bought together** offer's page under Upsell show where those two blocks are placed. For any of the four, open your theme editor and check the block is actually on the template you expect — the product template for Goes with and FBT, the home page or collection template for the two feeds. An upsell offer with 0 views on a theme QSortby does not know usually wants an **anchor**: a selector in the offer's *Where it shows* section telling it what to attach to.
 
 ## The order looks unchanged
 
@@ -31,12 +31,12 @@ Also worth a look: the collection's **Updates** setting. With **Push to Shopify 
 
 ## Margin ranking does nothing
 
-**It needs a cost per item on your Shopify variants.** Profit first ranks on margin, and margin is price minus cost — with no cost recorded, every product has the same margin and the recipe has nothing to rank by. The recipe picker marks it *no data* rather than letting it look ready; forced through *Write your own*, the order simply does not move.
+**It needs a cost per item on your Shopify variants.** Profit first ranks on margin, and margin is price minus cost — with no cost recorded, every product has the same margin and the recipe has nothing to rank by. The recipe picker marks it *no data yet* rather than letting it look ready; forced through *Write your own*, the order simply does not move.
 
 Fix: Shopify admin → Products → each variant → **Cost per item**. QSortby picks it up on the next product sync. The same is true of **Top rated** without reviews — and if you have switched review apps, see *Review source* under [Settings → Integrations](/docs/settings/settings-overview), because the dead app's frozen numbers may still be the ones being read.
 
 <Callout type="tip" title="Home tells you before you have to look">
-All four show up on **Home** under *Needs attention* or in the pixel banner, surfaced before you go looking. If Home is quiet and something still looks wrong, [Check what the sort actually did](/docs/getting-started/check-what-it-did) is the map of every place you can see what happened and why.
+Two of these surface on **Home** before you go looking: a pixel that stops reporting raises a banner at the top, and a collection on a Manual schedule that has not re-sorted in two days is listed under *Needs attention*. If Home is quiet and something still looks wrong, [Check what the sort actually did](/docs/getting-started/check-what-it-did) is the map of every place you can see what happened and why.
 </Callout>
 
 ## Still stuck

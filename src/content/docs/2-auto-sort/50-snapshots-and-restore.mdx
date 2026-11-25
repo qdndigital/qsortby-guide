@@ -1,11 +1,11 @@
 ---
 title: "Snapshots & restore — undo is a feature"
 description: "Every sort saves the exact order it produced, including the order before QSortby touched the collection. Compare any two, and restore one to your live storefront in a sentence that says plainly what it does."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 
-Every sort QSortby writes **saves the exact order it produced**, so any change can be undone or explained. The collection's **Snapshots** page — linked from the top of its Setup tab — is where they live.
+Every sort QSortby writes **saves the exact order it produced**, so any change can be undone or explained. The collection's **Snapshots** page — the **Snapshots** button at the top of the collection page — is where they live.
 
 ## What a snapshot holds
 
@@ -26,7 +26,7 @@ A restore puts back an **order, not a membership**. Products you have removed fr
 **Restore this order to your storefront?** does exactly what it says: the chosen order is written back to Shopify as the collection's live order, and the restore is recorded in the collection's history as *Restored from a snapshot*.
 
 <Callout type="warning" title="Restoring writes to your live storefront">
-Shoppers see the restored order within a few minutes. The dialog says so, and it also offers to **pause the schedule, so nothing re-sorts over this** — tick it if the point of restoring is to *hold* that order, because otherwise the next scheduled sort replaces it again.
+Shoppers see the restored order within a few minutes. The dialog says so, and it also offers to **pause the schedule, so nothing re-sorts over this** — it is ticked by default, because otherwise the next scheduled sort replaces the restored order; clear it only if you are restoring to look rather than to keep.
 </Callout>
 
 Restoring is **switched off** while the collection is in [test mode](/docs/auto-sort/test-mode-and-preview), because in test mode QSortby writes nothing to Shopify. The page says so in a sentence — turn test mode off, or apply the test, then restore — rather than greying the button out silently.

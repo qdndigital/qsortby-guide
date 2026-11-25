@@ -1,7 +1,7 @@
 ---
 title: "Create a personalization rule"
 description: "A rule is groups of shoppers, each with its own order of priorities. Write it, read what it produces with Why this order, then publish — exactly one rule is live at a time, and nothing reaches a shopper until you press Publish."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 import Video from '../../../components/Video.astro';
@@ -16,11 +16,11 @@ Included from **Starter** — three rules, five groups each. Pro and Growth are 
 
 The Personalization tab lists your rules with a **Published** or **Draft** badge, and the ranker reads the published one. Everything else on the list is a draft — writing a rule, editing it or saving it changes **nothing a shopper sees** until you press Publish. Drafts cost nothing, so keep as many as you like.
 
-With no rule published, ranking does not stop: the app falls back to its own default order, which is the collection's recipe.
+With no rule published, personalization is off: every shopper sees the same order — your best sellers from the last 7 days.
 
 ## 1. Start a rule
 
-**Write a rule** opens a blank one. **Describe it instead** (Pro and above) lets you say who your shoppers are in plain words — *"returning customers who buy candles, and first-timers from Instagram"* — and drafts the groups for you to read and edit. Either way you end up in the same editor, and nothing the AI drafted is published until you say so.
+**Create rule** asks how you want to start. **Build from scratch** opens a blank rule; **Start from a preset** gives you a ready-made setup for your industry to tweak; **Describe it to AI** (Pro and above) lets you say who your shoppers are in plain words — *"returning customers who buy candles, and first-timers from Instagram"* — and drafts the groups for you to read and edit. Whichever you pick, you end up in the same editor, and nothing the AI drafted is published until you say so.
 
 ## 2. Groups of shoppers
 
@@ -36,7 +36,7 @@ The condition list offers **Cart value**, but the storefront block hands QSortby
 Anyone matching no group falls through to **Everyone else**, which is why that group is never empty and cannot be deleted. A brand-new visitor has no prior visit on record, so a condition on *Days since last visit* never matches them — they fall straight through, which is usually what you want.
 
 <Callout type="tip" title="Write the first-visit group first">
-Most of a store's collection traffic is people you have never seen before, and eight of the twelve signals work on a stranger. A group for first-time visitors weighted toward Top sellers, New arrivals and Session intent is a complete, useful rule — no login, no history, no quiz.
+Most of a store's collection traffic is people you have never seen before, and eleven of the twelve signals need no purchase history. A group for first-time visitors weighted toward Top sellers, New arrivals and Session intent is a complete, useful rule — no login, no history, no quiz.
 </Callout>
 
 ## 3. Read it before you publish
@@ -45,10 +45,10 @@ Open **Why this order**. It runs the **real ranker** — the same function the s
 
 ## 4. Publish
 
-**Publish** makes this rule the live one and unpublishes whatever was live before (that rule becomes a draft you can re-publish any time). From that moment the rule rewrites the slots a surface allows it — three of six on Best Sellers, for instance — and shoppers who match nothing see the collection's recipe order in those same places.
+**Publish** makes this rule the live one and unpublishes whatever was live before (that rule becomes a draft you can re-publish any time). From that moment the rule orders the For You block — including on collections set to Personalize — for each shopper; anyone who matches no other group gets the **Everyone else** order.
 
-New visitors pick up the new order straight away. A shopper who already has a feed built keeps their old order until it expires — the **Refresh interval** on the collection, one hour by default and up to 24. So don't judge a change by reloading your own browser: test it in a fresh profile, or see [Theme blocks](/docs/auto-sort/theme-blocks).
+The server picks up the new rule on a shopper's next request — a cached order belongs to the rule that built it, so publishing or editing the live rule never serves an old one. The shopper's browser can lag a little: the block reuses its last render for its **Cache duration** (5 minutes by default) and may show a returning shopper the list they saw last time while it fetches the new one. So don't judge a change by reloading your own browser: test it in a fresh profile, or see [Theme blocks](/docs/auto-sort/theme-blocks).
 
-<Callout type="note" title="Half see it, half don't — on purpose">
-When a rule is published alongside a running [experiment](/docs/results/experiments) on the same surface, half of matching shoppers see the new order and half keep the normal one, so the difference can be measured in revenue per visit rather than assumed. A visitor always stays in the same arm.
+<Callout type="note" title="Two orders at once — on purpose">
+When an [experiment](/docs/results/experiments) is running on the For You block, shoppers are split between its two arms — two rules, or your rule against plain best sellers — so the difference can be measured in how often shoppers buy rather than assumed. A visitor always stays in the same arm.
 </Callout>

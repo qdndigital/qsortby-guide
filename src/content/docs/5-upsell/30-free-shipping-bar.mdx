@@ -1,7 +1,7 @@
 ---
 title: "Free-shipping progress bar"
 description: "Show how far a cart is from free shipping and suggest a product that actually closes the gap — not a $5 item against $40 missing."
-updated: 2026-11-07
+updated: 2026-11-20
 ---
 import Callout from '../../../components/Callout.astro';
 import Video from '../../../components/Video.astro';
@@ -26,18 +26,18 @@ Leave the threshold at zero and the bar stays hidden. That's deliberate: a zero 
 
 Two messages, both yours to write:
 
-- **Below the threshold** — use `{{amount}}` where the remaining amount should go: *"You're `{{amount}}` away from free shipping."* QSortby formats and inserts it in the shopper's currency.
-- **Once they qualify** — *"You qualify for free shipping."* No suggestions are shown at this point; the job is done.
+- **While below the threshold** — use `{{amount}}` where the remaining amount should go: *"You're `{{amount}}` away from free shipping."* QSortby formats and inserts it in the shopper's currency.
+- **Once the cart qualifies** — *"You qualify for free shipping."* No suggestions are shown at this point; the job is done.
 
 ## The suggestions
 
-Turn **Suggest products** on and the bar recommends items that close the gap, ranked by the signal and window you choose. Two rules shape which ones:
+Turn **Suggest products that close the gap** on and the bar recommends items that close the gap, ranked by the signal (best sellers, trending, most profitable, top revenue or newest) and window you choose. Two rules shape which ones:
 
 **Never cheaper than the gap.** Adding a $5 item when $40 is missing wouldn't qualify the shopper, which is the only thing this widget exists to do — so those are filtered out.
 
 **Never absurdly more.** QSortby prefers items around three times the gap (spend $15 to save $8 of shipping), and only widens that ceiling in steps if nothing suitable exists. If every qualifying product is far above the gap, it offers the cheapest of them and nothing else — a poor suggestion, but the only honest one.
 
-**How many** caps the suggestions. Two or three is plenty in a drawer.
+**Products to show** caps the suggestions at one or two, drawn side by side as low cards so the cart keeps its own items in view.
 
 ## How it looks
 
@@ -52,8 +52,8 @@ Both take a **message position**: the message (*You're $40.00 away from free shi
 
 Toggle the **cart drawer** and **cart page** independently. The bar's configuration rides along with the rest of your storefront config, so it appears with the cart rather than a beat after it.
 
-Where in the cart it lands is normally found for you: QSortby knows the usual containers of the common themes. On a theme it does not know, the bar has nowhere to go and never shows — so each surface also takes an **anchor**: a CSS selector and a position (before, after, inside), the same way the cart drawer offer does. If the bar is missing or in the wrong place, that is the fix: in your theme's code or your browser's inspector, find the element the bar should attach to and give the editor its selector.
+Where in the cart it lands is normally found for you: QSortby knows the usual containers of the common themes. On a theme it does not know, the bar has nowhere to go and never shows — so each surface also takes an **anchor**: a CSS selector and a position (before or after it, or inside it at the top or bottom), the same way the cart drawer offer does. If the bar is missing or in the wrong place, that is the fix: in your theme's code or your browser's inspector, find the element the bar should attach to and give the editor its selector.
 
-The bar also only shows in your store's **own region** — a shopper browsing from a market where your free-shipping rate does not apply is not promised one.
+The bar also only shows in your store's **own region**: when the shopper's cart is in your store's currency **and** they are browsing from the country of your store's address. Anyone else sees no bar, so a shopper paying in another currency is never measured against a threshold in yours.
 
-One bar serves at a time. If you create more than one, the first switched-on bar is the one shoppers see.
+One bar serves at a time. If you create more than one, setting one live pauses any other live bar.
